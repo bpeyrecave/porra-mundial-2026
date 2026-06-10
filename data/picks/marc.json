@@ -1044,7 +1044,13 @@
       "max_points": 50
     }
   ],
-  "golden_boot": "Harry Kane",
   "champion": "Inglaterra",
-  "golden_boot_points": 10
+  "extras": {
+    "bota_oro": "Harry Kane",
+    "bota_plata": "Kilyan Mbappé",
+    "bota_bronce": "Mikel Oyarzábal",
+    "balon_oro": "Harry Kane",
+    "balon_plata": "Achraf Hakimi",
+    "balon_bronce": "Lamine Yamal"
+  }
 }
