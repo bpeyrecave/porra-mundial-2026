@@ -30,7 +30,8 @@
   header h1 { font-size: 1.5rem; font-weight: 700; }
   header .subtitle { color: var(--muted); font-size: 0.85rem; margin-top: 2px; }
   .flag { font-size: 2rem; }
-  .updated { margin-left: auto; font-size: 0.75rem; color: var(--muted); text-align: right; }
+  .updated { margin-left: auto; font-size: 0.75rem; color: var(--muted); text-align: right; line-height: 1.5; }
+  .updated strong { display: block; color: var(--text); font-size: 0.8rem; }
 
   .leaderboard {
     margin: 24px auto;
@@ -103,6 +104,20 @@
     letter-spacing: 0.05em;
   }
 
+  /* Points legend */
+  .pts-legend {
+    display: flex; gap: 14px; flex-wrap: wrap; align-items: center;
+    font-size: 0.7rem; color: var(--muted); padding: 6px 2px;
+  }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot {
+    width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0;
+  }
+  .legend-dot.exact { background: rgba(45, 198, 83, 0.3); border: 1px solid var(--green); }
+  .legend-dot.result { background: transparent; border: 1px solid var(--green); position: relative; }
+  .legend-dot.result::after { content: "•"; color: var(--green); font-size: 8px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  .legend-special { color: var(--yellow); font-weight: 600; }
+
   table { width: 100%; border-collapse: collapse; }
   thead th {
     background: var(--surface2);
@@ -117,9 +132,13 @@
   thead th:not(:first-child) { text-align: center; }
   tbody tr { border-bottom: 1px solid var(--border); }
   tbody tr:hover { background: var(--surface); }
+  tbody tr.special-row { background: rgba(244, 196, 48, 0.06); }
+  tbody tr.special-row:hover { background: rgba(244, 196, 48, 0.1); }
   td { padding: 10px 12px; font-size: 0.85rem; }
   .match-teams { color: var(--text); font-weight: 500; }
   .match-teams .vs { color: var(--muted); font-size: 0.75rem; margin: 0 4px; }
+  .match-label { color: var(--muted); font-size: 0.7rem; margin-top: 2px; }
+  .special-badge { font-size: 0.65rem; color: var(--yellow); margin-left: 4px; }
   .result-cell { text-align: center; }
   .score-box {
     display: inline-flex;
@@ -128,13 +147,17 @@
     gap: 2px;
     min-width: 60px;
   }
-  .score { font-weight: 700; font-size: 0.9rem; }
+  .score { font-weight: 700; font-size: 0.9rem; padding: 2px 6px; border-radius: 4px; }
+  .score.exact { background: rgba(45, 198, 83, 0.2); color: var(--green); }
+  .score.result-only { position: relative; }
+  .score.result-only::before { content: "●"; color: var(--green); font-size: 0.5rem; vertical-align: middle; margin-right: 3px; }
   .pts-badge {
     font-size: 0.65rem;
     padding: 1px 5px;
     border-radius: 3px;
     font-weight: 600;
   }
+  .pts-earned { color: var(--green); font-size: 0.7rem; font-weight: 600; }
   .pts-3 { background: #1a4a2a; color: var(--green); }
   .pts-2 { background: #3a3010; color: var(--yellow); }
   .pts-1 { background: #2a1a1a; color: #e05050; }
@@ -144,8 +167,30 @@
   .real-score.finished { font-weight: 700; color: var(--text); }
   .no-picks-cell { color: var(--muted); font-style: italic; font-size: 0.8rem; text-align: center; }
 
+  /* Live game animation */
+  @keyframes blink-live {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.25; }
+  }
+  .live-score {
+    color: var(--accent) !important;
+    font-weight: 700;
+    animation: blink-live 2s ease-in-out infinite;
+  }
+  .live-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-right: 4px;
+    animation: blink-live 1.2s ease-in-out infinite;
+    vertical-align: middle;
+  }
+
   .ko-table { margin-bottom: 24px; }
-  .ko-match-row td:first-child { width: 200px; }
+  .ko-match-row td:first-child { width: 210px; }
+  .bracket-label { font-size: 0.78rem; font-weight: 600; color: var(--text); }
+  .bracket-sub   { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
   .winner-predicted { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
   .winner-correct { color: var(--green) !important; }
   .winner-wrong { color: var(--accent) !important; }
@@ -228,7 +273,10 @@
     <h1>Porra Mundial USA·MEX·CAN 2026</h1>
     <div class="subtitle">Marc · Eugènia · Berta · José Luis</div>
   </div>
-  <div class="updated" id="lastUpdated">Cargando resultados...</div>
+  <div class="updated" id="lastUpdated">
+    <span>Última actualización</span>
+    <strong id="lastUpdatedTime">Cargando...</strong>
+  </div>
 </header>
 
 <div class="leaderboard" id="leaderboard">
@@ -260,8 +308,49 @@ const STAGES = [
   { key: "extras",       label: "Extras" },
 ];
 
+// Official WC 2026 bracket slot labels
+const BRACKET_LABELS = {
+  "R32-1":  "2º Grupo A vs 2º Grupo B",
+  "R32-2":  "1º Grupo E vs Mejor 3º (A/B/C/D/F)",
+  "R32-3":  "1º Grupo F vs 2º Grupo C",
+  "R32-4":  "1º Grupo C vs 2º Grupo F",
+  "R32-5":  "1º Grupo I vs Mejor 3º (C/D/F/G/H)",
+  "R32-6":  "2º Grupo E vs 2º Grupo I",
+  "R32-7":  "1º Grupo A vs Mejor 3º (C/E/F/H/I)",
+  "R32-8":  "1º Grupo L vs Mejor 3º (E/H/I/J/K)",
+  "R32-9":  "1º Grupo D vs Mejor 3º (B/E/F/I/J)",
+  "R32-10": "1º Grupo G vs Mejor 3º (A/E/H/I/J)",
+  "R32-11": "2º Grupo K vs 2º Grupo L",
+  "R32-12": "1º Grupo H vs 2º Grupo J",
+  "R32-13": "1º Grupo B vs Mejor 3º (E/F/G/I/J)",
+  "R32-14": "1º Grupo J vs 2º Grupo H",
+  "R32-15": "1º Grupo K vs Mejor 3º (D/E/I/J/L)",
+  "R32-16": "2º Grupo D vs 2º Grupo G",
+  "R16-1":  "W(R32-2) vs W(R32-5)",
+  "R16-2":  "W(R32-1) vs W(R32-3)",
+  "R16-3":  "W(R32-4) vs W(R32-6)",
+  "R16-4":  "W(R32-7) vs W(R32-8)",
+  "R16-5":  "W(R32-11) vs W(R32-12)",
+  "R16-6":  "W(R32-9) vs W(R32-10)",
+  "R16-7":  "W(R32-14) vs W(R32-16)",
+  "R16-8":  "W(R32-13) vs W(R32-15)",
+  "QF-1":   "W(R16-1) vs W(R16-2)",
+  "QF-2":   "W(R16-5) vs W(R16-6)",
+  "QF-3":   "W(R16-3) vs W(R16-4)",
+  "QF-4":   "W(R16-7) vs W(R16-8)",
+  "SF-1":   "W(QF-1) vs W(QF-3)",
+  "SF-2":   "W(QF-2) vs W(QF-4)",
+  "3rd":    "Tercer puesto",
+  "Final":  "Gran Final",
+};
+
+// Special 6-point matches
+const SPECIAL_MATCH_IDS = new Set([
+  "GA4","GB1","GC1","GD3","GE2","GF5","GG1","GH6","GI5","GJ3","GK5","GL1"
+]);
+
 // ── State ────────────────────────────────────────────────────────────────────
-let picksData = {};      // { "Berta": { group_matches: [...], knockout_matches: [...], ... } }
+let picksData = {};
 let results   = { matches: [] };
 let activeStage = "group";
 
@@ -275,11 +364,9 @@ async function fetchJSON(url) {
 }
 
 async function init() {
-  // Load results
   const res = await fetchJSON(RESULTS_FILE);
   if (res) results = res;
 
-  // Load each participant's picks (silently skip missing files)
   for (const p of PARTICIPANTS) {
     const data = await fetchJSON(PICKS_FILES[p]);
     if (data) picksData[p] = data;
@@ -289,10 +376,14 @@ async function init() {
   buildNav();
   renderStage(activeStage);
 
-  const ts = results.last_updated
-    ? `Actualizado: ${new Date(results.last_updated).toLocaleString("es-ES", { timeZone: "Europe/Madrid", dateStyle: "short", timeStyle: "short" })}`
-    : "Sin resultados aún";
-  document.getElementById("lastUpdated").textContent = ts;
+  const timeEl = document.getElementById("lastUpdatedTime");
+  if (results.last_updated) {
+    timeEl.textContent = new Date(results.last_updated).toLocaleString("es-ES", {
+      timeZone: "Europe/Madrid", dateStyle: "short", timeStyle: "short"
+    });
+  } else {
+    timeEl.textContent = "Sin resultados aún";
+  }
 }
 
 // ── Results lookup ───────────────────────────────────────────────────────────
@@ -304,22 +395,27 @@ function findResult(homeEs, awayEs) {
 }
 
 // ── Scoring ──────────────────────────────────────────────────────────────────
-function scoreGroupMatch(pick, result) {
+function scoreGroupMatch(pick, result, matchId) {
   if (!result || result.status !== "FINISHED" || result.home_goals === null) return null;
 
-  // Determine results from pick's perspective
+  const isSpecial = SPECIAL_MATCH_IDS.has(matchId);
   const [ph, pa] = [pick.predicted_home, pick.predicted_away];
   let [rh, ra] = [result.home_goals, result.away_goals];
 
-  // Handle reversed home/away in API vs picks
   if (result.home_team_es === pick.away_team) [rh, ra] = [ra, rh];
 
   const correctScore  = ph === rh && pa === ra;
   const correctResult = Math.sign(ph - pa) === Math.sign(rh - ra);
 
-  if (correctScore)  return 3;
-  if (correctResult) return 1;
-  return 0;
+  if (isSpecial) {
+    if (correctScore)  return 6;
+    if (correctResult) return 2;
+    return 0;
+  } else {
+    if (correctScore)  return 3;
+    if (correctResult) return 1;
+    return 0;
+  }
 }
 
 function scoreKnockoutMatch(pick, result) {
@@ -334,7 +430,7 @@ function calcTotalPoints(participant) {
 
   for (const m of picks.group_matches) {
     const r = findResult(m.home_team, m.away_team);
-    const pts = scoreGroupMatch(m, r);
+    const pts = scoreGroupMatch(m, r, m.match_id);
     if (pts !== null) total += pts;
   }
   for (const m of picks.knockout_matches) {
@@ -342,7 +438,6 @@ function calcTotalPoints(participant) {
     const pts = scoreKnockoutMatch(m, r);
     if (pts !== null) total += pts;
   }
-  // Golden boot: checked separately (no live API data yet)
   return total;
 }
 
@@ -403,10 +498,11 @@ function renderStage(stage) {
     }
   }
 
-  // Group by match_id
+  // Group by match_id, keep insertion order
   const byId = {};
+  const idOrder = [];
   for (const { participant, match } of allMatches) {
-    if (!byId[match.match_id]) byId[match.match_id] = { match, picks: {} };
+    if (!byId[match.match_id]) { byId[match.match_id] = { match, picks: {} }; idOrder.push(match.match_id); }
     byId[match.match_id].picks[participant] = match;
   }
 
@@ -414,16 +510,30 @@ function renderStage(stage) {
   let html = `<div class="group-section"><div class="group-header"><span class="group-tag">${stageLabel}</span></div>`;
   html += `<table class="ko-table"><thead><tr>
     <th>Partido</th>
+    <th>Real</th>
     ${PARTICIPANTS.map(p => `<th>${p}</th>`).join("")}
-    <th>Resultado real</th>
-    <th>Pts max</th>
+    <th>Pts</th>
   </tr></thead><tbody>`;
 
-  for (const [mid, { match, picks }] of Object.entries(byId)) {
+  for (const mid of idOrder) {
+    const { match, picks } = byId[mid];
     const result = findResult(match.home_team, match.away_team);
+    const bracketLabel = BRACKET_LABELS[mid] || mid;
+
+    // Real result cell
+    let realCell;
+    if (result?.status === "FINISHED") {
+      realCell = `<td class="real-score finished">${result.home_goals}-${result.away_goals}<br><small>${result.winner_es}</small></td>`;
+    } else if (result?.status === "IN_PLAY" || result?.status === "PAUSED") {
+      realCell = `<td class="real-score"><span class="live-dot"></span><span class="live-score">${result.home_goals ?? 0}-${result.away_goals ?? 0}</span></td>`;
+    } else {
+      realCell = `<td class="real-score pending">—</td>`;
+    }
+
     html += `<tr class="ko-match-row"><td>
-      <div class="match-teams">${match.home_team} <span class="vs">vs</span> ${match.away_team}</div>
-    </td>`;
+      <div class="bracket-label">${bracketLabel}</div>
+      <div class="bracket-sub">${match.home_team} vs ${match.away_team}</div>
+    </td>${realCell}`;
 
     for (const p of PARTICIPANTS) {
       const pm = picks[p];
@@ -433,15 +543,10 @@ function renderStage(stage) {
       html += `<td class="result-cell"><div class="score-box">
         <span class="score">${pm.predicted_home ?? "?"}-${pm.predicted_away ?? "?"}</span>
         <span class="winner-predicted ${winnerClass}">→ ${pm.predicted_winner ?? "?"}</span>
-        ${pts !== null ? `<span class="pts-badge ${pts > 0 ? 'pts-3' : 'pts-0'}">+${pts}</span>` : ""}
+        ${pts !== null ? `<span class="pts-earned">${pts > 0 ? "+" : ""}${pts}pts</span>` : ""}
       </div></td>`;
     }
 
-    html += `<td class="real-score ${result ? (result.status === "FINISHED" ? "finished" : "pending") : "pending"}">
-      ${result?.status === "FINISHED"
-        ? `${result.home_goals}-${result.away_goals}<br><small>${result.winner_es}</small>`
-        : result ? "En juego" : "Pendiente"}
-    </td>`;
     html += `<td class="result-cell" style="color:var(--gold)">${match.max_points}pts</td>`;
     html += `</tr>`;
   }
@@ -452,7 +557,6 @@ function renderStage(stage) {
 
 // ── Group standings ───────────────────────────────────────────────────────────
 function calculateStandings(matchList) {
-  // matchList: [{home_team, away_team, home_goals, away_goals}]
   const teams = {};
   for (const m of matchList) {
     if (!teams[m.home_team]) teams[m.home_team] = { name: m.home_team, pts: 0, gf: 0, gc: 0, played: 0 };
@@ -476,10 +580,8 @@ function calculateStandings(matchList) {
 }
 
 function renderGroupStandings(baseMatches) {
-  // Build match lists
   const realMatchList = baseMatches.map(m => {
     const r = findResult(m.home_team, m.away_team);
-    // Normalise home/away to match the pick's perspective
     if (r && r.home_team_es === m.away_team) {
       return { home_team: m.home_team, away_team: m.away_team, home_goals: r.away_goals, away_goals: r.home_goals };
     }
@@ -514,8 +616,6 @@ function renderGroupStandings(baseMatches) {
     const realTeam = realStandings[i];
     html += `<tr>`;
     html += `<td class="pos-col"><span class="pos-num">${i+1}</span></td>`;
-
-    // Real column
     html += `<td><div class="std-real">
       <span>${realTeam?.name ?? "—"}</span>
       ${finishedCount > 0 && realTeam
@@ -523,7 +623,6 @@ function renderGroupStandings(baseMatches) {
         : `<span class="std-pts empty">—</span>`}
     </div></td>`;
 
-    // Participant columns
     for (const p of PARTICIPANTS) {
       const pStandings = participantStandings[p];
       if (!pStandings) { html += `<td class="std-participant"><span class="std-none">—</span></td>`; continue; }
@@ -542,7 +641,6 @@ function renderGroupStandings(baseMatches) {
 }
 
 function renderGroupStage() {
-  // Collect all groups from Berta's picks (she has them all)
   const ref = picksData["Berta"] || Object.values(picksData)[0];
   if (!ref) return `<div class="error-msg">No hay picks disponibles todavía.</div>`;
 
@@ -554,35 +652,65 @@ function renderGroupStage() {
 
   let html = "";
   for (const [g, matches] of Object.entries(groups)) {
-    html += `<div class="group-section"><div class="group-header"><span class="group-tag">Grupo ${g}</span></div>
-    <table><thead><tr>
+    const hasSpecial = matches.some(m => SPECIAL_MATCH_IDS.has(m.match_id));
+
+    html += `<div class="group-section">
+    <div class="group-header"><span class="group-tag">Grupo ${g}</span></div>`;
+
+    // Legend below group tag
+    html += `<div class="pts-legend">
+      <span class="legend-item"><span class="legend-dot exact"></span> Marcador exacto: 3pts</span>
+      <span class="legend-item"><span class="legend-dot result"></span> Resultado correcto: 1pt</span>
+      ${hasSpecial ? `<span class="legend-special">⭐ Partido especial (marcado en amarillo): puntos ×2</span>` : ""}
+    </div>`;
+
+    html += `<table><thead><tr>
       <th>Partido</th>
-      ${PARTICIPANTS.map(p => `<th>${p}</th>`).join("")}
       <th>Real</th>
+      ${PARTICIPANTS.map(p => `<th>${p}</th>`).join("")}
     </tr></thead><tbody>`;
 
     for (const baseMatch of matches) {
+      const isSpecial = SPECIAL_MATCH_IDS.has(baseMatch.match_id);
       const result = findResult(baseMatch.home_team, baseMatch.away_team);
-      html += `<tr><td class="match-teams">
-        ${baseMatch.home_team} <span class="vs">vs</span> ${baseMatch.away_team}
-      </td>`;
+
+      // Real score cell
+      let realCell;
+      if (result?.status === "FINISHED") {
+        realCell = `<td class="real-score finished">${result.home_goals}-${result.away_goals}</td>`;
+      } else if (result?.status === "IN_PLAY" || result?.status === "PAUSED") {
+        realCell = `<td class="real-score"><span class="live-dot"></span><span class="live-score">${result.home_goals ?? 0}-${result.away_goals ?? 0}</span></td>`;
+      } else {
+        realCell = `<td class="real-score pending">—</td>`;
+      }
+
+      html += `<tr class="${isSpecial ? "special-row" : ""}">
+        <td class="match-teams">
+          ${baseMatch.home_team} <span class="vs">vs</span> ${baseMatch.away_team}
+          ${isSpecial ? `<span class="special-badge">⭐</span>` : ""}
+        </td>${realCell}`;
 
       for (const p of PARTICIPANTS) {
         const pm = picksData[p]?.group_matches?.find(m => m.match_id === baseMatch.match_id);
         if (!pm) { html += `<td class="no-picks-cell">—</td>`; continue; }
-        const pts = scoreGroupMatch(pm, result);
-        const ptsClass = pts === 3 ? "pts-3" : pts === 1 ? "pts-2" : pts === 0 ? "pts-0" : "";
+
+        const pts = scoreGroupMatch(pm, result, baseMatch.match_id);
+        const maxPts = isSpecial ? 6 : 3;
+
+        // Determine score class
+        let scoreClass = "";
+        if (pts !== null) {
+          if (pts === maxPts) scoreClass = "exact";
+          else if (pts > 0) scoreClass = "result-only";
+        }
+
         html += `<td class="result-cell"><div class="score-box">
-          <span class="score">${pm.predicted_home ?? "?"}-${pm.predicted_away ?? "?"}</span>
-          ${pts !== null ? `<span class="pts-badge ${ptsClass}">+${pts}</span>` : ""}
+          <span class="score ${scoreClass}">${pm.predicted_home ?? "?"}-${pm.predicted_away ?? "?"}</span>
+          ${pts !== null ? `<span class="pts-earned">${pts > 0 ? "+" : ""}${pts}pts</span>` : ""}
         </div></td>`;
       }
 
-      html += `<td class="real-score ${result?.status === "FINISHED" ? "finished" : "pending"}">
-        ${result?.status === "FINISHED"
-          ? `${result.home_goals}-${result.away_goals}`
-          : result ? "🔴 En juego" : "—"}
-      </td></tr>`;
+      html += `</tr>`;
     }
 
     html += `</tbody></table>`;
