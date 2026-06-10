@@ -594,21 +594,27 @@ function renderGroupStage() {
 
 function renderExtras() {
   const extraItems = [
-    { key: "golden_boot",   label: "🥇 Bota de Oro", pts: 10 },
-    { key: "champion",      label: "🏆 Campeón",     pts: 50 },
+    { key: "bota_oro",     label: "⚽ Bota de Oro",     subtitle: "Máximo goleador",     pts: 10 },
+    { key: "bota_plata",   label: "⚽ Bota de Plata",   subtitle: "2º máximo goleador",  pts: 10 },
+    { key: "bota_bronce",  label: "⚽ Bota de Bronce",  subtitle: "3º máximo goleador",  pts: 10 },
+    { key: "balon_oro",    label: "🌟 Balón de Oro",    subtitle: "Mejor jugador",        pts: 10 },
+    { key: "balon_plata",  label: "🌟 Balón de Plata",  subtitle: "2º mejor jugador",     pts: 10 },
+    { key: "balon_bronce", label: "🌟 Balón de Bronce", subtitle: "3º mejor jugador",     pts: 10 },
   ];
 
-  let html = `<div class="group-section"><div class="group-header"><span class="group-tag">Extras</span></div>
+  let html = `<div class="group-section"><div class="group-header"><span class="group-tag">Premios individuales</span></div>
   <div class="extras-grid">`;
 
   for (const item of extraItems) {
-    html += `<div class="extra-card"><div class="extra-label">${item.label} · ${item.pts}pts</div>`;
+    html += `<div class="extra-card">
+      <div class="extra-label">${item.label} · ${item.pts}pts</div>
+      <div style="font-size:0.7rem;color:var(--muted);margin-bottom:8px">${item.subtitle}</div>`;
     for (const p of PARTICIPANTS) {
-      const pick = picksData[p]?.[item.key];
+      const pick = picksData[p]?.extras?.[item.key];
       html += `<div class="extra-row">
         <span class="p-name">${p}</span>
         ${pick
-          ? `<span class="p-pick">${pick}</span><span class="extra-pts pending">?</span>`
+          ? `<span class="p-pick">${pick}</span><span class="extra-pts pending">10pts</span>`
           : `<span class="no-pick">Sin pick</span>`
         }
       </div>`;
