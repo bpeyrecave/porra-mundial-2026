@@ -193,7 +193,7 @@
   .bracket-sub   { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
   .ko-fixture { font-size: 0.78rem; margin-top: 3px; display: flex; align-items: center; gap: 4px; justify-content: center; flex-wrap: wrap; }
   .ko-team { padding: 1px 5px; border-radius: 3px; white-space: nowrap; }
-  .ko-team.pick-winner { color: var(--green); font-weight: 700; }
+  .ko-team.pick-winner { color: var(--yellow); font-weight: 700; }
   .ko-team.pick-loser  { color: var(--muted); }
   .ko-team.correct     { background: rgba(45,198,83,0.15); color: var(--green); font-weight: 700; }
   .ko-team.wrong-pick  { background: rgba(230,57,70,0.15); color: var(--accent); font-weight: 700; }
@@ -293,11 +293,11 @@
 
 <script>
 // ── Config ──────────────────────────────────────────────────────────────────
-const PARTICIPANTS = ["Berta", "Marc", "Eugenia", "Jose Luis"];
+const PARTICIPANTS = ["Berta", "Marc", "Eugènia", "Jose Luis"];
 const PICKS_FILES  = {
   "Berta":     "data/picks/berta.json",
   "Marc":      "data/picks/marc.json",
-  "Eugenia":   "data/picks/eugenia.json",
+  "Eugènia":   "data/picks/eugenia.json",
   "Jose Luis": "data/picks/jose_luis.json",
 };
 const RESULTS_FILE = "data/results.json";
@@ -589,8 +589,13 @@ function renderStage(stage) {
       const finished = result?.status === "FINISHED";
 
       // Determine CSS class for each team
+      // predicted_winner may be set even on tied scores (penalties pick)
+      const isTiedPrediction = pm.predicted_home !== null && pm.predicted_away !== null
+                               && pm.predicted_home === pm.predicted_away;
       function koTeamClass(team) {
-        const isPick = team === pm.predicted_winner;
+        const isPick = pm.predicted_winner
+          ? team === pm.predicted_winner
+          : isTiedPrediction && team === pm.home_team; // fallback: highlight home if no explicit winner
         if (!finished) return isPick ? "pick-winner" : "pick-loser";
         if (isPick) return pts > 0 ? "correct" : "wrong-pick";
         return "wrong-team";
