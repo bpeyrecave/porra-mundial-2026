@@ -313,7 +313,8 @@ const PICKS_FILES  = {
   "Eugènia":   "data/picks/eugenia.json",
   "José Luis": "data/picks/jose_luis.json",
 };
-const RESULTS_FILE = "data/results.json";
+const RESULTS_FILE  = "data/results.json";
+const SCHEDULE_FILE = "data/schedule.json";
 
 const STAGES = [
   { key: "group",        label: "Fase de Grupos" },
@@ -367,8 +368,9 @@ const SPECIAL_MATCH_IDS = new Set([
 ]);
 
 // ── State ────────────────────────────────────────────────────────────────────
-let picksData = {};
-let results   = { matches: [] };
+let picksData  = {};
+let results    = { matches: [] };
+let schedule   = {};   // matchId → utc_date string
 let activeStage = "group";
 
 // ── Load data ────────────────────────────────────────────────────────────────
@@ -381,6 +383,9 @@ async function fetchJSON(url) {
 }
 
 async function init() {
+  const sched = await fetchJSON(SCHEDULE_FILE);
+  if (sched?.matches) schedule = sched.matches;
+
   const res = await fetchJSON(RESULTS_FILE);
   if (res) results = res;
 
@@ -407,9 +412,13 @@ async function init() {
 function fmtDate(utcDate) {
   if (!utcDate) return "";
   const d = new Date(utcDate);
-  const day = d.toLocaleDateString("es-ES", { timeZone: "Europe/Madrid", day: "numeric", month: "short" });
+  const day  = d.toLocaleDateString("es-ES", { timeZone: "Europe/Madrid", day: "numeric", month: "short" });
   const time = d.toLocaleTimeString("es-ES", { timeZone: "Europe/Madrid", hour: "2-digit", minute: "2-digit" });
   return `${day} · ${time}`;
+}
+
+function matchDate(matchId, result) {
+  return result?.utc_date || schedule[matchId] || null;
 }
 
 // ── Results lookup ───────────────────────────────────────────────────────────
@@ -600,7 +609,7 @@ function renderStage(stage) {
       realCell = `<td class="real-score pending">—</td>`;
     }
 
-    const koDateStr = fmtDate(result?.utc_date);
+    const koDateStr = fmtDate(matchDate(mid, result));
     html += `<tr class="ko-match-row"><td>
       <div class="bracket-label">${bracketLabel}${koDateStr ? ` <span class="date-chip">${koDateStr}</span>` : ""}</div>
     </td>${realCell}`;
@@ -785,7 +794,7 @@ function renderGroupStage() {
         realCell = `<td class="real-score pending">—</td>`;
       }
 
-      const dateStr = fmtDate(result?.utc_date);
+      const dateStr = fmtDate(matchDate(baseMatch.match_id, result));
       html += `<tr class="${isSpecial ? "special-row" : ""}">
         <td class="match-teams">
           ${baseMatch.home_team} <span class="vs">vs</span> ${baseMatch.away_team}
