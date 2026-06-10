@@ -54,9 +54,13 @@ def extract(excel_path, name):
         away = get_val(ws, row, 32)
         hg   = get_val(ws, row, 29)
         ag   = get_val(ws, row, 30)
+        # Knockout rounds always produce a winner (penalties if tied after 90').
+        # When predicted score is a tie, home team is treated as the picked winner.
         winner = None
-        if hg is not None and ag is not None and hg != ag:
-            winner = home if hg > ag else away
+        if hg is not None and ag is not None:
+            if hg > ag:   winner = home
+            elif ag > hg: winner = away
+            else:         winner = home  # tied score → home team goes through
         knockout_matches.append({
             "match_id": mid, "stage": stage,
             "home_team": home, "away_team": away,
@@ -81,7 +85,7 @@ def extract(excel_path, name):
 
     out_dir = Path(__file__).parent.parent / "data" / "picks"
     out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / f"{name.lower()}.json"
+    out_path = out_dir / f"{name.lower().replace(' ', '_')}.json"
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(picks, f, indent=2, ensure_ascii=False, default=str)
     print(f"Saved {out_path}")
