@@ -11,7 +11,10 @@ from openpyxl.cell.cell import MergedCell
 
 def get_val(ws, row, col):
     cell = ws.cell(row, col)
-    return None if isinstance(cell, MergedCell) else cell.value
+    v = None if isinstance(cell, MergedCell) else cell.value
+    if isinstance(v, float) and v == int(v):
+        v = int(v)
+    return v
 
 def extract(excel_path, name):
     wb = openpyxl.load_workbook(excel_path, data_only=True)
@@ -65,9 +68,15 @@ def extract(excel_path, name):
         "participant": name,
         "group_matches": group_matches,
         "knockout_matches": knockout_matches,
-        "golden_boot": get_val(ws, 154, 27),
         "champion": get_val(ws, 150, 27),
-        "golden_boot_points": 10
+        "extras": {
+            "bota_oro":     get_val(ws, 154, 27),
+            "bota_plata":   get_val(ws, 155, 27),
+            "bota_bronce":  get_val(ws, 156, 27),
+            "balon_oro":    get_val(ws, 158, 27),
+            "balon_plata":  get_val(ws, 159, 27),
+            "balon_bronce": get_val(ws, 160, 27),
+        }
     }
 
     out_dir = Path(__file__).parent.parent / "data" / "picks"
