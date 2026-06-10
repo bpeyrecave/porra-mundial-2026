@@ -191,9 +191,13 @@
   .ko-match-row td:first-child { width: 210px; }
   .bracket-label { font-size: 0.78rem; font-weight: 600; color: var(--text); }
   .bracket-sub   { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
-  .winner-predicted { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
-  .winner-correct { color: var(--green) !important; }
-  .winner-wrong { color: var(--accent) !important; }
+  .ko-fixture { font-size: 0.78rem; margin-top: 3px; display: flex; align-items: center; gap: 4px; justify-content: center; flex-wrap: wrap; }
+  .ko-team { padding: 1px 5px; border-radius: 3px; white-space: nowrap; }
+  .ko-team.pick-winner { color: var(--green); font-weight: 700; }
+  .ko-team.pick-loser  { color: var(--muted); }
+  .ko-team.correct     { background: rgba(45,198,83,0.15); color: var(--green); font-weight: 700; }
+  .ko-team.wrong-pick  { background: rgba(230,57,70,0.15); color: var(--accent); font-weight: 700; }
+  .ko-team.wrong-team  { color: var(--muted); }
 
   .extras-grid {
     display: grid;
@@ -582,10 +586,26 @@ function renderStage(stage) {
       const pm = picks[p];
       if (!pm) { html += `<td class="no-picks-cell">—</td>`; continue; }
       const pts = scoreKnockoutMatch(pm, result);
-      const winnerClass = pts === null ? "" : pts > 0 ? "winner-correct" : "winner-wrong";
+      const finished = result?.status === "FINISHED";
+
+      // Determine CSS class for each team
+      function koTeamClass(team) {
+        const isPick = team === pm.predicted_winner;
+        if (!finished) return isPick ? "pick-winner" : "pick-loser";
+        if (isPick) return pts > 0 ? "correct" : "wrong-pick";
+        return "wrong-team";
+      }
+
+      const homeTeam = pm.home_team || "?";
+      const awayTeam = pm.away_team || "?";
+
       html += `<td class="result-cell"><div class="score-box">
         <span class="score">${pm.predicted_home ?? "?"}-${pm.predicted_away ?? "?"}</span>
-        <span class="winner-predicted ${winnerClass}">→ ${pm.predicted_winner ?? "?"}</span>
+        <div class="ko-fixture">
+          <span class="ko-team ${koTeamClass(homeTeam)}">${homeTeam}</span>
+          <span style="color:var(--muted);font-size:0.7rem">vs</span>
+          <span class="ko-team ${koTeamClass(awayTeam)}">${awayTeam}</span>
+        </div>
         ${pts !== null ? `<span class="pts-earned">${pts > 0 ? "+" : ""}${pts}pts</span>` : ""}
       </div></td>`;
     }
@@ -775,29 +795,37 @@ function renderGroupStage() {
 
 function renderExtras() {
   const extraItems = [
-    { key: "bota_oro",     label: "⚽ Bota de Oro",     subtitle: "Máximo goleador",     pts: 10 },
-    { key: "bota_plata",   label: "⚽ Bota de Plata",   subtitle: "2º máximo goleador",  pts: 10 },
-    { key: "bota_bronce",  label: "⚽ Bota de Bronce",  subtitle: "3º máximo goleador",  pts: 10 },
-    { key: "balon_oro",    label: "🌟 Balón de Oro",    subtitle: "Mejor jugador",        pts: 10 },
-    { key: "balon_plata",  label: "🌟 Balón de Plata",  subtitle: "2º mejor jugador",     pts: 10 },
-    { key: "balon_bronce", label: "🌟 Balón de Bronce", subtitle: "3º mejor jugador",     pts: 10 },
+    { key: "bota_oro",     label: "⚽ Bota de Oro",     subtitle: "Máximo goleador" },
+    { key: "bota_plata",   label: "⚽ Bota de Plata",   subtitle: "2º máximo goleador" },
+    { key: "bota_bronce",  label: "⚽ Bota de Bronce",  subtitle: "3º máximo goleador" },
+    { key: "balon_oro",    label: "🌟 Balón de Oro",    subtitle: "Mejor jugador" },
+    { key: "balon_plata",  label: "🌟 Balón de Plata",  subtitle: "2º mejor jugador" },
+    { key: "balon_bronce", label: "🌟 Balón de Bronce", subtitle: "3º mejor jugador" },
   ];
 
   let html = `<div class="group-section"><div class="group-header"><span class="group-tag">Premios individuales</span></div>
   <div class="extras-grid">`;
 
   for (const item of extraItems) {
+    // Real winner from results.json (manually added as results.extras.balon_oro etc.)
+    const realWinner = results.extras?.[item.key] ?? null;
+
     html += `<div class="extra-card">
-      <div class="extra-label">${item.label} · ${item.pts}pts</div>
-      <div style="font-size:0.7rem;color:var(--muted);margin-bottom:8px">${item.subtitle}</div>`;
+      <div class="extra-label">${item.label}</div>
+      <div style="font-size:0.7rem;color:var(--muted);margin-bottom:10px">${item.subtitle}${realWinner ? ` · <span style="color:var(--gold)">${realWinner}</span>` : " · por decidir"}</div>`;
+
     for (const p of PARTICIPANTS) {
       const pick = picksData[p]?.extras?.[item.key];
+      if (!pick) {
+        html += `<div class="extra-row"><span class="p-name">${p}</span><span class="no-pick">Sin pick</span></div>`;
+        continue;
+      }
+      const correct = realWinner && pick.trim().toLowerCase() === realWinner.trim().toLowerCase();
+      const decided = realWinner !== null;
       html += `<div class="extra-row">
         <span class="p-name">${p}</span>
-        ${pick
-          ? `<span class="p-pick">${pick}</span><span class="extra-pts pending">10pts</span>`
-          : `<span class="no-pick">Sin pick</span>`
-        }
+        <span class="p-pick" style="${correct ? "color:var(--green);font-weight:700" : decided ? "color:var(--muted)" : "color:var(--text)"}">${pick}</span>
+        ${correct ? `<span class="extra-pts correct">+10pts</span>` : ""}
       </div>`;
     }
     html += `</div>`;
