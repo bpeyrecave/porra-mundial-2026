@@ -444,7 +444,7 @@ function scoreGroupMatch(pick, result, matchId) {
 
   if (isSpecial) {
     if (correctScore)  return 6;
-    if (correctResult) return 2;
+    if (correctResult) return 3;
     return 0;
   } else {
     if (correctScore)  return 3;
@@ -771,7 +771,7 @@ function renderGroupStage() {
     html += `<div class="pts-legend">
       <span class="legend-item"><span class="legend-dot exact"></span> Marcador exacto: 3pts</span>
       <span class="legend-item"><span class="legend-dot result"></span> Acertar 1X2: 1pt</span>
-      ${hasSpecial ? `<span class="legend-special">⭐ Partido especial: puntos ×2</span>` : ""}
+      ${hasSpecial ? `<span class="legend-special">⭐ Partido especial (Marcador exacto: 6pts · Acertar 1X2: 3pts)</span>` : ""}
     </div>`;
 
     html += `<table><thead><tr>
