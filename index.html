@@ -138,6 +138,19 @@
   .match-teams { color: var(--text); font-weight: 500; }
   .match-teams .vs { color: var(--muted); font-size: 0.75rem; margin: 0 4px; }
   .match-label { color: var(--muted); font-size: 0.7rem; margin-top: 2px; }
+  .date-chip {
+    display: inline-block;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--muted);
+    font-size: 0.65rem;
+    padding: 1px 6px;
+    margin-left: 6px;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-weight: 500;
+  }
   .special-badge { font-size: 0.65rem; color: var(--yellow); margin-left: 4px; }
   .result-cell { text-align: center; }
   .score-box {
@@ -293,12 +306,12 @@
 
 <script>
 // ── Config ──────────────────────────────────────────────────────────────────
-const PARTICIPANTS = ["Berta", "Marc", "Eugènia", "Jose Luis"];
+const PARTICIPANTS = ["Berta", "Marc", "Eugènia", "José Luis"];
 const PICKS_FILES  = {
   "Berta":     "data/picks/berta.json",
   "Marc":      "data/picks/marc.json",
   "Eugènia":   "data/picks/eugenia.json",
-  "Jose Luis": "data/picks/jose_luis.json",
+  "José Luis": "data/picks/jose_luis.json",
 };
 const RESULTS_FILE = "data/results.json";
 
@@ -388,6 +401,15 @@ async function init() {
   } else {
     timeEl.textContent = "Sin resultados aún";
   }
+}
+
+// ── Date formatting ──────────────────────────────────────────────────────────
+function fmtDate(utcDate) {
+  if (!utcDate) return "";
+  const d = new Date(utcDate);
+  const day = d.toLocaleDateString("es-ES", { timeZone: "Europe/Madrid", day: "numeric", month: "short" });
+  const time = d.toLocaleTimeString("es-ES", { timeZone: "Europe/Madrid", hour: "2-digit", minute: "2-digit" });
+  return `${day} · ${time}`;
 }
 
 // ── Results lookup ───────────────────────────────────────────────────────────
@@ -578,8 +600,9 @@ function renderStage(stage) {
       realCell = `<td class="real-score pending">—</td>`;
     }
 
+    const koDateStr = fmtDate(result?.utc_date);
     html += `<tr class="ko-match-row"><td>
-      <div class="bracket-label">${bracketLabel}</div>
+      <div class="bracket-label">${bracketLabel}${koDateStr ? ` <span class="date-chip">${koDateStr}</span>` : ""}</div>
     </td>${realCell}`;
 
     for (const p of PARTICIPANTS) {
@@ -762,10 +785,12 @@ function renderGroupStage() {
         realCell = `<td class="real-score pending">—</td>`;
       }
 
+      const dateStr = fmtDate(result?.utc_date);
       html += `<tr class="${isSpecial ? "special-row" : ""}">
         <td class="match-teams">
           ${baseMatch.home_team} <span class="vs">vs</span> ${baseMatch.away_team}
           ${isSpecial ? `<span class="special-badge">⭐</span>` : ""}
+          ${dateStr ? `<span class="date-chip">${dateStr}</span>` : ""}
         </td>${realCell}`;
 
       for (const p of PARTICIPANTS) {
