@@ -418,6 +418,17 @@ function scoreGroupMatch(pick, result, matchId) {
   }
 }
 
+// Standings scoring: 4pts exact position, 1pt adjacent (1↔2 or 3↔4)
+function scoreStandingsPosition(predictedTeam, realStandings, predictedPos) {
+  if (!predictedTeam || !realStandings.length) return null;
+  const realPos = realStandings.findIndex(t => t.name === predictedTeam);
+  if (realPos === -1) return null; // not all games played yet
+  if (realPos === predictedPos) return 4;
+  const adjacent = predictedPos % 2 === 0 ? predictedPos + 1 : predictedPos - 1;
+  if (realPos === adjacent) return 1;
+  return 0;
+}
+
 function scoreKnockoutMatch(pick, result) {
   if (!result || result.status !== "FINISHED" || !result.winner_es) return null;
   return result.winner_es === pick.predicted_winner ? pick.max_points : 0;
@@ -438,6 +449,39 @@ function calcTotalPoints(participant) {
     const pts = scoreKnockoutMatch(m, r);
     if (pts !== null) total += pts;
   }
+
+  // Standings scoring per group
+  const ref = picksData["Berta"] || Object.values(picksData)[0];
+  if (ref) {
+    const groups = {};
+    for (const m of ref.group_matches) {
+      if (!groups[m.group]) groups[m.group] = [];
+      groups[m.group].push(m);
+    }
+    for (const groupMatches of Object.values(groups)) {
+      const realMatchList = groupMatches.map(m => {
+        const r = findResult(m.home_team, m.away_team);
+        if (r && r.home_team_es === m.away_team)
+          return { home_team: m.home_team, away_team: m.away_team, home_goals: r.away_goals, away_goals: r.home_goals };
+        return { home_team: m.home_team, away_team: m.away_team, home_goals: r?.home_goals ?? null, away_goals: r?.away_goals ?? null };
+      });
+      const finished = realMatchList.filter(m => m.home_goals !== null).length;
+      if (finished < 6) continue; // only score when group is complete
+      const realStandings = calculateStandings(realMatchList);
+      const pMatches = groupMatches.map(m => {
+        const pm = picks.group_matches.find(pm => pm.match_id === m.match_id);
+        return pm
+          ? { home_team: pm.home_team, away_team: pm.away_team, home_goals: pm.predicted_home, away_goals: pm.predicted_away }
+          : { home_team: m.home_team, away_team: m.away_team, home_goals: null, away_goals: null };
+      });
+      const pStandings = calculateStandings(pMatches);
+      for (let i = 0; i < 4; i++) {
+        const pts = scoreStandingsPosition(pStandings[i]?.name, realStandings, i);
+        if (pts !== null) total += pts;
+      }
+    }
+  }
+
   return total;
 }
 
@@ -532,7 +576,6 @@ function renderStage(stage) {
 
     html += `<tr class="ko-match-row"><td>
       <div class="bracket-label">${bracketLabel}</div>
-      <div class="bracket-sub">${match.home_team} vs ${match.away_team}</div>
     </td>${realCell}`;
 
     for (const p of PARTICIPANTS) {
@@ -605,7 +648,12 @@ function renderGroupStandings(baseMatches) {
     participantStandings[p] = calculateStandings(pList);
   }
 
+  // Scoring legend for standings
   let html = `<div class="standings-label">Clasificación del grupo</div>
+  <div class="pts-legend" style="margin-bottom:8px">
+    <span class="legend-item"><span class="legend-dot exact"></span> Posición exacta: 4pts</span>
+    <span class="legend-item"><span class="legend-dot result"></span> Posición adyacente (1↔2 o 3↔4): 1pt</span>
+  </div>
   <table class="standings-table"><thead><tr>
     <th class="pos-col">Pos</th>
     <th>Clasificación real${finishedCount > 0 && !allDone ? " *parcial" : ""}</th>
@@ -627,10 +675,15 @@ function renderGroupStandings(baseMatches) {
       const pStandings = participantStandings[p];
       if (!pStandings) { html += `<td class="std-participant"><span class="std-none">—</span></td>`; continue; }
       const pTeam = pStandings[i];
-      const correct = allDone && realTeam && pTeam?.name === realTeam?.name;
-      const wrong   = allDone && realTeam && pTeam?.name !== realTeam?.name;
-      const cls = correct ? "std-correct" : wrong ? "std-wrong" : "std-pending";
-      html += `<td class="std-participant"><span class="team-inner ${cls}">${pTeam?.name ?? "?"}</span></td>`;
+      const standPts = allDone ? scoreStandingsPosition(pTeam?.name, realStandings, i) : null;
+      const correct = standPts === 4;
+      const partial = standPts === 1;
+      const wrong   = standPts === 0;
+      const cls = correct ? "std-correct" : partial ? "std-pending" : wrong ? "std-wrong" : "std-pending";
+      html += `<td class="std-participant">
+        <span class="team-inner ${cls}">${pTeam?.name ?? "?"}</span>
+        ${standPts !== null ? `<br><span class="pts-earned">${standPts > 0 ? "+" : ""}${standPts}pts</span>` : ""}
+      </td>`;
     }
 
     html += `</tr>`;
@@ -660,8 +713,8 @@ function renderGroupStage() {
     // Legend below group tag
     html += `<div class="pts-legend">
       <span class="legend-item"><span class="legend-dot exact"></span> Marcador exacto: 3pts</span>
-      <span class="legend-item"><span class="legend-dot result"></span> Resultado correcto: 1pt</span>
-      ${hasSpecial ? `<span class="legend-special">⭐ Partido especial (marcado en amarillo): puntos ×2</span>` : ""}
+      <span class="legend-item"><span class="legend-dot result"></span> Acertar 1X2: 1pt</span>
+      ${hasSpecial ? `<span class="legend-special">⭐ Partido especial: puntos ×2</span>` : ""}
     </div>`;
 
     html += `<table><thead><tr>
