@@ -172,6 +172,44 @@
   .extra-pts.wrong { background: #2a1a1a; color: #e05050; }
   .extra-pts.pending { background: var(--surface2); color: var(--muted); }
 
+  /* Standings */
+  .standings-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted);
+    margin: 18px 0 8px; padding-left: 2px;
+  }
+  .standings-table { width: 100%; border-collapse: collapse; }
+  .standings-table thead th {
+    background: #11162a;
+    color: var(--muted); font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.08em; padding: 7px 12px;
+    text-align: left; text-transform: uppercase;
+  }
+  .standings-table thead th.center { text-align: center; }
+  .standings-table tbody tr { border-bottom: 1px solid var(--border); }
+  .standings-table tbody tr:hover { background: var(--surface); }
+  .standings-table td { padding: 8px 12px; font-size: 0.83rem; vertical-align: middle; }
+  .pos-col { width: 36px; text-align: center; }
+  .pos-num {
+    background: var(--surface2); border-radius: 4px;
+    font-size: 0.73rem; font-weight: 700; padding: 2px 7px;
+    display: inline-block;
+  }
+  .std-real { display: flex; align-items: center; gap: 7px; }
+  .std-pts {
+    background: var(--surface2); border-radius: 4px;
+    color: var(--gold); font-size: 0.65rem; font-weight: 700;
+    padding: 1px 5px; white-space: nowrap;
+  }
+  .std-pts.partial { color: var(--yellow); }
+  .std-pts.empty { color: var(--muted); }
+  .std-participant { text-align: center; }
+  .std-participant .team-inner { display: inline-block; font-size: 0.8rem; }
+  .std-correct { color: var(--green); font-weight: 600; }
+  .std-wrong   { color: var(--accent); }
+  .std-pending { color: var(--text); }
+  .std-none    { color: var(--muted); font-style: italic; }
+
   .loading { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 0.9rem; }
   .error-msg { background: #2a1010; border: 1px solid #5a2020; border-radius: 8px; color: #e05050; margin: 20px 0; padding: 14px 18px; font-size: 0.85rem; }
 
@@ -412,6 +450,97 @@ function renderStage(stage) {
   content.innerHTML = html;
 }
 
+// ── Group standings ───────────────────────────────────────────────────────────
+function calculateStandings(matchList) {
+  // matchList: [{home_team, away_team, home_goals, away_goals}]
+  const teams = {};
+  for (const m of matchList) {
+    if (!teams[m.home_team]) teams[m.home_team] = { name: m.home_team, pts: 0, gf: 0, gc: 0, played: 0 };
+    if (!teams[m.away_team]) teams[m.away_team] = { name: m.away_team, pts: 0, gf: 0, gc: 0, played: 0 };
+    const hg = m.home_goals, ag = m.away_goals;
+    if (hg === null || hg === undefined || ag === null || ag === undefined) continue;
+    const h = teams[m.home_team], a = teams[m.away_team];
+    h.played++; a.played++;
+    h.gf += hg; h.gc += ag;
+    a.gf += ag; a.gc += hg;
+    if (hg > ag) h.pts += 3;
+    else if (ag > hg) a.pts += 3;
+    else { h.pts += 1; a.pts += 1; }
+  }
+  return Object.values(teams).sort((a, b) => {
+    if (b.pts !== a.pts) return b.pts - a.pts;
+    const dg = (b.gf - b.gc) - (a.gf - a.gc);
+    if (dg !== 0) return dg;
+    return b.gf - a.gf;
+  });
+}
+
+function renderGroupStandings(baseMatches) {
+  // Build match lists
+  const realMatchList = baseMatches.map(m => {
+    const r = findResult(m.home_team, m.away_team);
+    // Normalise home/away to match the pick's perspective
+    if (r && r.home_team_es === m.away_team) {
+      return { home_team: m.home_team, away_team: m.away_team, home_goals: r.away_goals, away_goals: r.home_goals };
+    }
+    return { home_team: m.home_team, away_team: m.away_team, home_goals: r?.home_goals ?? null, away_goals: r?.away_goals ?? null };
+  });
+
+  const finishedCount = realMatchList.filter(m => m.home_goals !== null).length;
+  const allDone = finishedCount === 6;
+  const realStandings = calculateStandings(realMatchList);
+
+  const participantStandings = {};
+  for (const p of PARTICIPANTS) {
+    const picks = picksData[p];
+    if (!picks) { participantStandings[p] = null; continue; }
+    const pList = baseMatches.map(m => {
+      const pm = picks.group_matches.find(pm => pm.match_id === m.match_id);
+      return pm
+        ? { home_team: pm.home_team, away_team: pm.away_team, home_goals: pm.predicted_home, away_goals: pm.predicted_away }
+        : { home_team: m.home_team, away_team: m.away_team, home_goals: null, away_goals: null };
+    });
+    participantStandings[p] = calculateStandings(pList);
+  }
+
+  let html = `<div class="standings-label">Clasificación del grupo</div>
+  <table class="standings-table"><thead><tr>
+    <th class="pos-col">Pos</th>
+    <th>Clasificación real${finishedCount > 0 && !allDone ? " *parcial" : ""}</th>
+    ${PARTICIPANTS.map(p => `<th class="center">${p}</th>`).join("")}
+  </tr></thead><tbody>`;
+
+  for (let i = 0; i < 4; i++) {
+    const realTeam = realStandings[i];
+    html += `<tr>`;
+    html += `<td class="pos-col"><span class="pos-num">${i+1}</span></td>`;
+
+    // Real column
+    html += `<td><div class="std-real">
+      <span>${realTeam?.name ?? "—"}</span>
+      ${finishedCount > 0 && realTeam
+        ? `<span class="std-pts ${allDone ? "" : "partial"}">${realTeam.pts}pts</span>`
+        : `<span class="std-pts empty">—</span>`}
+    </div></td>`;
+
+    // Participant columns
+    for (const p of PARTICIPANTS) {
+      const pStandings = participantStandings[p];
+      if (!pStandings) { html += `<td class="std-participant"><span class="std-none">—</span></td>`; continue; }
+      const pTeam = pStandings[i];
+      const correct = allDone && realTeam && pTeam?.name === realTeam?.name;
+      const wrong   = allDone && realTeam && pTeam?.name !== realTeam?.name;
+      const cls = correct ? "std-correct" : wrong ? "std-wrong" : "std-pending";
+      html += `<td class="std-participant"><span class="team-inner ${cls}">${pTeam?.name ?? "?"}</span></td>`;
+    }
+
+    html += `</tr>`;
+  }
+
+  html += `</tbody></table>`;
+  return html;
+}
+
 function renderGroupStage() {
   // Collect all groups from Berta's picks (she has them all)
   const ref = picksData["Berta"] || Object.values(picksData)[0];
@@ -456,7 +585,9 @@ function renderGroupStage() {
       </td></tr>`;
     }
 
-    html += `</tbody></table></div>`;
+    html += `</tbody></table>`;
+    html += renderGroupStandings(matches);
+    html += `</div>`;
   }
   return html;
 }
