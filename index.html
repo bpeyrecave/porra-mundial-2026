@@ -200,6 +200,13 @@
     animation: blink-live 1.2s ease-in-out infinite;
     vertical-align: middle;
   }
+  .live-label {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    animation: blink-live 1.5s ease-in-out infinite;
+  }
 
   .ko-table { margin-bottom: 24px; }
   .ko-match-row td:first-child { width: 210px; }
@@ -419,6 +426,23 @@ async function init() {
   }
 }
 
+// ── Auto-refresh results every 60s ───────────────────────────────────────────
+async function refreshResults() {
+  const res = await fetchJSON(RESULTS_FILE + "?_t=" + Date.now());
+  if (res) {
+    results = res;
+    renderLeaderboard();
+    renderStage(activeStage);
+    const timeEl = document.getElementById("lastUpdatedTime");
+    if (results.last_updated) {
+      timeEl.textContent = new Date(results.last_updated).toLocaleString("es-ES", {
+        timeZone: "Europe/Madrid", dateStyle: "short", timeStyle: "short"
+      });
+    }
+  }
+}
+setInterval(refreshResults, 60000);
+
 // ── Date formatting ──────────────────────────────────────────────────────────
 function fmtDate(utcDate) {
   if (!utcDate) return "";
@@ -434,6 +458,17 @@ function matchDate(matchId, result) {
 }
 
 // ── Results lookup ───────────────────────────────────────────────────────────
+// Returns true if a match is currently in progress based purely on schedule time.
+// Used to show "En vivo" when status is still TIMED (score not yet updated manually).
+function isInferredLive(result) {
+  if (!result) return false;
+  if (result.status === "FINISHED" || result.status === "IN_PLAY" || result.status === "PAUSED") return false;
+  if (!result.utc_date) return false;
+  const now = Date.now();
+  const kickoff = new Date(result.utc_date).getTime();
+  return now >= kickoff && now <= kickoff + 125 * 60 * 1000; // within 125 min of kickoff
+}
+
 function findResult(homeEs, awayEs) {
   return results.matches.find(m =>
     (m.home_team_es === homeEs && m.away_team_es === awayEs) ||
@@ -634,6 +669,8 @@ function renderStage(stage) {
       realCell = `<td class="real-score finished">${result.home_goals}-${result.away_goals}<br><small>${result.winner_es}</small></td>`;
     } else if (result?.status === "IN_PLAY" || result?.status === "PAUSED") {
       realCell = `<td class="real-score"><span class="live-dot"></span><span class="live-score">${result.home_goals ?? 0}-${result.away_goals ?? 0}</span></td>`;
+    } else if (isInferredLive(result)) {
+      realCell = `<td class="real-score"><span class="live-dot"></span><span class="live-label">En vivo</span></td>`;
     } else {
       realCell = `<td class="real-score pending">—</td>`;
     }
@@ -824,6 +861,8 @@ function renderGroupStage() {
         realCell = `<td class="real-score finished">${result.home_goals}-${result.away_goals}</td>`;
       } else if (result?.status === "IN_PLAY" || result?.status === "PAUSED") {
         realCell = `<td class="real-score"><span class="live-dot"></span><span class="live-score">${result.home_goals ?? 0}-${result.away_goals ?? 0}</span></td>`;
+      } else if (isInferredLive(result)) {
+        realCell = `<td class="real-score"><span class="live-dot"></span><span class="live-label">En vivo</span></td>`;
       } else {
         realCell = `<td class="real-score pending">—</td>`;
       }
