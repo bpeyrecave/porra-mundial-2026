@@ -50,21 +50,30 @@ def extract(excel_path, name):
 
     knockout_matches = []
     for row, mid, stage, pts in ko_defs:
-        home = get_val(ws, row, 27)
-        away = get_val(ws, row, 32)
-        hg   = get_val(ws, row, 29)
-        ag   = get_val(ws, row, 30)
-        # Knockout rounds always produce a winner (penalties if tied after 90').
-        # When predicted score is a tie, home team is treated as the picked winner.
+        home  = get_val(ws, row, 27)
+        away  = get_val(ws, row, 32)
+        hg    = get_val(ws, row, 29)
+        ag    = get_val(ws, row, 30)
+        hpens = get_val(ws, row, 28)  # home penalty score (col X, only when tied)
+        apens = get_val(ws, row, 31)  # away penalty score (col X, only when tied)
+        # Determine winner: use penalties if score is tied
         winner = None
         if hg is not None and ag is not None:
-            if hg > ag:   winner = home
-            elif ag > hg: winner = away
-            else:         winner = home  # tied score → home team goes through
+            if hg > ag:
+                winner = home
+            elif ag > hg:
+                winner = away
+            else:
+                # Tied — use penalty shootout scores
+                if hpens is not None and apens is not None:
+                    winner = home if hpens > apens else away
+                else:
+                    winner = home  # fallback
         knockout_matches.append({
             "match_id": mid, "stage": stage,
             "home_team": home, "away_team": away,
             "predicted_home": hg, "predicted_away": ag,
+            "predicted_home_pens": hpens, "predicted_away_pens": apens,
             "predicted_winner": winner, "max_points": pts
         })
 
