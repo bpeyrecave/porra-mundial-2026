@@ -1,24 +1,27 @@
 #!/usr/bin/env python3
 """
-Fetches FIFA World Cup 2026 results from football-data.org API.
+Fetches FIFA World Cup 2026 results from API-Football (api-sports.io).
 Run manually or via GitHub Actions.
-Requires: FOOTBALL_DATA_API_KEY environment variable.
+Requires: RAPIDAPI_KEY environment variable (your API-Football key from dashboard.api-football.com).
 """
 import os, json, requests
 from datetime import datetime, timezone
 from pathlib import Path
 
-API_KEY = os.environ.get("FOOTBALL_DATA_API_KEY", "")
-BASE = "https://api.football-data.org/v4"
-HEADERS = {"X-Auth-Token": API_KEY}
+RAPIDAPI_KEY = os.environ.get("RAPIDAPI_KEY", "")
+BASE = "https://v3.football.api-sports.io"
+HEADERS = {
+    "x-apisports-key": RAPIDAPI_KEY,
+}
 DATA_DIR = Path(__file__).parent.parent / "data"
+
+# API-Football league ID for FIFA World Cup 2026
+WC_LEAGUE_ID = 1  # FIFA World Cup
 
 def load_team_map():
     with open(DATA_DIR / "team_names.json") as f:
         data = json.load(f)
-    # Build reverse map: English → Spanish
     en_to_es = {v: k for k, v in data["es_to_en"].items()}
-    # Also add common aliases that APIs may use
     aliases = {
         "Czech Republic": "República Checa",
         "Czechia": "República Checa",
@@ -31,92 +34,152 @@ def load_team_map():
         "DR Congo": "RD Congo",
         "Congo DR": "RD Congo",
         "Cape Verde": "Cabo Verde",
+        "Cape Verde Islands": "Cabo Verde",
         "Saudi Arabia": "Arabia Saudita",
         "South Korea": "Corea del Sur",
         "Korea Republic": "Corea del Sur",
         "Curacao": "Curazao",
         "Curaçao": "Curazao",
+        "Bosnia And Herzegovina": "Bosnia y Herzegovina",
+        "Bosnia-Herzegovina": "Bosnia y Herzegovina",
+        "Bosnia & Herzegovina": "Bosnia y Herzegovina",
+        "Uzbekistan": "Uzbekistán",
+        "Jordan": "Jordania",
+        "Haiti": "Haití",
+        "Scotland": "Escocia",
+        "Netherlands": "Países Bajos",
+        "Belgium": "Bélgica",
+        "Egypt": "Egipto",
+        "Iran": "Irán",
+        "New Zealand": "Nueva Zelanda",
+        "Norway": "Noruega",
+        "Algeria": "Argelia",
+        "Austria": "Austria",
+        "Portugal": "Portugal",
+        "DR Congo": "RD Congo",
+        "England": "Inglaterra",
+        "Croatia": "Croacia",
+        "Ghana": "Ghana",
+        "Panama": "Panamá",
+        "Iraq": "Irak",
+        "Senegal": "Senegal",
+        "France": "Francia",
+        "Germany": "Alemania",
+        "Ecuador": "Ecuador",
+        "Sweden": "Suecia",
+        "Tunisia": "Túnez",
+        "Japan": "Japón",
+        "Qatar": "Catar",
+        "Switzerland": "Suiza",
+        "Canada": "Canadá",
+        "Morocco": "Marruecos",
+        "Brazil": "Brasil",
+        "Spain": "España",
+        "Uruguay": "Uruguay",
+        "Argentina": "Argentina",
+        "Colombia": "Colombia",
+        "Mexico": "México",
+        "South Africa": "Sudáfrica",
+        "Australia": "Australia",
+        "Paraguay": "Paraguay",
     }
     en_to_es.update(aliases)
     return en_to_es
 
 def normalize(name, en_to_es):
+    if not name:
+        return None
     return en_to_es.get(name, name)
 
-def fetch_matches():
-    url = f"{BASE}/competitions/WC/matches?season=2026"
-    resp = requests.get(url, headers=HEADERS, timeout=15)
-    if resp.status_code == 404:
-        # Try alternative endpoint
-        url = f"{BASE}/competitions/FIFA World Cup/matches?season=2026"
-        resp = requests.get(url, headers=HEADERS, timeout=15)
-    resp.raise_for_status()
-    return resp.json().get("matches", [])
+def map_status(api_status):
+    # API-Football statuses: NS, TBD, 1H, HT, 2H, ET, BT, P, SUSP, INT, FT, AET, PEN, PST, CANC, ABD, AWD, WO, LIVE
+    live = {"1H", "HT", "2H", "ET", "BT", "P", "LIVE", "INT"}
+    finished = {"FT", "AET", "PEN"}
+    if api_status in finished:
+        return "FINISHED"
+    if api_status in live:
+        return "IN_PLAY"
+    if api_status == "HT":
+        return "PAUSED"
+    return "TIMED"
 
-def map_stage(api_stage):
-    stage_map = {
-        "GROUP_STAGE": "group",
-        "ROUND_OF_32": "Round of 32",
-        "ROUND_OF_16": "Round of 16",
-        "QUARTER_FINALS": "Quarter-final",
-        "SEMI_FINALS": "Semi-final",
-        "THIRD_PLACE": "Third place",
-        "FINAL": "Final",
-    }
-    return stage_map.get(api_stage, api_stage)
+def map_stage(round_name):
+    if not round_name:
+        return "group"
+    r = round_name.upper()
+    if "GROUP" in r:
+        return "group"
+    if "32" in r or "LAST 32" in r:
+        return "Round of 32"
+    if "16" in r or "LAST 16" in r:
+        return "Round of 16"
+    if "QUARTER" in r:
+        return "Quarter-final"
+    if "SEMI" in r:
+        return "Semi-final"
+    if "THIRD" in r or "3RD" in r:
+        return "Third place"
+    if "FINAL" in r:
+        return "Final"
+    return round_name
+
+def fetch_fixtures():
+    url = f"{BASE}/fixtures"
+    resp = requests.get(url, headers=HEADERS, params={"league": WC_LEAGUE_ID, "season": 2026}, timeout=15)
+    resp.raise_for_status()
+    data = resp.json()
+    return data.get("response", [])
 
 def main():
-    if not API_KEY:
-        print("ERROR: FOOTBALL_DATA_API_KEY not set")
+    if not RAPIDAPI_KEY:
+        print("ERROR: RAPIDAPI_KEY not set")
         raise SystemExit(1)
 
     en_to_es = load_team_map()
-    print("Fetching WC 2026 matches...")
+    print("Fetching WC 2026 fixtures from API-Football...")
 
     try:
-        matches = fetch_matches()
+        fixtures = fetch_fixtures()
     except requests.HTTPError as e:
-        print(f"API error: {e}")
+        print(f"API error: {e} — {e.response.text[:200] if e.response else ''}")
         raise SystemExit(1)
 
     processed = []
-    for m in matches:
-        status = m.get("status")
-        home_api = m.get("homeTeam", {}).get("name", "")
-        away_api = m.get("awayTeam", {}).get("name", "")
-        score = m.get("score", {})
-        full = score.get("fullTime", {})
-        home_goals = full.get("home")
-        away_goals = full.get("away")
-        # For live matches the current score may be under different keys
-        if home_goals is None and status in ("IN_PLAY", "PAUSED", "HALFTIME"):
-            for period in ("regularTime", "halfTime", "currentPeriod"):
-                p = score.get(period, {})
-                if p.get("home") is not None:
-                    home_goals = p.get("home")
-                    away_goals = p.get("away")
-                    break
+    for f in fixtures:
+        fixture  = f.get("fixture", {})
+        teams    = f.get("teams", {})
+        goals    = f.get("goals", {})
+        league   = f.get("league", {})
+
+        api_status = fixture.get("status", {}).get("short", "NS")
+        status = map_status(api_status)
+
+        home_name = teams.get("home", {}).get("name", "")
+        away_name = teams.get("away", {}).get("name", "")
+        home_goals = goals.get("home")
+        away_goals = goals.get("away")
+
+        home_es = normalize(home_name, en_to_es)
+        away_es = normalize(away_name, en_to_es)
 
         winner = None
         if status == "FINISHED" and home_goals is not None and away_goals is not None:
             if home_goals > away_goals:
-                winner = normalize(home_api, en_to_es)
+                winner = home_es
             elif away_goals > home_goals:
-                winner = normalize(away_api, en_to_es)
+                winner = away_es
             else:
                 winner = "draw"
 
         processed.append({
-            "api_id": m.get("id"),
-            "stage": map_stage(m.get("stage", "")),
-            "matchday": m.get("matchday"),
-            "group": m.get("group"),
-            "utc_date": m.get("utcDate"),
+            "api_id": fixture.get("id"),
+            "stage": map_stage(league.get("round", "")),
+            "utc_date": fixture.get("date"),
             "status": status,
-            "home_team_es": normalize(home_api, en_to_es),
-            "away_team_es": normalize(away_api, en_to_es),
-            "home_team_en": home_api,
-            "away_team_en": away_api,
+            "home_team_es": home_es,
+            "away_team_es": away_es,
+            "home_team_en": home_name,
+            "away_team_en": away_name,
             "home_goals": home_goals,
             "away_goals": away_goals,
             "winner_es": winner,
@@ -133,8 +196,9 @@ def main():
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
+    live    = sum(1 for m in processed if m["status"] == "IN_PLAY")
     finished = sum(1 for m in processed if m["status"] == "FINISHED")
-    print(f"Done. {finished}/{len(processed)} matches finished. Saved to {out_path}")
+    print(f"Done. {finished} finished, {live} live, {len(processed)} total. Saved to {out_path}")
 
 if __name__ == "__main__":
     main()
