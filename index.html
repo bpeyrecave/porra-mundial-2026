@@ -466,7 +466,7 @@ function isInferredLive(result) {
   if (!result.utc_date) return false;
   const now = Date.now();
   const kickoff = new Date(result.utc_date).getTime();
-  return now >= kickoff && now <= kickoff + 125 * 60 * 1000; // within 125 min of kickoff
+  return now >= kickoff; // show from kickoff until status becomes FINISHED
 }
 
 function findResult(homeEs, awayEs) {
