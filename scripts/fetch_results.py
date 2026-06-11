@@ -1,204 +1,248 @@
 #!/usr/bin/env python3
 """
-Fetches FIFA World Cup 2026 results from API-Football (api-sports.io).
-Run manually or via GitHub Actions.
-Requires: RAPIDAPI_KEY environment variable (your API-Football key from dashboard.api-football.com).
+Fetches FIFA World Cup 2026 results.
+
+Two sources:
+  1. api-sports.io  — primary source for FINISHED match results (requires RAPIDAPI_KEY secret)
+  2. ESPN Core API  — free, no key needed, used for live scores during games in progress
+
+Live score flow:
+  - Before kickoff      → status stays TIMED
+  - During game         → ESPN Core API sets status to IN_PLAY + live score
+  - After final whistle → api-sports.io sets status to FINISHED + final score (within 5 min)
 """
 import os, json, requests
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
+# ── Config ───────────────────────────────────────────────────────────────────
 RAPIDAPI_KEY = os.environ.get("RAPIDAPI_KEY", "")
-BASE = "https://v3.football.api-sports.io"
-HEADERS = {
-    "x-apisports-key": RAPIDAPI_KEY,
-}
+APISPORTS_BASE = "https://v3.football.api-sports.io"
+APISPORTS_HEADERS = {"x-apisports-key": RAPIDAPI_KEY}
+WC_LEAGUE_ID = 1
+
+ESPN_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard"
+ESPN_CORE = "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.world"
+
 DATA_DIR = Path(__file__).parent.parent / "data"
 
-# API-Football league ID for FIFA World Cup 2026
-WC_LEAGUE_ID = 1  # FIFA World Cup
-
-def load_team_map():
-    with open(DATA_DIR / "team_names.json") as f:
-        data = json.load(f)
-    en_to_es = {v: k for k, v in data["es_to_en"].items()}
-    aliases = {
-        "Czech Republic": "República Checa",
-        "Czechia": "República Checa",
-        "USA": "Estados Unidos",
-        "United States": "Estados Unidos",
-        "Turkey": "Turquía",
-        "Türkiye": "Turquía",
-        "Ivory Coast": "Costa de Marfil",
-        "Côte d'Ivoire": "Costa de Marfil",
-        "DR Congo": "RD Congo",
-        "Congo DR": "RD Congo",
-        "Cape Verde": "Cabo Verde",
-        "Cape Verde Islands": "Cabo Verde",
-        "Saudi Arabia": "Arabia Saudita",
-        "South Korea": "Corea del Sur",
-        "Korea Republic": "Corea del Sur",
-        "Curacao": "Curazao",
-        "Curaçao": "Curazao",
-        "Bosnia And Herzegovina": "Bosnia y Herzegovina",
-        "Bosnia-Herzegovina": "Bosnia y Herzegovina",
-        "Bosnia & Herzegovina": "Bosnia y Herzegovina",
-        "Uzbekistan": "Uzbekistán",
-        "Jordan": "Jordania",
-        "Haiti": "Haití",
-        "Scotland": "Escocia",
-        "Netherlands": "Países Bajos",
-        "Belgium": "Bélgica",
-        "Egypt": "Egipto",
-        "Iran": "Irán",
-        "New Zealand": "Nueva Zelanda",
-        "Norway": "Noruega",
-        "Algeria": "Argelia",
-        "Austria": "Austria",
-        "Portugal": "Portugal",
-        "DR Congo": "RD Congo",
-        "England": "Inglaterra",
-        "Croatia": "Croacia",
-        "Ghana": "Ghana",
-        "Panama": "Panamá",
-        "Iraq": "Irak",
-        "Senegal": "Senegal",
-        "France": "Francia",
-        "Germany": "Alemania",
-        "Ecuador": "Ecuador",
-        "Sweden": "Suecia",
-        "Tunisia": "Túnez",
-        "Japan": "Japón",
-        "Qatar": "Catar",
-        "Switzerland": "Suiza",
-        "Canada": "Canadá",
-        "Morocco": "Marruecos",
-        "Brazil": "Brasil",
-        "Spain": "España",
-        "Uruguay": "Uruguay",
-        "Argentina": "Argentina",
-        "Colombia": "Colombia",
-        "Mexico": "México",
-        "South Africa": "Sudáfrica",
-        "Australia": "Australia",
-        "Paraguay": "Paraguay",
-    }
-    en_to_es.update(aliases)
-    return en_to_es
-
-def normalize(name, en_to_es):
-    if not name:
-        return None
-    return en_to_es.get(name, name)
-
-def map_status(api_status):
-    # API-Football statuses: NS, TBD, 1H, HT, 2H, ET, BT, P, SUSP, INT, FT, AET, PEN, PST, CANC, ABD, AWD, WO, LIVE
-    live = {"1H", "HT", "2H", "ET", "BT", "P", "LIVE", "INT"}
-    finished = {"FT", "AET", "PEN"}
-    if api_status in finished:
-        return "FINISHED"
-    if api_status in live:
-        return "IN_PLAY"
-    if api_status == "HT":
-        return "PAUSED"
+# ── Status mapping ────────────────────────────────────────────────────────────
+def map_apisports_status(s):
+    if s in {"FT", "AET", "PEN"}:       return "FINISHED"
+    if s == "HT":                        return "PAUSED"
+    if s in {"1H", "2H", "ET", "BT", "P", "LIVE", "INT"}: return "IN_PLAY"
     return "TIMED"
 
-def map_stage(round_name):
-    if not round_name:
-        return "group"
-    r = round_name.upper()
-    if "GROUP" in r:
-        return "group"
-    if "32" in r or "LAST 32" in r:
-        return "Round of 32"
-    if "16" in r or "LAST 16" in r:
-        return "Round of 16"
-    if "QUARTER" in r:
-        return "Quarter-final"
-    if "SEMI" in r:
-        return "Semi-final"
-    if "THIRD" in r or "3RD" in r:
-        return "Third place"
-    if "FINAL" in r:
-        return "Final"
-    return round_name
+def map_espn_status(s):
+    if s in {"STATUS_FINAL", "STATUS_FULL_TIME", "STATUS_FINAL_AET", "STATUS_FINAL_PEN"}:
+        return "FINISHED"
+    if s == "STATUS_HALFTIME":
+        return "PAUSED"
+    if s in {"STATUS_FIRST_HALF", "STATUS_SECOND_HALF", "STATUS_END_PERIOD",
+             "STATUS_EXTRA_TIME", "STATUS_PENALTY", "STATUS_IN_PROGRESS"}:
+        return "IN_PLAY"
+    return "TIMED"
 
-def fetch_fixtures():
-    url = f"{BASE}/fixtures"
-    resp = requests.get(url, headers=HEADERS, params={"league": WC_LEAGUE_ID, "season": 2026}, timeout=15)
-    resp.raise_for_status()
-    data = resp.json()
-    return data.get("response", [])
+# ── Team name mapping ────────────────────────────────────────────────────────
+def load_en_to_es():
+    with open(DATA_DIR / "team_names.json") as f:
+        data = json.load(f)
+    mapping = {v: k for k, v in data["es_to_en"].items()}
+    mapping.update({
+        "Czechia": "República Checa", "Czech Republic": "República Checa",
+        "United States": "Estados Unidos", "USA": "Estados Unidos",
+        "Turkey": "Turquía", "Türkiye": "Turquía",
+        "Ivory Coast": "Costa de Marfil", "Côte d'Ivoire": "Costa de Marfil",
+        "Congo DR": "RD Congo", "DR Congo": "RD Congo",
+        "Cape Verde Islands": "Cabo Verde", "Cape Verde": "Cabo Verde",
+        "Saudi Arabia": "Arabia Saudita",
+        "South Korea": "Corea del Sur", "Korea Republic": "Corea del Sur",
+        "Curaçao": "Curazao",
+        "Bosnia-Herzegovina": "Bosnia y Herzegovina",
+        "Bosnia And Herzegovina": "Bosnia y Herzegovina",
+        "Bosnia & Herzegovina": "Bosnia y Herzegovina",
+        "Uzbekistan": "Uzbekistán",
+        "Jordan": "Jordania", "Haiti": "Haití",
+        "Scotland": "Escocia", "Netherlands": "Países Bajos",
+        "Belgium": "Bélgica", "Egypt": "Egipto",
+        "Iran": "Irán", "New Zealand": "Nueva Zelanda",
+        "Norway": "Noruega", "Algeria": "Argelia",
+        "Mexico": "México", "South Africa": "Sudáfrica",
+        "Australia": "Australia", "Paraguay": "Paraguay",
+    })
+    return mapping
 
-def main():
+# ── api-sports.io: fetch all fixtures (FINISHED results) ─────────────────────
+def fetch_apisports_finished(en_to_es):
+    """Returns dict of (home_es, away_es) → match update for FINISHED games."""
     if not RAPIDAPI_KEY:
-        print("ERROR: RAPIDAPI_KEY not set")
-        raise SystemExit(1)
+        print("  RAPIDAPI_KEY not set — skipping api-sports.io")
+        return {}
 
-    en_to_es = load_team_map()
-    print("Fetching WC 2026 fixtures from API-Football...")
+    resp = requests.get(
+        f"{APISPORTS_BASE}/fixtures",
+        headers=APISPORTS_HEADERS,
+        params={"league": WC_LEAGUE_ID, "season": 2026},
+        timeout=20,
+    )
+    resp.raise_for_status()
+    fixtures = resp.json().get("response", [])
 
-    try:
-        fixtures = fetch_fixtures()
-    except requests.HTTPError as e:
-        print(f"API error: {e} — {e.response.text[:200] if e.response else ''}")
-        raise SystemExit(1)
-
-    processed = []
+    updates = {}
     for f in fixtures:
-        fixture  = f.get("fixture", {})
-        teams    = f.get("teams", {})
-        goals    = f.get("goals", {})
-        league   = f.get("league", {})
-
+        fixture = f.get("fixture", {})
         api_status = fixture.get("status", {}).get("short", "NS")
-        status = map_status(api_status)
+        status = map_apisports_status(api_status)
 
-        home_name = teams.get("home", {}).get("name", "")
-        away_name = teams.get("away", {}).get("name", "")
+        # Only apply api-sports.io data for FINISHED games
+        # (live status from this API is unreliable on free tier)
+        if status != "FINISHED":
+            continue
+
+        teams = f.get("teams", {})
+        goals = f.get("goals", {})
+        home_en = teams.get("home", {}).get("name", "")
+        away_en = teams.get("away", {}).get("name", "")
+        home_es = en_to_es.get(home_en, home_en)
+        away_es = en_to_es.get(away_en, away_en)
         home_goals = goals.get("home")
         away_goals = goals.get("away")
 
-        home_es = normalize(home_name, en_to_es)
-        away_es = normalize(away_name, en_to_es)
-
         winner = None
-        if status == "FINISHED" and home_goals is not None and away_goals is not None:
-            if home_goals > away_goals:
-                winner = home_es
-            elif away_goals > home_goals:
-                winner = away_es
-            else:
-                winner = "draw"
+        if home_goals is not None and away_goals is not None:
+            if home_goals > away_goals:   winner = home_es
+            elif away_goals > home_goals: winner = away_es
+            else:                         winner = "draw"
 
-        processed.append({
-            "api_id": fixture.get("id"),
-            "stage": map_stage(league.get("round", "")),
-            "utc_date": fixture.get("date"),
-            "status": status,
-            "home_team_es": home_es,
-            "away_team_es": away_es,
-            "home_team_en": home_name,
-            "away_team_en": away_name,
+        updates[(home_es, away_es)] = {
+            "status": "FINISHED",
             "home_goals": home_goals,
             "away_goals": away_goals,
             "winner_es": winner,
-        })
+        }
 
-    output = {
-        "last_updated": datetime.now(timezone.utc).isoformat(),
-        "competition": "FIFA World Cup 2026",
-        "total_matches": len(processed),
-        "matches": processed,
-    }
+    finished = len(updates)
+    print(f"  api-sports.io: {finished} finished matches found")
+    return updates
 
+# ── ESPN Core API: fetch live scores for in-progress games ───────────────────
+def fetch_espn_live(now, en_to_es):
+    """Returns dict of (home_es, away_es) → match update for IN_PLAY/PAUSED games."""
+    updates = {}
+
+    # Get today's event IDs from ESPN scoreboard
+    date_str = now.strftime("%Y%m%d")
+    try:
+        resp = requests.get(ESPN_SCOREBOARD, params={"dates": date_str, "limit": 50}, timeout=15)
+        resp.raise_for_status()
+        events = resp.json().get("events", [])
+    except Exception as e:
+        print(f"  ESPN scoreboard failed: {e}")
+        return updates
+
+    for event in events:
+        eid = event.get("id")
+        if not eid:
+            continue
+
+        # Only process games past their kickoff time
+        try:
+            kickoff = datetime.fromisoformat(event["date"].replace("Z", "+00:00"))
+        except Exception:
+            continue
+        if now < kickoff:
+            continue
+
+        # Get team names and IDs from the scoreboard competitors
+        scoreboard_comps = event.get("competitions", [{}])[0].get("competitors", [])
+        home_sb = next((c for c in scoreboard_comps if c.get("homeAway") == "home"), {})
+        away_sb = next((c for c in scoreboard_comps if c.get("homeAway") == "away"), {})
+        home_id = home_sb.get("id")
+        away_id = away_sb.get("id")
+        home_en = home_sb.get("team", {}).get("displayName", "")
+        away_en = away_sb.get("team", {}).get("displayName", "")
+        home_es = en_to_es.get(home_en, home_en)
+        away_es = en_to_es.get(away_en, away_en)
+
+        if not home_id or not away_id or not home_es or not away_es:
+            continue
+
+        # Fetch live status from ESPN Core API
+        core_base = f"{ESPN_CORE}/events/{eid}/competitions/{eid}"
+        try:
+            status_resp = requests.get(f"{core_base}/status", timeout=10)
+            status_resp.raise_for_status()
+            espn_state = status_resp.json().get("type", {}).get("name", "")
+            status = map_espn_status(espn_state)
+        except Exception as e:
+            print(f"  ESPN Core status failed for event {eid}: {e}")
+            continue
+
+        if status not in ("IN_PLAY", "PAUSED"):
+            continue  # not live right now
+
+        # Fetch live scores
+        home_goals = away_goals = None
+        try:
+            hr = requests.get(f"{core_base}/competitors/{home_id}/score", timeout=10)
+            if hr.ok:
+                home_goals = int(hr.json().get("value", 0))
+        except Exception:
+            pass
+        try:
+            ar = requests.get(f"{core_base}/competitors/{away_id}/score", timeout=10)
+            if ar.ok:
+                away_goals = int(ar.json().get("value", 0))
+        except Exception:
+            pass
+
+        updates[(home_es, away_es)] = {
+            "status": status,
+            "home_goals": home_goals,
+            "away_goals": away_goals,
+            "winner_es": None,
+        }
+        print(f"  LIVE: {home_es} {home_goals} - {away_goals} {away_es} ({espn_state})")
+
+    return updates
+
+# ── Main ─────────────────────────────────────────────────────────────────────
+def main():
+    now = datetime.now(timezone.utc)
+    en_to_es = load_en_to_es()
+
+    # Load existing results.json (preserves all 104 matches + metadata)
     out_path = DATA_DIR / "results.json"
-    with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
+    with open(out_path) as f:
+        existing = json.load(f)
+    matches = existing.get("matches", [])
 
-    live    = sum(1 for m in processed if m["status"] == "IN_PLAY")
-    finished = sum(1 for m in processed if m["status"] == "FINISHED")
-    print(f"Done. {finished} finished, {live} live, {len(processed)} total. Saved to {out_path}")
+    # 1. Get FINISHED results from api-sports.io
+    finished_updates = fetch_apisports_finished(en_to_es)
+
+    # 2. Get live scores from ESPN Core API
+    live_updates = fetch_espn_live(now, en_to_es)
+
+    # 3. Apply updates — finished results take priority over live
+    #    (a game already marked FINISHED should not be overwritten by a stale live update)
+    all_updates = {**live_updates, **finished_updates}
+
+    applied = 0
+    for m in matches:
+        key = (m.get("home_team_es"), m.get("away_team_es"))
+        if key in all_updates:
+            m.update(all_updates[key])
+            applied += 1
+
+    existing["last_updated"] = now.isoformat()
+
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(existing, f, indent=2, ensure_ascii=False)
+
+    live    = sum(1 for m in matches if m["status"] == "IN_PLAY")
+    paused  = sum(1 for m in matches if m["status"] == "PAUSED")
+    finished = sum(1 for m in matches if m["status"] == "FINISHED")
+    print(f"Done. {finished} finished, {live} live, {paused} paused, {applied} updated. Saved.")
 
 if __name__ == "__main__":
     main()
