@@ -88,6 +88,14 @@ def main():
         full = score.get("fullTime", {})
         home_goals = full.get("home")
         away_goals = full.get("away")
+        # For live matches the current score may be under different keys
+        if home_goals is None and status in ("IN_PLAY", "PAUSED", "HALFTIME"):
+            for period in ("regularTime", "halfTime", "currentPeriod"):
+                p = score.get(period, {})
+                if p.get("home") is not None:
+                    home_goals = p.get("home")
+                    away_goals = p.get("away")
+                    break
 
         winner = None
         if status == "FINISHED" and home_goals is not None and away_goals is not None:
