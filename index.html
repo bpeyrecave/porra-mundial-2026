@@ -662,8 +662,14 @@ function renderStage(stage) {
       const homeTeam = pm.home_team || "?";
       const awayTeam = pm.away_team || "?";
 
+      const isTied = pm.predicted_home !== null && pm.predicted_home === pm.predicted_away;
+      const hp = pm.predicted_home_pens, ap = pm.predicted_away_pens;
+      const scoreDisplay = isTied && hp != null && ap != null
+        ? `<span style="color:var(--yellow);font-size:0.75rem">${hp}</span> <span class="score">${pm.predicted_home}-${pm.predicted_away}</span> <span style="color:var(--yellow);font-size:0.75rem">${ap}</span>`
+        : `<span class="score">${pm.predicted_home ?? "?"}-${pm.predicted_away ?? "?"}</span>`;
+
       html += `<td class="result-cell"><div class="score-box">
-        <span class="score">${pm.predicted_home ?? "?"}-${pm.predicted_away ?? "?"}</span>
+        <div style="display:flex;align-items:center;gap:4px;justify-content:center">${scoreDisplay}</div>
         <div class="ko-fixture">
           <span class="ko-team ${koTeamClass(homeTeam)}">${homeTeam}</span>
           <span style="color:var(--muted);font-size:0.7rem">vs</span>
