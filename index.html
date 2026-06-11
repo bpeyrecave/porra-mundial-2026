@@ -326,6 +326,16 @@ const STAGES = [
   { key: "extras",       label: "Extras" },
 ];
 
+// Knockout stage point info (shown below the stage chip)
+const KO_STAGE_INFO = {
+  "Round of 32":   { label: "5 puntos",  desc: "Acertar ganador: 3pts · Marcador exacto: 2pts extra", winnerPts: 3,  max: 5  },
+  "Round of 16":   { label: "10 puntos", desc: "Acertar ganador: 7pts · Marcador exacto: 3pts extra", winnerPts: 7,  max: 10 },
+  "Quarter-final": { label: "15 puntos", desc: "Acertar ganador: 11pts · Marcador exacto: 4pts extra", winnerPts: 11, max: 15 },
+  "Semi-final":    { label: "25 puntos", desc: "Acertar ganador: 20pts · Marcador exacto: 5pts extra", winnerPts: 20, max: 25 },
+  "Third place":   { label: "15 puntos", desc: "Acertar ganador: 11pts · Marcador exacto: 4pts extra", winnerPts: 11, max: 15 },
+  "Final":         { label: "50 puntos", desc: "Acertar ganador: 40pts · Marcador exacto: 10pts extra", winnerPts: 40, max: 50 },
+};
+
 // Official WC 2026 bracket slot labels
 const BRACKET_LABELS = {
   "R32-1":  "2º Grupo A vs 2º Grupo B",
@@ -443,8 +453,8 @@ function scoreGroupMatch(pick, result, matchId) {
   const correctResult = Math.sign(ph - pa) === Math.sign(rh - ra);
 
   if (isSpecial) {
-    if (correctScore)  return 6;
-    if (correctResult) return 3;
+    if (correctScore)  return 6; // 3pts (1X2) + 3pts (marcador) = 6 total
+    if (correctResult) return 3; // 3pts for 1X2 only
     return 0;
   } else {
     if (correctScore)  return 3;
@@ -466,7 +476,17 @@ function scoreStandingsPosition(predictedTeam, realStandings, predictedPos) {
 
 function scoreKnockoutMatch(pick, result) {
   if (!result || result.status !== "FINISHED" || !result.winner_es) return null;
-  return result.winner_es === pick.predicted_winner ? pick.max_points : 0;
+  if (result.winner_es !== pick.predicted_winner) return 0;
+
+  // Check exact score for bonus points
+  const [ph, pa] = [pick.predicted_home, pick.predicted_away];
+  let [rh, ra] = [result.home_goals, result.away_goals];
+  if (result.home_team_es === pick.away_team) [rh, ra] = [ra, rh];
+  const exactScore = ph !== null && pa !== null && ph === rh && pa === ra;
+
+  if (exactScore) return pick.max_points;
+  const info = KO_STAGE_INFO[pick.stage];
+  return info ? info.winnerPts : pick.max_points;
 }
 
 function calcTotalPoints(participant) {
@@ -586,12 +606,18 @@ function renderStage(stage) {
   }
 
   const stageLabel = STAGES.find(s => s.key === stage)?.label || stage;
-  let html = `<div class="group-section"><div class="group-header"><span class="group-tag">${stageLabel}</span></div>`;
+  const stageInfo  = KO_STAGE_INFO[stage] ?? null;
+  let html = `<div class="group-section">
+    <div class="group-header"><span class="group-tag">${stageLabel}</span></div>
+    ${stageInfo ? `<div class="pts-legend" style="margin-bottom:10px">
+      <span style="color:var(--gold);font-weight:600">${stageInfo.label}</span>
+      <span style="color:var(--muted)">·</span>
+      <span>${stageInfo.desc}</span>
+    </div>` : ""}`;
   html += `<table class="ko-table"><thead><tr>
     <th>Partido</th>
     <th>Real</th>
     ${PARTICIPANTS.map(p => `<th>${p}</th>`).join("")}
-    <th>Pts</th>
   </tr></thead><tbody>`;
 
   for (const mid of idOrder) {
@@ -647,7 +673,6 @@ function renderStage(stage) {
       </div></td>`;
     }
 
-    html += `<td class="result-cell" style="color:var(--gold)">${match.max_points}pts</td>`;
     html += `</tr>`;
   }
 
@@ -771,7 +796,7 @@ function renderGroupStage() {
     html += `<div class="pts-legend">
       <span class="legend-item"><span class="legend-dot exact"></span> Marcador exacto: 3pts</span>
       <span class="legend-item"><span class="legend-dot result"></span> Acertar 1X2: 1pt</span>
-      ${hasSpecial ? `<span class="legend-special">⭐ Partido especial (Marcador exacto: 6pts · Acertar 1X2: 3pts)</span>` : ""}
+      ${hasSpecial ? `<span class="legend-special">⭐ Partido especial - 6 puntos (Marcador exacto: 3pts · Acertar 1X2: 3pts)</span>` : ""}
     </div>`;
 
     html += `<table><thead><tr>
@@ -842,7 +867,11 @@ function renderExtras() {
     { key: "balon_bronce", label: "🌟 Balón de Bronce", subtitle: "3º mejor jugador" },
   ];
 
-  let html = `<div class="group-section"><div class="group-header"><span class="group-tag">Premios individuales</span></div>
+  let html = `<div class="group-section">
+    <div class="group-header"><span class="group-tag">Premios individuales</span></div>
+    <div class="pts-legend" style="margin-bottom:10px">
+      <span style="color:var(--gold);font-weight:600">10 puntos por extra acertado</span>
+    </div>
   <div class="extras-grid">`;
 
   for (const item of extraItems) {
