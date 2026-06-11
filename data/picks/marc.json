@@ -730,6 +730,8 @@
       "away_team": "Canadá",
       "predicted_home": 2,
       "predicted_away": 1,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Corea del Sur",
       "max_points": 5
     },
@@ -740,6 +742,8 @@
       "away_team": "Países Bajos",
       "predicted_home": 3,
       "predicted_away": 1,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Brasil",
       "max_points": 5
     },
@@ -750,6 +754,8 @@
       "away_team": "Escocia",
       "predicted_home": 2,
       "predicted_away": 1,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Alemania",
       "max_points": 5
     },
@@ -760,6 +766,8 @@
       "away_team": "Marruecos",
       "predicted_home": 1,
       "predicted_away": 2,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Marruecos",
       "max_points": 5
     },
@@ -770,6 +778,8 @@
       "away_team": "Senegal",
       "predicted_home": 2,
       "predicted_away": 1,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Costa de Marfil",
       "max_points": 5
     },
@@ -780,6 +790,8 @@
       "away_team": "Paraguay",
       "predicted_home": 3,
       "predicted_away": 0,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Francia",
       "max_points": 5
     },
@@ -790,6 +802,8 @@
       "away_team": "Arabia Saudita",
       "predicted_home": 2,
       "predicted_away": 1,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "México",
       "max_points": 5
     },
@@ -800,6 +814,8 @@
       "away_team": "Argelia",
       "predicted_home": 2,
       "predicted_away": 0,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Inglaterra",
       "max_points": 5
     },
@@ -810,6 +826,8 @@
       "away_team": "República Checa",
       "predicted_home": 1,
       "predicted_away": 2,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "República Checa",
       "max_points": 5
     },
@@ -820,6 +838,8 @@
       "away_team": "Catar",
       "predicted_home": 2,
       "predicted_away": 0,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Estados Unidos",
       "max_points": 5
     },
@@ -830,6 +850,8 @@
       "away_team": "Austria",
       "predicted_home": 3,
       "predicted_away": 0,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "España",
       "max_points": 5
     },
@@ -840,6 +862,8 @@
       "away_team": "Croacia",
       "predicted_home": 2,
       "predicted_away": 1,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Colombia",
       "max_points": 5
     },
@@ -850,6 +874,8 @@
       "away_team": "Egipto",
       "predicted_home": 2,
       "predicted_away": 1,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Suiza",
       "max_points": 5
     },
@@ -860,6 +886,8 @@
       "away_team": "Irán",
       "predicted_home": 2,
       "predicted_away": 0,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Turquía",
       "max_points": 5
     },
@@ -870,6 +898,8 @@
       "away_team": "Uruguay",
       "predicted_home": 2,
       "predicted_away": 1,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Argentina",
       "max_points": 5
     },
@@ -880,6 +910,8 @@
       "away_team": "Ecuador",
       "predicted_home": 2,
       "predicted_away": 1,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Portugal",
       "max_points": 5
     },
@@ -890,6 +922,8 @@
       "away_team": "Marruecos",
       "predicted_home": 1,
       "predicted_away": 2,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Marruecos",
       "max_points": 10
     },
@@ -900,6 +934,8 @@
       "away_team": "Francia",
       "predicted_home": 2,
       "predicted_away": 1,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Alemania",
       "max_points": 10
     },
@@ -910,6 +946,8 @@
       "away_team": "Costa de Marfil",
       "predicted_home": 2,
       "predicted_away": 1,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Brasil",
       "max_points": 10
     },
@@ -920,6 +958,8 @@
       "away_team": "Inglaterra",
       "predicted_home": 1,
       "predicted_away": 3,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Inglaterra",
       "max_points": 10
     },
@@ -930,6 +970,8 @@
       "away_team": "España",
       "predicted_home": 2,
       "predicted_away": 1,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Colombia",
       "max_points": 10
     },
@@ -940,6 +982,8 @@
       "away_team": "República Checa",
       "predicted_home": 2,
       "predicted_away": 0,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Estados Unidos",
       "max_points": 10
     },
@@ -950,6 +994,8 @@
       "away_team": "Turquía",
       "predicted_home": 2,
       "predicted_away": 1,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Argentina",
       "max_points": 10
     },
@@ -960,6 +1006,8 @@
       "away_team": "Portugal",
       "predicted_home": 1,
       "predicted_away": 2,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Portugal",
       "max_points": 10
     },
@@ -970,6 +1018,8 @@
       "away_team": "Marruecos",
       "predicted_home": 1,
       "predicted_away": 2,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Marruecos",
       "max_points": 15
     },
@@ -980,6 +1030,8 @@
       "away_team": "Estados Unidos",
       "predicted_home": 2,
       "predicted_away": 1,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Colombia",
       "max_points": 15
     },
@@ -990,6 +1042,8 @@
       "away_team": "Inglaterra",
       "predicted_home": 1,
       "predicted_away": 3,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Inglaterra",
       "max_points": 15
     },
@@ -1000,6 +1054,8 @@
       "away_team": "Portugal",
       "predicted_home": 2,
       "predicted_away": 0,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Argentina",
       "max_points": 15
     },
@@ -1010,6 +1066,8 @@
       "away_team": "Colombia",
       "predicted_home": 1,
       "predicted_away": 2,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Colombia",
       "max_points": 25
     },
@@ -1020,6 +1078,8 @@
       "away_team": "Argentina",
       "predicted_home": 2,
       "predicted_away": 1,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Inglaterra",
       "max_points": 25
     },
@@ -1030,6 +1090,8 @@
       "away_team": "Argentina",
       "predicted_home": 1,
       "predicted_away": 2,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Argentina",
       "max_points": 15
     },
@@ -1040,6 +1102,8 @@
       "away_team": "Inglaterra",
       "predicted_home": 1,
       "predicted_away": 3,
+      "predicted_home_pens": null,
+      "predicted_away_pens": null,
       "predicted_winner": "Inglaterra",
       "max_points": 50
     }
