@@ -443,7 +443,8 @@ function findResult(homeEs, awayEs) {
 
 // ── Scoring ──────────────────────────────────────────────────────────────────
 function scoreGroupMatch(pick, result, matchId) {
-  if (!result || result.status !== "FINISHED" || result.home_goals === null) return null;
+  const live = result?.status === "IN_PLAY" || result?.status === "PAUSED";
+  if (!result || (!live && result.status !== "FINISHED") || result.home_goals === null) return null;
 
   const isSpecial = SPECIAL_MATCH_IDS.has(matchId);
   const [ph, pa] = [pick.predicted_home, pick.predicted_away];
