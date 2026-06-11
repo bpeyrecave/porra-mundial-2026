@@ -144,12 +144,13 @@
     border: 1px solid var(--border);
     border-radius: 4px;
     color: var(--muted);
-    font-size: 0.65rem;
-    padding: 1px 6px;
+    font-size: 0.62rem;
+    padding: 1px 7px;
     margin-left: 6px;
     white-space: nowrap;
     vertical-align: middle;
     font-weight: 500;
+    letter-spacing: 0.01em;
   }
   .special-badge { font-size: 0.65rem; color: var(--yellow); margin-left: 4px; }
   .result-cell { text-align: center; }
@@ -423,8 +424,9 @@ function fmtDate(utcDate) {
   if (!utcDate) return "";
   const d = new Date(utcDate);
   const day  = d.toLocaleDateString("es-ES", { timeZone: "Europe/Madrid", day: "numeric", month: "short" });
-  const time = d.toLocaleTimeString("es-ES", { timeZone: "Europe/Madrid", hour: "2-digit", minute: "2-digit" });
-  return `${day} · ${time}`;
+  const cet  = d.toLocaleTimeString("es-ES", { timeZone: "Europe/Madrid",   hour: "2-digit", minute: "2-digit" });
+  const et   = d.toLocaleTimeString("es-ES", { timeZone: "America/New_York", hour: "2-digit", minute: "2-digit" });
+  return `${day} · ${cet} CET · ${et} ET`;
 }
 
 function matchDate(matchId, result) {
