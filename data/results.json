@@ -1,5 +1,18 @@
 {
-  "last_updated": null,
+  "last_updated": "2026-06-11T19:11:00Z",
   "competition": "FIFA World Cup 2026",
-  "matches": []
+  "matches": [
+    {
+      "match_id": "GA1",
+      "status": "IN_PLAY",
+      "home_team": "Mexico",
+      "away_team": "South Africa",
+      "home_team_es": "México",
+      "away_team_es": "Sudáfrica",
+      "home_goals": 0,
+      "away_goals": 0,
+      "winner_es": null,
+      "utc_date": "2026-06-11T19:00:00Z"
+    }
+  ]
 }
