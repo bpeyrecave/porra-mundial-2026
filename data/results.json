@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-12T19:12:38.468418+00:00",
+  "last_updated": "2026-06-12T04:48:02.201420+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -101,9 +101,9 @@
       "utc_date": "2026-06-12T19:00:00Z",
       "status": "TIMED",
       "home_team_es": "Canadá",
-      "away_team_es": "Bosnia-Herzegovina",
+      "away_team_es": "Bosnia y Herzegovina",
       "home_team_en": "Canada",
-      "away_team_en": "Bosnia-Herzegovina",
+      "away_team_en": "Bosnia y Herzegovina",
       "home_goals": null,
       "away_goals": null,
       "winner_es": null
@@ -131,9 +131,9 @@
       "utc_date": "2026-06-18T19:00:00Z",
       "status": "TIMED",
       "home_team_es": "Suiza",
-      "away_team_es": "Bosnia-Herzegovina",
+      "away_team_es": "Bosnia y Herzegovina",
       "home_team_en": "Switzerland",
-      "away_team_en": "Bosnia-Herzegovina",
+      "away_team_en": "Bosnia y Herzegovina",
       "home_goals": null,
       "away_goals": null,
       "winner_es": null
@@ -175,9 +175,9 @@
       "group": "GROUP_B",
       "utc_date": "2026-06-24T19:00:00Z",
       "status": "TIMED",
-      "home_team_es": "Bosnia-Herzegovina",
+      "home_team_es": "Bosnia y Herzegovina",
       "away_team_es": "Catar",
-      "home_team_en": "Bosnia-Herzegovina",
+      "home_team_en": "Bosnia y Herzegovina",
       "away_team_en": "Qatar",
       "home_goals": null,
       "away_goals": null,
