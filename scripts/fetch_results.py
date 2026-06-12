@@ -79,14 +79,18 @@ def fetch_apisports_finished(en_to_es):
         print("  RAPIDAPI_KEY not set — skipping api-sports.io")
         return {}
 
-    resp = requests.get(
-        f"{APISPORTS_BASE}/fixtures",
-        headers=APISPORTS_HEADERS,
-        params={"league": WC_LEAGUE_ID, "season": 2026},
-        timeout=20,
-    )
-    resp.raise_for_status()
-    fixtures = resp.json().get("response", [])
+    try:
+        resp = requests.get(
+            f"{APISPORTS_BASE}/fixtures",
+            headers=APISPORTS_HEADERS,
+            params={"league": WC_LEAGUE_ID, "season": 2026},
+            timeout=20,
+        )
+        resp.raise_for_status()
+        fixtures = resp.json().get("response", [])
+    except Exception as e:
+        print(f"  api-sports.io request failed: {e}")
+        return {}
 
     updates = {}
     for f in fixtures:
