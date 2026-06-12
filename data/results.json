@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-12T20:45:06.782799+00:00",
+  "last_updated": "2026-06-12T04:48:02.201420+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -99,13 +99,13 @@
       "matchday": 1,
       "group": "GROUP_B",
       "utc_date": "2026-06-12T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "TIMED",
       "home_team_es": "Canadá",
       "away_team_es": "Bosnia y Herzegovina",
       "home_team_en": "Canada",
       "away_team_en": "Bosnia y Herzegovina",
-      "home_goals": 1,
-      "away_goals": 1,
+      "home_goals": null,
+      "away_goals": null,
       "winner_es": null
     },
     {
