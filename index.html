@@ -534,11 +534,13 @@ function calcTotalPoints(participant) {
 
   for (const m of picks.group_matches) {
     const r = findResult(m.home_team, m.away_team);
+    if (r?.status !== "FINISHED") continue; // only count confirmed results
     const pts = scoreGroupMatch(m, r, m.match_id);
     if (pts !== null) total += pts;
   }
   for (const m of picks.knockout_matches) {
     const r = findResult(m.home_team, m.away_team);
+    if (r?.status !== "FINISHED") continue; // only count confirmed results
     const pts = scoreKnockoutMatch(m, r);
     if (pts !== null) total += pts;
   }
