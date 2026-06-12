@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-12T04:43:26.576415+00:00",
+  "last_updated": "2026-06-12T04:48:02.201420+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -24,14 +24,14 @@
       "matchday": 1,
       "group": "GROUP_A",
       "utc_date": "2026-06-12T02:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home_team_es": "Corea del Sur",
       "away_team_es": "República Checa",
       "home_team_en": "South Korea",
       "away_team_en": "Czechia",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
+      "home_goals": 2,
+      "away_goals": 1,
+      "winner_es": "Corea del Sur"
     },
     {
       "api_id": 537329,
