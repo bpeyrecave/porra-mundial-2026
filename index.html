@@ -495,7 +495,7 @@ function scoreGroupMatch(pick, result, matchId) {
     if (correctResult) return 3; // 3pts for 1X2 only
     return 0;
   } else {
-    if (correctScore)  return 3;
+    if (correctScore)  return 4; // 3pts (marcador exacto) + 1pt (1X2) = 4 total
     if (correctResult) return 1;
     return 0;
   }
@@ -880,7 +880,7 @@ function renderGroupStage() {
         if (!pm) { html += `<td class="no-picks-cell">—</td>`; continue; }
 
         const pts = scoreGroupMatch(pm, result, baseMatch.match_id);
-        const maxPts = isSpecial ? 6 : 3;
+        const maxPts = isSpecial ? 6 : 4;
 
         // Determine score class
         let scoreClass = "";
@@ -891,7 +891,7 @@ function renderGroupStage() {
 
         html += `<td class="result-cell"><div class="score-box">
           <span class="score ${scoreClass}">${pm.predicted_home ?? "?"}-${pm.predicted_away ?? "?"}</span>
-          ${pts !== null ? `<span class="pts-earned">${pts > 0 ? "+" : ""}${pts}pts</span>` : ""}
+          ${pts !== null ? (pts === 4 && !isSpecial ? `<span class="pts-earned">+3pts +1pt</span>` : `<span class="pts-earned">${pts > 0 ? "+" : ""}${pts}pts</span>`) : ""}
         </div></td>`;
       }
 
