@@ -1,1567 +1,271 @@
-{
-  "last_updated": "2026-06-13T03:18:52.408690+00:00",
-  "competition": "FIFA World Cup 2026",
-  "total_matches": 104,
-  "matches": [
-    {
-      "api_id": 537327,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_A",
-      "utc_date": "2026-06-11T19:00:00Z",
-      "status": "FINISHED",
-      "home_team_es": "México",
-      "away_team_es": "Sudáfrica",
-      "home_team_en": "Mexico",
-      "away_team_en": "South Africa",
-      "home_goals": 2,
-      "away_goals": 0,
-      "winner_es": "México"
-    },
-    {
-      "api_id": 537328,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_A",
-      "utc_date": "2026-06-12T02:00:00Z",
-      "status": "FINISHED",
-      "home_team_es": "Corea del Sur",
-      "away_team_es": "República Checa",
-      "home_team_en": "South Korea",
-      "away_team_en": "Czechia",
-      "home_goals": 2,
-      "away_goals": 1,
-      "winner_es": "Corea del Sur"
-    },
-    {
-      "api_id": 537329,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_A",
-      "utc_date": "2026-06-18T16:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "República Checa",
-      "away_team_es": "Sudáfrica",
-      "home_team_en": "Czechia",
-      "away_team_en": "South Africa",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537330,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_A",
-      "utc_date": "2026-06-19T01:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "México",
-      "away_team_es": "Corea del Sur",
-      "home_team_en": "Mexico",
-      "away_team_en": "South Korea",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537331,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_A",
-      "utc_date": "2026-06-25T01:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "República Checa",
-      "away_team_es": "México",
-      "home_team_en": "Czechia",
-      "away_team_en": "Mexico",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537332,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_A",
-      "utc_date": "2026-06-25T01:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Sudáfrica",
-      "away_team_es": "Corea del Sur",
-      "home_team_en": "South Africa",
-      "away_team_en": "South Korea",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537333,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_B",
-      "utc_date": "2026-06-12T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Canadá",
-      "away_team_es": "Bosnia y Herzegovina",
-      "home_team_en": "Canada",
-      "away_team_en": "Bosnia y Herzegovina",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537334,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_B",
-      "utc_date": "2026-06-13T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Catar",
-      "away_team_es": "Suiza",
-      "home_team_en": "Qatar",
-      "away_team_en": "Switzerland",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537335,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_B",
-      "utc_date": "2026-06-18T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Suiza",
-      "away_team_es": "Bosnia y Herzegovina",
-      "home_team_en": "Switzerland",
-      "away_team_en": "Bosnia y Herzegovina",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537336,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_B",
-      "utc_date": "2026-06-18T22:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Canadá",
-      "away_team_es": "Catar",
-      "home_team_en": "Canada",
-      "away_team_en": "Qatar",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537337,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_B",
-      "utc_date": "2026-06-24T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Suiza",
-      "away_team_es": "Canadá",
-      "home_team_en": "Switzerland",
-      "away_team_en": "Canada",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537338,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_B",
-      "utc_date": "2026-06-24T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Bosnia y Herzegovina",
-      "away_team_es": "Catar",
-      "home_team_en": "Bosnia y Herzegovina",
-      "away_team_en": "Qatar",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537339,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_C",
-      "utc_date": "2026-06-13T22:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Brasil",
-      "away_team_es": "Marruecos",
-      "home_team_en": "Brazil",
-      "away_team_en": "Morocco",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537340,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_C",
-      "utc_date": "2026-06-14T01:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Haití",
-      "away_team_es": "Escocia",
-      "home_team_en": "Haiti",
-      "away_team_en": "Scotland",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537341,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_C",
-      "utc_date": "2026-06-20T00:30:00Z",
-      "status": "TIMED",
-      "home_team_es": "Brasil",
-      "away_team_es": "Haití",
-      "home_team_en": "Brazil",
-      "away_team_en": "Haiti",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537342,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_C",
-      "utc_date": "2026-06-19T22:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Escocia",
-      "away_team_es": "Marruecos",
-      "home_team_en": "Scotland",
-      "away_team_en": "Morocco",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537343,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_C",
-      "utc_date": "2026-06-24T22:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Escocia",
-      "away_team_es": "Brasil",
-      "home_team_en": "Scotland",
-      "away_team_en": "Brazil",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537344,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_C",
-      "utc_date": "2026-06-24T22:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Marruecos",
-      "away_team_es": "Haití",
-      "home_team_en": "Morocco",
-      "away_team_en": "Haiti",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537345,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_D",
-      "utc_date": "2026-06-13T01:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Estados Unidos",
-      "away_team_es": "Paraguay",
-      "home_team_en": "United States",
-      "away_team_en": "Paraguay",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537346,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_D",
-      "utc_date": "2026-06-14T04:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Australia",
-      "away_team_es": "Turquía",
-      "home_team_en": "Australia",
-      "away_team_en": "Turkey",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537347,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_D",
-      "utc_date": "2026-06-20T03:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Turquía",
-      "away_team_es": "Paraguay",
-      "home_team_en": "Turkey",
-      "away_team_en": "Paraguay",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537348,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_D",
-      "utc_date": "2026-06-19T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Estados Unidos",
-      "away_team_es": "Australia",
-      "home_team_en": "United States",
-      "away_team_en": "Australia",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537349,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_D",
-      "utc_date": "2026-06-26T02:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Turquía",
-      "away_team_es": "Estados Unidos",
-      "home_team_en": "Turkey",
-      "away_team_en": "United States",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537350,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_D",
-      "utc_date": "2026-06-26T02:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Paraguay",
-      "away_team_es": "Australia",
-      "home_team_en": "Paraguay",
-      "away_team_en": "Australia",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537351,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_E",
-      "utc_date": "2026-06-14T17:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Alemania",
-      "away_team_es": "Curazao",
-      "home_team_en": "Germany",
-      "away_team_en": "Curaçao",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537352,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_E",
-      "utc_date": "2026-06-14T23:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Costa de Marfil",
-      "away_team_es": "Ecuador",
-      "home_team_en": "Ivory Coast",
-      "away_team_en": "Ecuador",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537353,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_E",
-      "utc_date": "2026-06-20T20:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Alemania",
-      "away_team_es": "Costa de Marfil",
-      "home_team_en": "Germany",
-      "away_team_en": "Ivory Coast",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537354,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_E",
-      "utc_date": "2026-06-21T00:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Ecuador",
-      "away_team_es": "Curazao",
-      "home_team_en": "Ecuador",
-      "away_team_en": "Curaçao",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537355,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_E",
-      "utc_date": "2026-06-25T20:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Ecuador",
-      "away_team_es": "Alemania",
-      "home_team_en": "Ecuador",
-      "away_team_en": "Germany",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537356,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_E",
-      "utc_date": "2026-06-25T20:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Curazao",
-      "away_team_es": "Costa de Marfil",
-      "home_team_en": "Curaçao",
-      "away_team_en": "Ivory Coast",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537357,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_F",
-      "utc_date": "2026-06-14T20:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Países Bajos",
-      "away_team_es": "Japón",
-      "home_team_en": "Netherlands",
-      "away_team_en": "Japan",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537358,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_F",
-      "utc_date": "2026-06-15T02:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Suecia",
-      "away_team_es": "Túnez",
-      "home_team_en": "Sweden",
-      "away_team_en": "Tunisia",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537359,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_F",
-      "utc_date": "2026-06-20T17:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Países Bajos",
-      "away_team_es": "Suecia",
-      "home_team_en": "Netherlands",
-      "away_team_en": "Sweden",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537360,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_F",
-      "utc_date": "2026-06-21T04:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Túnez",
-      "away_team_es": "Japón",
-      "home_team_en": "Tunisia",
-      "away_team_en": "Japan",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537361,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_F",
-      "utc_date": "2026-06-25T23:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Túnez",
-      "away_team_es": "Países Bajos",
-      "home_team_en": "Tunisia",
-      "away_team_en": "Netherlands",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537362,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_F",
-      "utc_date": "2026-06-25T23:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Japón",
-      "away_team_es": "Suecia",
-      "home_team_en": "Japan",
-      "away_team_en": "Sweden",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537363,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_G",
-      "utc_date": "2026-06-15T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Bélgica",
-      "away_team_es": "Egipto",
-      "home_team_en": "Belgium",
-      "away_team_en": "Egypt",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537364,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_G",
-      "utc_date": "2026-06-16T01:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Irán",
-      "away_team_es": "Nueva Zelanda",
-      "home_team_en": "Iran",
-      "away_team_en": "New Zealand",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537365,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_G",
-      "utc_date": "2026-06-21T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Bélgica",
-      "away_team_es": "Irán",
-      "home_team_en": "Belgium",
-      "away_team_en": "Iran",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537366,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_G",
-      "utc_date": "2026-06-22T01:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Nueva Zelanda",
-      "away_team_es": "Egipto",
-      "home_team_en": "New Zealand",
-      "away_team_en": "Egypt",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537367,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_G",
-      "utc_date": "2026-06-27T03:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Nueva Zelanda",
-      "away_team_es": "Bélgica",
-      "home_team_en": "New Zealand",
-      "away_team_en": "Belgium",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537368,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_G",
-      "utc_date": "2026-06-27T03:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Egipto",
-      "away_team_es": "Irán",
-      "home_team_en": "Egypt",
-      "away_team_en": "Iran",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537369,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_H",
-      "utc_date": "2026-06-15T16:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "España",
-      "away_team_es": "Cabo Verde",
-      "home_team_en": "Spain",
-      "away_team_en": "Cape Verde Islands",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537370,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_H",
-      "utc_date": "2026-06-15T22:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Arabia Saudita",
-      "away_team_es": "Uruguay",
-      "home_team_en": "Saudi Arabia",
-      "away_team_en": "Uruguay",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537371,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_H",
-      "utc_date": "2026-06-21T16:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "España",
-      "away_team_es": "Arabia Saudita",
-      "home_team_en": "Spain",
-      "away_team_en": "Saudi Arabia",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537372,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_H",
-      "utc_date": "2026-06-21T22:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Uruguay",
-      "away_team_es": "Cabo Verde",
-      "home_team_en": "Uruguay",
-      "away_team_en": "Cape Verde Islands",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537373,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_H",
-      "utc_date": "2026-06-27T00:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Uruguay",
-      "away_team_es": "España",
-      "home_team_en": "Uruguay",
-      "away_team_en": "Spain",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537374,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_H",
-      "utc_date": "2026-06-27T00:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Cabo Verde",
-      "away_team_es": "Arabia Saudita",
-      "home_team_en": "Cape Verde Islands",
-      "away_team_en": "Saudi Arabia",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537391,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_I",
-      "utc_date": "2026-06-16T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Francia",
-      "away_team_es": "Senegal",
-      "home_team_en": "France",
-      "away_team_en": "Senegal",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537392,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_I",
-      "utc_date": "2026-06-16T22:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Irak",
-      "away_team_es": "Noruega",
-      "home_team_en": "Iraq",
-      "away_team_en": "Norway",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537393,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_I",
-      "utc_date": "2026-06-22T21:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Francia",
-      "away_team_es": "Irak",
-      "home_team_en": "France",
-      "away_team_en": "Iraq",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537394,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_I",
-      "utc_date": "2026-06-23T00:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Noruega",
-      "away_team_es": "Senegal",
-      "home_team_en": "Norway",
-      "away_team_en": "Senegal",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537395,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_I",
-      "utc_date": "2026-06-26T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Noruega",
-      "away_team_es": "Francia",
-      "home_team_en": "Norway",
-      "away_team_en": "France",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537396,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_I",
-      "utc_date": "2026-06-26T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Senegal",
-      "away_team_es": "Irak",
-      "home_team_en": "Senegal",
-      "away_team_en": "Iraq",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537397,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_J",
-      "utc_date": "2026-06-17T01:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Argentina",
-      "away_team_es": "Argelia",
-      "home_team_en": "Argentina",
-      "away_team_en": "Algeria",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537398,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_J",
-      "utc_date": "2026-06-17T04:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Austria",
-      "away_team_es": "Jordania",
-      "home_team_en": "Austria",
-      "away_team_en": "Jordan",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537399,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_J",
-      "utc_date": "2026-06-22T17:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Argentina",
-      "away_team_es": "Austria",
-      "home_team_en": "Argentina",
-      "away_team_en": "Austria",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537400,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_J",
-      "utc_date": "2026-06-23T03:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Jordania",
-      "away_team_es": "Argelia",
-      "home_team_en": "Jordan",
-      "away_team_en": "Algeria",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537401,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_J",
-      "utc_date": "2026-06-28T02:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Jordania",
-      "away_team_es": "Argentina",
-      "home_team_en": "Jordan",
-      "away_team_en": "Argentina",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537402,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_J",
-      "utc_date": "2026-06-28T02:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Argelia",
-      "away_team_es": "Austria",
-      "home_team_en": "Algeria",
-      "away_team_en": "Austria",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537403,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_K",
-      "utc_date": "2026-06-17T17:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Portugal",
-      "away_team_es": "RD Congo",
-      "home_team_en": "Portugal",
-      "away_team_en": "Congo DR",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537404,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_K",
-      "utc_date": "2026-06-18T02:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Uzbekistán",
-      "away_team_es": "Colombia",
-      "home_team_en": "Uzbekistan",
-      "away_team_en": "Colombia",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537405,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_K",
-      "utc_date": "2026-06-23T17:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Portugal",
-      "away_team_es": "Uzbekistán",
-      "home_team_en": "Portugal",
-      "away_team_en": "Uzbekistan",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537406,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_K",
-      "utc_date": "2026-06-24T02:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Colombia",
-      "away_team_es": "RD Congo",
-      "home_team_en": "Colombia",
-      "away_team_en": "Congo DR",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537407,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_K",
-      "utc_date": "2026-06-27T23:30:00Z",
-      "status": "TIMED",
-      "home_team_es": "Colombia",
-      "away_team_es": "Portugal",
-      "home_team_en": "Colombia",
-      "away_team_en": "Portugal",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537408,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_K",
-      "utc_date": "2026-06-27T23:30:00Z",
-      "status": "TIMED",
-      "home_team_es": "RD Congo",
-      "away_team_es": "Uzbekistán",
-      "home_team_en": "Congo DR",
-      "away_team_en": "Uzbekistan",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537409,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_L",
-      "utc_date": "2026-06-17T20:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Inglaterra",
-      "away_team_es": "Croacia",
-      "home_team_en": "England",
-      "away_team_en": "Croatia",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537410,
-      "stage": "group",
-      "matchday": 1,
-      "group": "GROUP_L",
-      "utc_date": "2026-06-17T23:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Ghana",
-      "away_team_es": "Panamá",
-      "home_team_en": "Ghana",
-      "away_team_en": "Panama",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537411,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_L",
-      "utc_date": "2026-06-23T20:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Inglaterra",
-      "away_team_es": "Ghana",
-      "home_team_en": "England",
-      "away_team_en": "Ghana",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537412,
-      "stage": "group",
-      "matchday": 2,
-      "group": "GROUP_L",
-      "utc_date": "2026-06-23T23:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Panamá",
-      "away_team_es": "Croacia",
-      "home_team_en": "Panama",
-      "away_team_en": "Croatia",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537413,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_L",
-      "utc_date": "2026-06-27T21:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Panamá",
-      "away_team_es": "Inglaterra",
-      "home_team_en": "Panama",
-      "away_team_en": "England",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537414,
-      "stage": "group",
-      "matchday": 3,
-      "group": "GROUP_L",
-      "utc_date": "2026-06-27T21:00:00Z",
-      "status": "TIMED",
-      "home_team_es": "Croacia",
-      "away_team_es": "Ghana",
-      "home_team_en": "Croatia",
-      "away_team_en": "Ghana",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537417,
-      "stage": "LAST_32",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-06-28T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537423,
-      "stage": "LAST_32",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-06-29T17:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537415,
-      "stage": "LAST_32",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-06-29T20:30:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537418,
-      "stage": "LAST_32",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-06-30T01:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537424,
-      "stage": "LAST_32",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-06-30T17:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537416,
-      "stage": "LAST_32",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-06-30T21:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537425,
-      "stage": "LAST_32",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-01T01:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537426,
-      "stage": "LAST_32",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-01T16:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537422,
-      "stage": "LAST_32",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-01T20:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537421,
-      "stage": "LAST_32",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-02T00:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537420,
-      "stage": "LAST_32",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-02T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537419,
-      "stage": "LAST_32",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-02T23:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537429,
-      "stage": "LAST_32",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-03T03:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537428,
-      "stage": "LAST_32",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-03T18:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537427,
-      "stage": "LAST_32",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-03T22:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537430,
-      "stage": "LAST_32",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-04T01:30:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537376,
-      "stage": "LAST_16",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-04T17:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537375,
-      "stage": "LAST_16",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-04T21:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537377,
-      "stage": "LAST_16",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-05T20:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537378,
-      "stage": "LAST_16",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-06T00:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537379,
-      "stage": "LAST_16",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-06T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537380,
-      "stage": "LAST_16",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-07T00:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537381,
-      "stage": "LAST_16",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-07T16:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537382,
-      "stage": "LAST_16",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-07T20:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537383,
-      "stage": "Quarter-final",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-09T20:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537384,
-      "stage": "Quarter-final",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-10T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537385,
-      "stage": "Quarter-final",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-11T21:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537386,
-      "stage": "Quarter-final",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-12T01:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537387,
-      "stage": "Semi-final",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-14T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537388,
-      "stage": "Semi-final",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-15T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537389,
-      "stage": "Third place",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-18T21:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    },
-    {
-      "api_id": 537390,
-      "stage": "Final",
-      "matchday": null,
-      "group": null,
-      "utc_date": "2026-07-19T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
-    }
-  ]
-}
+#!/usr/bin/env python3
+"""
+Fetches FIFA World Cup 2026 results.
+
+Two sources:
+  1. api-sports.io  — primary source for FINISHED match results (requires RAPIDAPI_KEY secret)
+  2. ESPN Core API  — free, no key needed, used for live scores during games in progress
+
+Live score flow:
+  - Before kickoff      → status stays TIMED
+  - During game         → ESPN Core API sets status to IN_PLAY + live score
+  - After final whistle → api-sports.io sets status to FINISHED + final score (within 5 min)
+"""
+import os, json, requests
+from datetime import datetime, timezone, timedelta
+from pathlib import Path
+
+# ── Config ───────────────────────────────────────────────────────────────────
+RAPIDAPI_KEY = os.environ.get("RAPIDAPI_KEY", "")
+APISPORTS_BASE = "https://v3.football.api-sports.io"
+APISPORTS_HEADERS = {"x-apisports-key": RAPIDAPI_KEY}
+WC_LEAGUE_ID = 1
+
+ESPN_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard"
+ESPN_CORE = "https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.world"
+
+DATA_DIR = Path(__file__).parent.parent / "data"
+
+# ── Status mapping ────────────────────────────────────────────────────────────
+def map_apisports_status(s):
+    if s in {"FT", "AET", "PEN"}:       return "FINISHED"
+    if s == "HT":                        return "PAUSED"
+    if s in {"1H", "2H", "ET", "BT", "P", "LIVE", "INT"}: return "IN_PLAY"
+    return "TIMED"
+
+def map_espn_status(s):
+    if s in {"STATUS_FINAL", "STATUS_FULL_TIME", "STATUS_FINAL_AET", "STATUS_FINAL_PEN"}:
+        return "FINISHED"
+    if s == "STATUS_HALFTIME":
+        return "PAUSED"
+    if s in {"STATUS_FIRST_HALF", "STATUS_SECOND_HALF", "STATUS_END_PERIOD",
+             "STATUS_EXTRA_TIME", "STATUS_PENALTY", "STATUS_IN_PROGRESS"}:
+        return "IN_PLAY"
+    return "TIMED"
+
+# ── Team name mapping ────────────────────────────────────────────────────────
+def load_en_to_es():
+    with open(DATA_DIR / "team_names.json") as f:
+        data = json.load(f)
+    mapping = {v: k for k, v in data["es_to_en"].items()}
+    mapping.update({
+        "Czechia": "República Checa", "Czech Republic": "República Checa",
+        "United States": "Estados Unidos", "USA": "Estados Unidos",
+        "Turkey": "Turquía", "Türkiye": "Turquía",
+        "Ivory Coast": "Costa de Marfil", "Côte d'Ivoire": "Costa de Marfil",
+        "Congo DR": "RD Congo", "DR Congo": "RD Congo",
+        "Cape Verde Islands": "Cabo Verde", "Cape Verde": "Cabo Verde",
+        "Saudi Arabia": "Arabia Saudita",
+        "South Korea": "Corea del Sur", "Korea Republic": "Corea del Sur",
+        "Curaçao": "Curazao",
+        "Bosnia-Herzegovina": "Bosnia y Herzegovina",
+        "Bosnia And Herzegovina": "Bosnia y Herzegovina",
+        "Bosnia & Herzegovina": "Bosnia y Herzegovina",
+        "Uzbekistan": "Uzbekistán",
+        "Jordan": "Jordania", "Haiti": "Haití",
+        "Scotland": "Escocia", "Netherlands": "Países Bajos",
+        "Belgium": "Bélgica", "Egypt": "Egipto",
+        "Iran": "Irán", "New Zealand": "Nueva Zelanda",
+        "Norway": "Noruega", "Algeria": "Argelia",
+        "Mexico": "México", "South Africa": "Sudáfrica",
+        "Australia": "Australia", "Paraguay": "Paraguay",
+    })
+    return mapping
+
+# ── api-sports.io: fetch all fixtures (FINISHED results) ─────────────────────
+def fetch_apisports_finished(en_to_es):
+    """Returns dict of (home_es, away_es) → match update for FINISHED games."""
+    if not RAPIDAPI_KEY:
+        print("  RAPIDAPI_KEY not set — skipping api-sports.io")
+        return {}
+
+    try:
+        resp = requests.get(
+            f"{APISPORTS_BASE}/fixtures",
+            headers=APISPORTS_HEADERS,
+            params={"league": WC_LEAGUE_ID, "season": 2026},
+            timeout=20,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        fixtures = data.get("response", [])
+        print(f"  api-sports.io: HTTP {resp.status_code}, {len(fixtures)} fixtures, errors={data.get('errors')}, results={data.get('results')}")
+    except Exception as e:
+        print(f"  api-sports.io request failed: {e}")
+        return {}
+
+    updates = {}
+    for f in fixtures:
+        fixture = f.get("fixture", {})
+        api_status = fixture.get("status", {}).get("short", "NS")
+        status = map_apisports_status(api_status)
+
+        # Only apply api-sports.io data for FINISHED games
+        # (live status from this API is unreliable on free tier)
+        if status != "FINISHED":
+            continue
+
+        teams = f.get("teams", {})
+        goals = f.get("goals", {})
+        home_en = teams.get("home", {}).get("name", "")
+        away_en = teams.get("away", {}).get("name", "")
+        home_es = en_to_es.get(home_en, home_en)
+        away_es = en_to_es.get(away_en, away_en)
+        home_goals = goals.get("home")
+        away_goals = goals.get("away")
+
+        winner = None
+        if home_goals is not None and away_goals is not None:
+            if home_goals > away_goals:   winner = home_es
+            elif away_goals > home_goals: winner = away_es
+            else:                         winner = "draw"
+
+        updates[(home_es, away_es)] = {
+            "status": "FINISHED",
+            "home_goals": home_goals,
+            "away_goals": away_goals,
+            "winner_es": winner,
+        }
+
+    finished = len(updates)
+    print(f"  api-sports.io: {finished} finished matches found")
+    return updates
+
+# ── ESPN Core API: fetch live scores for in-progress games ───────────────────
+def fetch_espn_live(now, en_to_es):
+    """Returns dict of (home_es, away_es) → match update for IN_PLAY/PAUSED games."""
+    updates = {}
+
+    # Get today's event IDs from ESPN scoreboard
+    date_str = now.strftime("%Y%m%d")
+    try:
+        resp = requests.get(ESPN_SCOREBOARD, params={"dates": date_str, "limit": 50}, timeout=15)
+        resp.raise_for_status()
+        events = resp.json().get("events", [])
+    except Exception as e:
+        print(f"  ESPN scoreboard failed: {e}")
+        return updates
+
+    for event in events:
+        eid = event.get("id")
+        if not eid:
+            continue
+
+        # Only process games past their kickoff time
+        try:
+            kickoff = datetime.fromisoformat(event["date"].replace("Z", "+00:00"))
+        except Exception:
+            continue
+        if now < kickoff:
+            continue
+
+        # Get team names and IDs from the scoreboard competitors
+        scoreboard_comps = event.get("competitions", [{}])[0].get("competitors", [])
+        home_sb = next((c for c in scoreboard_comps if c.get("homeAway") == "home"), {})
+        away_sb = next((c for c in scoreboard_comps if c.get("homeAway") == "away"), {})
+        home_id = home_sb.get("id")
+        away_id = away_sb.get("id")
+        home_en = home_sb.get("team", {}).get("displayName", "")
+        away_en = away_sb.get("team", {}).get("displayName", "")
+        home_es = en_to_es.get(home_en, home_en)
+        away_es = en_to_es.get(away_en, away_en)
+
+        if not home_id or not away_id or not home_es or not away_es:
+            continue
+
+        # Fetch live status from ESPN Core API
+        core_base = f"{ESPN_CORE}/events/{eid}/competitions/{eid}"
+        try:
+            status_resp = requests.get(f"{core_base}/status", timeout=10)
+            status_resp.raise_for_status()
+            espn_state = status_resp.json().get("type", {}).get("name", "")
+            status = map_espn_status(espn_state)
+        except Exception as e:
+            print(f"  ESPN Core status failed for event {eid}: {e}")
+            continue
+
+        if status not in ("IN_PLAY", "PAUSED"):
+            continue  # not live right now
+
+        # Fetch live scores
+        home_goals = away_goals = None
+        try:
+            hr = requests.get(f"{core_base}/competitors/{home_id}/score", timeout=10)
+            if hr.ok:
+                home_goals = int(hr.json().get("value", 0))
+        except Exception:
+            pass
+        try:
+            ar = requests.get(f"{core_base}/competitors/{away_id}/score", timeout=10)
+            if ar.ok:
+                away_goals = int(ar.json().get("value", 0))
+        except Exception:
+            pass
+
+        updates[(home_es, away_es)] = {
+            "status": status,
+            "home_goals": home_goals,
+            "away_goals": away_goals,
+            "winner_es": None,
+        }
+        print(f"  LIVE: {home_es} {home_goals} - {away_goals} {away_es} ({espn_state})")
+
+    return updates
+
+# ── Main ─────────────────────────────────────────────────────────────────────
+def main():
+    now = datetime.now(timezone.utc)
+    en_to_es = load_en_to_es()
+
+    # Load existing results.json (preserves all 104 matches + metadata)
+    out_path = DATA_DIR / "results.json"
+    with open(out_path) as f:
+        existing = json.load(f)
+    matches = existing.get("matches", [])
+
+    # 1. Get FINISHED results from api-sports.io
+    finished_updates = fetch_apisports_finished(en_to_es)
+
+    # 2. Get live scores from ESPN Core API
+    live_updates = fetch_espn_live(now, en_to_es)
+
+    # 3. Apply updates — finished results take priority over live
+    #    (a game already marked FINISHED should not be overwritten by a stale live update)
+    all_updates = {**live_updates, **finished_updates}
+
+    applied = 0
+    for m in matches:
+        key = (m.get("home_team_es"), m.get("away_team_es"))
+        if key in all_updates:
+            m.update(all_updates[key])
+            applied += 1
+
+    existing["last_updated"] = now.isoformat()
+
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(existing, f, indent=2, ensure_ascii=False)
+
+    live    = sum(1 for m in matches if m["status"] == "IN_PLAY")
+    paused  = sum(1 for m in matches if m["status"] == "PAUSED")
+    finished = sum(1 for m in matches if m["status"] == "FINISHED")
+    print(f"Done. {finished} finished, {live} live, {paused} paused, {applied} updated. Saved.")
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        import traceback
+        print(f"FATAL ERROR in main(): {e}")
+        traceback.print_exc()
+        # Still write last_updated so the commit captures the error timestamp
+        try:
+            out_path = Path(__file__).parent.parent / "data" / "results.json"
+            with open(out_path) as f:
+                existing = json.load(f)
+            existing["last_updated"] = datetime.now(timezone.utc).isoformat()
+            existing["last_error"] = str(e)
+            with open(out_path, "w", encoding="utf-8") as f:
+                json.dump(existing, f, indent=2, ensure_ascii=False)
+            print("Wrote last_updated despite fatal error.")
+        except Exception as e2:
+            print(f"Could not write results.json: {e2}")
