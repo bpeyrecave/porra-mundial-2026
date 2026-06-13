@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-13T21:16:06.404716+00:00",
+  "last_updated": "2026-06-13T22:33:03.652408+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -189,13 +189,13 @@
       "matchday": 1,
       "group": "GROUP_C",
       "utc_date": "2026-06-13T22:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "Brasil",
       "away_team_es": "Marruecos",
       "home_team_en": "Brazil",
       "away_team_en": "Morocco",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 0,
+      "away_goals": 1,
       "winner_es": null
     },
     {
