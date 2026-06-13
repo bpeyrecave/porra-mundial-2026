@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-13T18:05:06.188357+00:00",
+  "last_updated": "2026-06-13T19:52:53.957343+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -114,13 +114,13 @@
       "matchday": 1,
       "group": "GROUP_B",
       "utc_date": "2026-06-13T19:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "Catar",
       "away_team_es": "Suiza",
       "home_team_en": "Qatar",
       "away_team_en": "Switzerland",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 0,
+      "away_goals": 1,
       "winner_es": null
     },
     {
