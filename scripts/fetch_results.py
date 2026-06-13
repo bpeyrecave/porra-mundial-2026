@@ -87,7 +87,9 @@ def fetch_apisports_finished(en_to_es):
             timeout=20,
         )
         resp.raise_for_status()
-        fixtures = resp.json().get("response", [])
+        data = resp.json()
+        fixtures = data.get("response", [])
+        print(f"  api-sports.io: HTTP {resp.status_code}, {len(fixtures)} fixtures, errors={data.get('errors')}, results={data.get('results')}")
     except Exception as e:
         print(f"  api-sports.io request failed: {e}")
         return {}
@@ -249,4 +251,21 @@ def main():
     print(f"Done. {finished} finished, {live} live, {paused} paused, {applied} updated. Saved.")
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        import traceback
+        print(f"FATAL ERROR in main(): {e}")
+        traceback.print_exc()
+        # Still write last_updated so the commit captures the error timestamp
+        try:
+            out_path = Path(__file__).parent.parent / "data" / "results.json"
+            with open(out_path) as f:
+                existing = json.load(f)
+            existing["last_updated"] = datetime.now(timezone.utc).isoformat()
+            existing["last_error"] = str(e)
+            with open(out_path, "w", encoding="utf-8") as f:
+                json.dump(existing, f, indent=2, ensure_ascii=False)
+            print("Wrote last_updated despite fatal error.")
+        except Exception as e2:
+            print(f"Could not write results.json: {e2}")
