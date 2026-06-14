@@ -204,14 +204,14 @@
       "matchday": 1,
       "group": "GROUP_C",
       "utc_date": "2026-06-14T01:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home_team_es": "Haití",
       "away_team_es": "Escocia",
       "home_team_en": "Haiti",
       "away_team_en": "Scotland",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
+      "home_goals": 0,
+      "away_goals": 1,
+      "winner_es": "Escocia"
     },
     {
       "api_id": 537341,
@@ -294,14 +294,14 @@
       "matchday": 1,
       "group": "GROUP_D",
       "utc_date": "2026-06-14T04:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home_team_es": "Australia",
       "away_team_es": "Turquía",
       "home_team_en": "Australia",
       "away_team_en": "Turkey",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
+      "home_goals": 2,
+      "away_goals": 0,
+      "winner_es": "Australia"
     },
     {
       "api_id": 537347,
