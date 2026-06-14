@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-14T22:38:44.307517+00:00",
+  "last_updated": "2026-06-14T23:51:28.570740+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -384,13 +384,13 @@
       "matchday": 1,
       "group": "GROUP_E",
       "utc_date": "2026-06-14T23:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "Costa de Marfil",
       "away_team_es": "Ecuador",
       "home_team_en": "Ivory Coast",
       "away_team_en": "Ecuador",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 0,
+      "away_goals": 0,
       "winner_es": null
     },
     {
