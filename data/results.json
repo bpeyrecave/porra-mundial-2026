@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-14T14:56:44.086410+00:00",
+  "last_updated": "2026-06-14T17:00:00.000000+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -114,14 +114,14 @@
       "matchday": 1,
       "group": "GROUP_B",
       "utc_date": "2026-06-13T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Catar",
       "away_team_es": "Suiza",
       "home_team_en": "Qatar",
       "away_team_en": "Switzerland",
-      "home_goals": 0,
+      "home_goals": 1,
       "away_goals": 1,
-      "winner_es": null
+      "winner_es": "draw"
     },
     {
       "api_id": 537335,
@@ -189,14 +189,14 @@
       "matchday": 1,
       "group": "GROUP_C",
       "utc_date": "2026-06-13T22:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Brasil",
       "away_team_es": "Marruecos",
       "home_team_en": "Brazil",
       "away_team_en": "Morocco",
       "home_goals": 1,
       "away_goals": 1,
-      "winner_es": null
+      "winner_es": "draw"
     },
     {
       "api_id": 537340,
