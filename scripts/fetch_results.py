@@ -217,10 +217,17 @@ def main():
     now = datetime.now(timezone.utc)
     en_to_es = load_en_to_es()
 
-    # Load existing results.json (preserves all 104 matches + metadata)
+   # Load existing results.json (preserves all 104 matches + metadata)
     out_path = DATA_DIR / "results.json"
-    with open(out_path) as f:
-        existing = json.load(f)
+    try:
+        with open(out_path) as f:
+            content = f.read().strip()
+        if not content:
+            raise ValueError("results.json is empty")
+        existing = json.loads(content)
+    except (json.JSONDecodeError, ValueError, FileNotFoundError) as e:
+        print(f"WARNING: Could not load results.json ({e}), starting fresh")
+        existing = {"competition": "FIFA World Cup 2026", "total_matches": 104, "matches": []}
     matches = existing.get("matches", [])
 
     # 1. Get FINISHED results from api-sports.io
