@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-14T16:43:51.100329+00:00",
+  "last_updated": "2026-06-14T18:03:48.296234+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -369,13 +369,13 @@
       "matchday": 1,
       "group": "GROUP_E",
       "utc_date": "2026-06-14T17:00:00Z",
-      "status": "TIMED",
+      "status": "PAUSED",
       "home_team_es": "Alemania",
       "away_team_es": "Curazao",
       "home_team_en": "Germany",
       "away_team_en": "Curaçao",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 3,
+      "away_goals": 1,
       "winner_es": null
     },
     {
