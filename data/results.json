@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-15T19:31:28.429187+00:00",
+  "last_updated": "2026-06-15T22:02:50.749148+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -549,14 +549,14 @@
       "matchday": 1,
       "group": "GROUP_G",
       "utc_date": "2026-06-15T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Bélgica",
       "away_team_es": "Egipto",
       "home_team_en": "Belgium",
       "away_team_en": "Egypt",
-      "home_goals": 0,
+      "home_goals": 1,
       "away_goals": 1,
-      "winner_es": null
+      "winner_es": "draw"
     },
     {
       "api_id": 537364,
