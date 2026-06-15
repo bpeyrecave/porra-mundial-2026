@@ -136,15 +136,15 @@ def fetch_espn_live(now, en_to_es):
     """Returns dict of (home_es, away_es) → match update for IN_PLAY/PAUSED games."""
     updates = {}
 
-    # Get today's event IDs from ESPN scoreboard
-    date_str = now.strftime("%Y%m%d")
-    try:
-        resp = requests.get(ESPN_SCOREBOARD, params={"dates": date_str, "limit": 50}, timeout=15)
-        resp.raise_for_status()
-        events = resp.json().get("events", [])
-    except Exception as e:
-        print(f"  ESPN scoreboard failed: {e}")
-        return updates
+    # Get events from yesterday AND today to catch games that were live around midnight
+    events = []
+    for d in [(now - timedelta(days=1)).strftime("%Y%m%d"), now.strftime("%Y%m%d")]:
+        try:
+            resp = requests.get(ESPN_SCOREBOARD, params={"dates": d, "limit": 50}, timeout=15)
+            resp.raise_for_status()
+            events += resp.json().get("events", [])
+        except Exception as e:
+            print(f"  ESPN scoreboard failed for {d}: {e}")
 
     for event in events:
         eid = event.get("id")
@@ -184,10 +184,10 @@ def fetch_espn_live(now, en_to_es):
             print(f"  ESPN Core status failed for event {eid}: {e}")
             continue
 
-        if status not in ("IN_PLAY", "PAUSED"):
-            continue  # not live right now
+        if status == "TIMED":
+            continue  # hasn't started yet
 
-        # Fetch live scores
+        # Fetch scores
         home_goals = away_goals = None
         try:
             hr = requests.get(f"{core_base}/competitors/{home_id}/score", timeout=10)
@@ -202,13 +202,20 @@ def fetch_espn_live(now, en_to_es):
         except Exception:
             pass
 
+        winner = None
+        if status == "FINISHED" and home_goals is not None and away_goals is not None:
+            if home_goals > away_goals:   winner = home_es
+            elif away_goals > home_goals: winner = away_es
+            else:                         winner = "draw"
+
         updates[(home_es, away_es)] = {
             "status": status,
             "home_goals": home_goals,
             "away_goals": away_goals,
-            "winner_es": None,
+            "winner_es": winner,
         }
-        print(f"  LIVE: {home_es} {home_goals} - {away_goals} {away_es} ({espn_state})")
+        label = "FINISHED" if status == "FINISHED" else "LIVE"
+        print(f"  {label}: {home_es} {home_goals} - {away_goals} {away_es} ({espn_state})")
 
     return updates
 
