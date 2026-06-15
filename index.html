@@ -396,7 +396,7 @@ async function fetchJSON(url) {
   try {
     const r = await fetch(url);
     if (!r.ok) return null;
-    return r.json();
+    return await r.json();
   } catch { return null; }
 }
 
