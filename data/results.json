@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-14T17:00:00.000000+00:00",
+  "last_updated": "2026-06-15T03:44:46.700877+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -474,13 +474,13 @@
       "matchday": 1,
       "group": "GROUP_F",
       "utc_date": "2026-06-15T02:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "Suecia",
       "away_team_es": "Túnez",
       "home_team_en": "Sweden",
       "away_team_en": "Tunisia",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 3,
+      "away_goals": 1,
       "winner_es": null
     },
     {
