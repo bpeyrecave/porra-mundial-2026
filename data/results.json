@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-15T23:59:51.968223+00:00",
+  "last_updated": "2026-06-16T03:45:02.239207+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -564,14 +564,14 @@
       "matchday": 1,
       "group": "GROUP_G",
       "utc_date": "2026-06-16T01:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home_team_es": "Irán",
       "away_team_es": "Nueva Zelanda",
       "home_team_en": "Iran",
       "away_team_en": "New Zealand",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
+      "home_goals": 2,
+      "away_goals": 2,
+      "winner_es": "draw"
     },
     {
       "api_id": 537365,
@@ -654,14 +654,14 @@
       "matchday": 1,
       "group": "GROUP_H",
       "utc_date": "2026-06-15T22:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Arabia Saudita",
       "away_team_es": "Uruguay",
       "home_team_en": "Saudi Arabia",
       "away_team_en": "Uruguay",
       "home_goals": 1,
       "away_goals": 1,
-      "winner_es": null
+      "winner_es": "draw"
     },
     {
       "api_id": 537371,
