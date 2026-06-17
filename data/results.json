@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-17T01:44:47.960530+00:00",
+  "last_updated": "2026-06-17T03:43:55.315148+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -819,14 +819,14 @@
       "matchday": 1,
       "group": "GROUP_J",
       "utc_date": "2026-06-17T01:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Argentina",
       "away_team_es": "Argelia",
       "home_team_en": "Argentina",
       "away_team_en": "Algeria",
-      "home_goals": 1,
+      "home_goals": 3,
       "away_goals": 0,
-      "winner_es": null
+      "winner_es": "Argentina"
     },
     {
       "api_id": 537398,
