@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-17T18:05:42.204559+00:00",
+  "last_updated": "2026-06-17T20:29:41.556742+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -909,14 +909,14 @@
       "matchday": 1,
       "group": "GROUP_K",
       "utc_date": "2026-06-17T17:00:00Z",
-      "status": "PAUSED",
+      "status": "FINISHED",
       "home_team_es": "Portugal",
       "away_team_es": "RD Congo",
       "home_team_en": "Portugal",
       "away_team_en": "Congo DR",
       "home_goals": 1,
       "away_goals": 1,
-      "winner_es": null
+      "winner_es": "draw"
     },
     {
       "api_id": 537404,
@@ -999,13 +999,13 @@
       "matchday": 1,
       "group": "GROUP_L",
       "utc_date": "2026-06-17T20:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "Inglaterra",
       "away_team_es": "Croacia",
       "home_team_en": "England",
       "away_team_en": "Croatia",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 1,
+      "away_goals": 0,
       "winner_es": null
     },
     {
