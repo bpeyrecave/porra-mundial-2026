@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-16T23:15:15.230548+00:00",
+  "last_updated": "2026-06-17T01:44:47.960530+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -744,14 +744,14 @@
       "matchday": 1,
       "group": "GROUP_I",
       "utc_date": "2026-06-16T22:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Irak",
       "away_team_es": "Noruega",
       "home_team_en": "Iraq",
       "away_team_en": "Norway",
       "home_goals": 1,
-      "away_goals": 2,
-      "winner_es": null
+      "away_goals": 4,
+      "winner_es": "Noruega"
     },
     {
       "api_id": 537393,
@@ -819,13 +819,13 @@
       "matchday": 1,
       "group": "GROUP_J",
       "utc_date": "2026-06-17T01:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "Argentina",
       "away_team_es": "Argelia",
       "home_team_en": "Argentina",
       "away_team_en": "Algeria",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 1,
+      "away_goals": 0,
       "winner_es": null
     },
     {
