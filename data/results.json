@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-17T03:43:55.315148+00:00",
+  "last_updated": "2026-06-17T06:54:52.332330+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -834,14 +834,14 @@
       "matchday": 1,
       "group": "GROUP_J",
       "utc_date": "2026-06-17T04:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home_team_es": "Austria",
       "away_team_es": "Jordania",
       "home_team_en": "Austria",
       "away_team_en": "Jordan",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
+      "home_goals": 3,
+      "away_goals": 1,
+      "winner_es": "Austria"
     },
     {
       "api_id": 537399,
