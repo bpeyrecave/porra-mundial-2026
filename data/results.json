@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-18T03:14:48.729192+00:00",
+  "last_updated": "2026-06-18T04:53:52.311732+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -924,14 +924,14 @@
       "matchday": 1,
       "group": "GROUP_K",
       "utc_date": "2026-06-18T02:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Uzbekistán",
       "away_team_es": "Colombia",
       "home_team_en": "Uzbekistan",
       "away_team_en": "Colombia",
-      "home_goals": 0,
-      "away_goals": 1,
-      "winner_es": null
+      "home_goals": 1,
+      "away_goals": 3,
+      "winner_es": "Colombia"
     },
     {
       "api_id": 537405,
