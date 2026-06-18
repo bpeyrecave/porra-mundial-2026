@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-18T18:34:55.802113+00:00",
+  "last_updated": "2026-06-18T21:10:59.878604+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -129,14 +129,14 @@
       "matchday": 2,
       "group": "GROUP_B",
       "utc_date": "2026-06-18T19:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home_team_es": "Suiza",
       "away_team_es": "Bosnia y Herzegovina",
       "home_team_en": "Switzerland",
       "away_team_en": "Bosnia y Herzegovina",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
+      "home_goals": 4,
+      "away_goals": 1,
+      "winner_es": "Suiza"
     },
     {
       "api_id": 537336,
