@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-18T16:05:23.669342+00:00",
+  "last_updated": "2026-06-18T18:34:55.802113+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -39,14 +39,14 @@
       "matchday": 2,
       "group": "GROUP_A",
       "utc_date": "2026-06-18T16:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "República Checa",
       "away_team_es": "Sudáfrica",
       "home_team_en": "Czechia",
       "away_team_en": "South Africa",
-      "home_goals": 0,
-      "away_goals": 0,
-      "winner_es": null
+      "home_goals": 1,
+      "away_goals": 1,
+      "winner_es": "draw"
     },
     {
       "api_id": 537330,
