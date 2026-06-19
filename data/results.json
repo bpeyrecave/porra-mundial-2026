@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-19T02:07:50.305588+00:00",
+  "last_updated": "2026-06-19T03:01:56.716948+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -54,14 +54,14 @@
       "matchday": 2,
       "group": "GROUP_A",
       "utc_date": "2026-06-19T01:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "México",
       "away_team_es": "Corea del Sur",
       "home_team_en": "Mexico",
       "away_team_en": "South Korea",
-      "home_goals": 0,
+      "home_goals": 1,
       "away_goals": 0,
-      "winner_es": null
+      "winner_es": "México"
     },
     {
       "api_id": 537331,
