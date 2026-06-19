@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-19T19:12:13.479403+00:00",
+  "last_updated": "2026-06-19T20:48:53.590852+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -329,7 +329,7 @@
       "away_team_es": "Australia",
       "home_team_en": "United States",
       "away_team_en": "Australia",
-      "home_goals": 1,
+      "home_goals": 2,
       "away_goals": 0,
       "winner_es": null
     },
