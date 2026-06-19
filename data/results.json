@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-19T17:13:24.712623+00:00",
+  "last_updated": "2026-06-19T19:12:13.479403+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -324,13 +324,13 @@
       "matchday": 2,
       "group": "GROUP_D",
       "utc_date": "2026-06-19T19:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "Estados Unidos",
       "away_team_es": "Australia",
       "home_team_en": "United States",
       "away_team_en": "Australia",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 1,
+      "away_goals": 0,
       "winner_es": null
     },
     {
