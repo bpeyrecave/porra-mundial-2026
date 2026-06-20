@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-20T04:48:36.475858+00:00",
+  "last_updated": "2026-06-20T08:16:29.353873+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -309,14 +309,14 @@
       "matchday": 2,
       "group": "GROUP_D",
       "utc_date": "2026-06-20T03:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Turquía",
       "away_team_es": "Paraguay",
       "home_team_en": "Turkey",
       "away_team_en": "Paraguay",
       "home_goals": 0,
       "away_goals": 1,
-      "winner_es": null
+      "winner_es": "Paraguay"
     },
     {
       "api_id": 537348,
