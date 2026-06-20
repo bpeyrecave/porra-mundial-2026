@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-20T16:07:46.153115+00:00",
+  "last_updated": "2026-06-20T17:47:19.409976+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -489,13 +489,13 @@
       "matchday": 2,
       "group": "GROUP_F",
       "utc_date": "2026-06-20T17:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "Países Bajos",
       "away_team_es": "Suecia",
       "home_team_en": "Netherlands",
       "away_team_en": "Sweden",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 2,
+      "away_goals": 0,
       "winner_es": null
     },
     {
