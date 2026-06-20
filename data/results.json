@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-19T23:08:21.220053+00:00",
+  "last_updated": "2026-06-20T00:20:12.718434+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -234,14 +234,14 @@
       "matchday": 2,
       "group": "GROUP_C",
       "utc_date": "2026-06-19T22:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Escocia",
       "away_team_es": "Marruecos",
       "home_team_en": "Scotland",
       "away_team_en": "Morocco",
       "home_goals": 0,
       "away_goals": 1,
-      "winner_es": null
+      "winner_es": "Marruecos"
     },
     {
       "api_id": 537343,
