@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-20T21:54:37.868521+00:00",
+  "last_updated": "2026-06-20T23:12:44.966706+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -399,14 +399,14 @@
       "matchday": 2,
       "group": "GROUP_E",
       "utc_date": "2026-06-20T20:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Alemania",
       "away_team_es": "Costa de Marfil",
       "home_team_en": "Germany",
       "away_team_en": "Ivory Coast",
-      "home_goals": 1,
+      "home_goals": 2,
       "away_goals": 1,
-      "winner_es": null
+      "winner_es": "Alemania"
     },
     {
       "api_id": 537354,
