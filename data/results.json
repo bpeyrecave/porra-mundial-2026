@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-21T04:53:38.224864+00:00",
+  "last_updated": "2026-06-21T06:33:16.247556+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -504,14 +504,14 @@
       "matchday": 2,
       "group": "GROUP_F",
       "utc_date": "2026-06-21T04:00:00Z",
-      "status": "PAUSED",
+      "status": "FINISHED",
       "home_team_es": "Túnez",
       "away_team_es": "Japón",
       "home_team_en": "Tunisia",
       "away_team_en": "Japan",
       "home_goals": 0,
-      "away_goals": 2,
-      "winner_es": null
+      "away_goals": 4,
+      "winner_es": "Japón"
     },
     {
       "api_id": 537361,
