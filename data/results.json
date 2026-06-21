@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-21T21:38:34.784744+00:00",
+  "last_updated": "2026-06-21T22:49:27.497026+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -684,13 +684,13 @@
       "matchday": 2,
       "group": "GROUP_H",
       "utc_date": "2026-06-21T22:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "Uruguay",
       "away_team_es": "Cabo Verde",
       "home_team_en": "Uruguay",
       "away_team_en": "Cape Verde Islands",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 1,
+      "away_goals": 1,
       "winner_es": null
     },
     {
