@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-21T20:00:10.637720+00:00",
+  "last_updated": "2026-06-21T21:38:34.784744+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -579,14 +579,14 @@
       "matchday": 2,
       "group": "GROUP_G",
       "utc_date": "2026-06-21T19:00:00Z",
-      "status": "PAUSED",
+      "status": "FINISHED",
       "home_team_es": "Bélgica",
       "away_team_es": "Irán",
       "home_team_en": "Belgium",
       "away_team_en": "Iran",
       "home_goals": 0,
       "away_goals": 0,
-      "winner_es": null
+      "winner_es": "draw"
     },
     {
       "api_id": 537366,
