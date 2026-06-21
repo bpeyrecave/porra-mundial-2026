@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-21T01:42:06.493945+00:00",
+  "last_updated": "2026-06-21T04:53:38.224864+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -414,14 +414,14 @@
       "matchday": 2,
       "group": "GROUP_E",
       "utc_date": "2026-06-21T00:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Ecuador",
       "away_team_es": "Curazao",
       "home_team_en": "Ecuador",
       "away_team_en": "Curaçao",
       "home_goals": 0,
       "away_goals": 0,
-      "winner_es": null
+      "winner_es": "draw"
     },
     {
       "api_id": 537355,
@@ -504,13 +504,13 @@
       "matchday": 2,
       "group": "GROUP_F",
       "utc_date": "2026-06-21T04:00:00Z",
-      "status": "TIMED",
+      "status": "PAUSED",
       "home_team_es": "Túnez",
       "away_team_es": "Japón",
       "home_team_en": "Tunisia",
       "away_team_en": "Japan",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 0,
+      "away_goals": 2,
       "winner_es": null
     },
     {
