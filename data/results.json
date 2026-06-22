@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-22T00:03:26.345306+00:00",
+  "last_updated": "2026-06-22T03:38:35.776111+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -594,14 +594,14 @@
       "matchday": 2,
       "group": "GROUP_G",
       "utc_date": "2026-06-22T01:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home_team_es": "Nueva Zelanda",
       "away_team_es": "Egipto",
       "home_team_en": "New Zealand",
       "away_team_en": "Egypt",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
+      "home_goals": 1,
+      "away_goals": 3,
+      "winner_es": "Egipto"
     },
     {
       "api_id": 537367,
@@ -684,14 +684,14 @@
       "matchday": 2,
       "group": "GROUP_H",
       "utc_date": "2026-06-21T22:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Uruguay",
       "away_team_es": "Cabo Verde",
       "home_team_en": "Uruguay",
       "away_team_en": "Cape Verde Islands",
       "home_goals": 2,
       "away_goals": 2,
-      "winner_es": null
+      "winner_es": "draw"
     },
     {
       "api_id": 537373,
