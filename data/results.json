@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-22T19:47:03.959361+00:00",
+  "last_updated": "2026-06-22T21:52:38.086187+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -759,13 +759,13 @@
       "matchday": 2,
       "group": "GROUP_I",
       "utc_date": "2026-06-22T21:00:00Z",
-      "status": "TIMED",
+      "status": "PAUSED",
       "home_team_es": "Francia",
       "away_team_es": "Irak",
       "home_team_en": "France",
       "away_team_en": "Iraq",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 1,
+      "away_goals": 0,
       "winner_es": null
     },
     {
