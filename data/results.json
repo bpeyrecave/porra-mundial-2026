@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-22T23:18:20.991669+00:00",
+  "last_updated": "2026-06-23T01:27:03.320194+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -759,14 +759,14 @@
       "matchday": 2,
       "group": "GROUP_I",
       "utc_date": "2026-06-22T21:00:00Z",
-      "status": "PAUSED",
+      "status": "FINISHED",
       "home_team_es": "Francia",
       "away_team_es": "Irak",
       "home_team_en": "France",
       "away_team_en": "Iraq",
-      "home_goals": 1,
+      "home_goals": 3,
       "away_goals": 0,
-      "winner_es": null
+      "winner_es": "Francia"
     },
     {
       "api_id": 537394,
@@ -774,13 +774,13 @@
       "matchday": 2,
       "group": "GROUP_I",
       "utc_date": "2026-06-23T00:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "Noruega",
       "away_team_es": "Senegal",
       "home_team_en": "Norway",
       "away_team_en": "Senegal",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 3,
+      "away_goals": 1,
       "winner_es": null
     },
     {
