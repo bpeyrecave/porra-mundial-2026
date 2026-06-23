@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-23T22:41:58.686507+00:00",
+  "last_updated": "2026-06-23T23:42:35.986417+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1044,13 +1044,13 @@
       "matchday": 2,
       "group": "GROUP_L",
       "utc_date": "2026-06-23T23:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "Panamá",
       "away_team_es": "Croacia",
       "home_team_en": "Panama",
       "away_team_en": "Croatia",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 0,
+      "away_goals": 0,
       "winner_es": null
     },
     {
