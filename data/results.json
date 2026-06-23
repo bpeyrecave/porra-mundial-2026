@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-23T01:27:03.320194+00:00",
+  "last_updated": "2026-06-23T01:56:23.680963+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -780,7 +780,7 @@
       "home_team_en": "Norway",
       "away_team_en": "Senegal",
       "home_goals": 3,
-      "away_goals": 1,
+      "away_goals": 2,
       "winner_es": null
     },
     {
