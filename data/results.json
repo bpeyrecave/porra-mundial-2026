@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-23T17:23:51.763479+00:00",
+  "last_updated": "2026-06-23T19:26:56.352927+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -939,14 +939,14 @@
       "matchday": 2,
       "group": "GROUP_K",
       "utc_date": "2026-06-23T17:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Portugal",
       "away_team_es": "Uzbekistán",
       "home_team_en": "Portugal",
       "away_team_en": "Uzbekistan",
-      "home_goals": 2,
+      "home_goals": 5,
       "away_goals": 0,
-      "winner_es": null
+      "winner_es": "Portugal"
     },
     {
       "api_id": 537406,
