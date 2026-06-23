@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-23T21:15:59.851694+00:00",
+  "last_updated": "2026-06-23T22:41:58.686507+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1029,14 +1029,14 @@
       "matchday": 2,
       "group": "GROUP_L",
       "utc_date": "2026-06-23T20:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Inglaterra",
       "away_team_es": "Ghana",
       "home_team_en": "England",
       "away_team_en": "Ghana",
       "home_goals": 0,
       "away_goals": 0,
-      "winner_es": null
+      "winner_es": "draw"
     },
     {
       "api_id": 537412,
