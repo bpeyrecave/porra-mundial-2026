@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-24T22:23:51.287319+00:00",
+  "last_updated": "2026-06-24T23:43:24.430748+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -255,7 +255,7 @@
       "home_team_en": "Scotland",
       "away_team_en": "Brazil",
       "home_goals": 0,
-      "away_goals": 2,
+      "away_goals": 3,
       "winner_es": null
     },
     {
@@ -269,8 +269,8 @@
       "away_team_es": "Haití",
       "home_team_en": "Morocco",
       "away_team_en": "Haiti",
-      "home_goals": 0,
-      "away_goals": 1,
+      "home_goals": 3,
+      "away_goals": 2,
       "winner_es": null
     },
     {
