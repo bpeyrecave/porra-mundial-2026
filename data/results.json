@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-24T20:56:10.369048+00:00",
+  "last_updated": "2026-06-24T22:23:51.287319+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -159,14 +159,14 @@
       "matchday": 3,
       "group": "GROUP_B",
       "utc_date": "2026-06-24T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Suiza",
       "away_team_es": "Canadá",
       "home_team_en": "Switzerland",
       "away_team_en": "Canada",
       "home_goals": 2,
       "away_goals": 1,
-      "winner_es": null
+      "winner_es": "Suiza"
     },
     {
       "api_id": 537338,
@@ -174,14 +174,14 @@
       "matchday": 3,
       "group": "GROUP_B",
       "utc_date": "2026-06-24T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Bosnia y Herzegovina",
       "away_team_es": "Catar",
       "home_team_en": "Bosnia y Herzegovina",
       "away_team_en": "Qatar",
       "home_goals": 3,
       "away_goals": 1,
-      "winner_es": null
+      "winner_es": "Bosnia y Herzegovina"
     },
     {
       "api_id": 537339,
@@ -249,13 +249,13 @@
       "matchday": 3,
       "group": "GROUP_C",
       "utc_date": "2026-06-24T22:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "Escocia",
       "away_team_es": "Brasil",
       "home_team_en": "Scotland",
       "away_team_en": "Brazil",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 0,
+      "away_goals": 2,
       "winner_es": null
     },
     {
@@ -264,13 +264,13 @@
       "matchday": 3,
       "group": "GROUP_C",
       "utc_date": "2026-06-24T22:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "Marruecos",
       "away_team_es": "Haití",
       "home_team_en": "Morocco",
       "away_team_en": "Haiti",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 0,
+      "away_goals": 1,
       "winner_es": null
     },
     {
