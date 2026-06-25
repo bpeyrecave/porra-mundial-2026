@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-25T01:51:14.903541+00:00",
+  "last_updated": "2026-06-25T06:02:43.702808+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -69,14 +69,14 @@
       "matchday": 3,
       "group": "GROUP_A",
       "utc_date": "2026-06-25T01:00:00Z",
-      "status": "PAUSED",
+      "status": "FINISHED",
       "home_team_es": "República Checa",
       "away_team_es": "México",
       "home_team_en": "Czechia",
       "away_team_en": "Mexico",
       "home_goals": 0,
-      "away_goals": 0,
-      "winner_es": null
+      "away_goals": 3,
+      "winner_es": "México"
     },
     {
       "api_id": 537332,
@@ -84,14 +84,14 @@
       "matchday": 3,
       "group": "GROUP_A",
       "utc_date": "2026-06-25T01:00:00Z",
-      "status": "PAUSED",
+      "status": "FINISHED",
       "home_team_es": "Sudáfrica",
       "away_team_es": "Corea del Sur",
       "home_team_en": "South Africa",
       "away_team_en": "South Korea",
-      "home_goals": 0,
+      "home_goals": 1,
       "away_goals": 0,
-      "winner_es": null
+      "winner_es": "Sudáfrica"
     },
     {
       "api_id": 537333,
