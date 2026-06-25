@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-25T21:13:46.605716+00:00",
+  "last_updated": "2026-06-25T22:50:52.699459+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -429,14 +429,14 @@
       "matchday": 3,
       "group": "GROUP_E",
       "utc_date": "2026-06-25T20:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Ecuador",
       "away_team_es": "Alemania",
       "home_team_en": "Ecuador",
       "away_team_en": "Germany",
-      "home_goals": 1,
+      "home_goals": 2,
       "away_goals": 1,
-      "winner_es": null
+      "winner_es": "Ecuador"
     },
     {
       "api_id": 537356,
@@ -444,14 +444,14 @@
       "matchday": 3,
       "group": "GROUP_E",
       "utc_date": "2026-06-25T20:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Curazao",
       "away_team_es": "Costa de Marfil",
       "home_team_en": "Curaçao",
       "away_team_en": "Ivory Coast",
       "home_goals": 0,
-      "away_goals": 1,
-      "winner_es": null
+      "away_goals": 2,
+      "winner_es": "Costa de Marfil"
     },
     {
       "api_id": 537357,
