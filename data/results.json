@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-26T00:05:25.712055+00:00",
+  "last_updated": "2026-06-26T04:38:15.372780+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -339,14 +339,14 @@
       "matchday": 3,
       "group": "GROUP_D",
       "utc_date": "2026-06-26T02:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home_team_es": "Turquía",
       "away_team_es": "Estados Unidos",
       "home_team_en": "Turkey",
       "away_team_en": "United States",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
+      "home_goals": 3,
+      "away_goals": 2,
+      "winner_es": "Turquía"
     },
     {
       "api_id": 537350,
@@ -354,14 +354,14 @@
       "matchday": 3,
       "group": "GROUP_D",
       "utc_date": "2026-06-26T02:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home_team_es": "Paraguay",
       "away_team_es": "Australia",
       "home_team_en": "Paraguay",
       "away_team_en": "Australia",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
+      "home_goals": 0,
+      "away_goals": 0,
+      "winner_es": "draw"
     },
     {
       "api_id": 537351,
@@ -519,14 +519,14 @@
       "matchday": 3,
       "group": "GROUP_F",
       "utc_date": "2026-06-25T23:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Túnez",
       "away_team_es": "Países Bajos",
       "home_team_en": "Tunisia",
       "away_team_en": "Netherlands",
-      "home_goals": 0,
-      "away_goals": 2,
-      "winner_es": null
+      "home_goals": 1,
+      "away_goals": 3,
+      "winner_es": "Países Bajos"
     },
     {
       "api_id": 537362,
@@ -534,14 +534,14 @@
       "matchday": 3,
       "group": "GROUP_F",
       "utc_date": "2026-06-25T23:00:00Z",
-      "status": "PAUSED",
+      "status": "FINISHED",
       "home_team_es": "Japón",
       "away_team_es": "Suecia",
       "home_team_en": "Japan",
       "away_team_en": "Sweden",
-      "home_goals": 0,
-      "away_goals": 0,
-      "winner_es": null
+      "home_goals": 1,
+      "away_goals": 1,
+      "winner_es": "draw"
     },
     {
       "api_id": 537363,
