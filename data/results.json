@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-27T22:41:51.507585+00:00",
+  "last_updated": "2026-06-27T23:44:13.648732+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -969,13 +969,13 @@
       "matchday": 3,
       "group": "GROUP_K",
       "utc_date": "2026-06-27T23:30:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "Colombia",
       "away_team_es": "Portugal",
       "home_team_en": "Colombia",
       "away_team_en": "Portugal",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 0,
+      "away_goals": 0,
       "winner_es": null
     },
     {
@@ -984,13 +984,13 @@
       "matchday": 3,
       "group": "GROUP_K",
       "utc_date": "2026-06-27T23:30:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "RD Congo",
       "away_team_es": "Uzbekistán",
       "home_team_en": "Congo DR",
       "away_team_en": "Uzbekistan",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 0,
+      "away_goals": 1,
       "winner_es": null
     },
     {
@@ -1059,14 +1059,14 @@
       "matchday": 3,
       "group": "GROUP_L",
       "utc_date": "2026-06-27T21:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Panamá",
       "away_team_es": "Inglaterra",
       "home_team_en": "Panama",
       "away_team_en": "England",
       "home_goals": 0,
       "away_goals": 2,
-      "winner_es": null
+      "winner_es": "Inglaterra"
     },
     {
       "api_id": 537414,
@@ -1074,14 +1074,14 @@
       "matchday": 3,
       "group": "GROUP_L",
       "utc_date": "2026-06-27T21:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Croacia",
       "away_team_es": "Ghana",
       "home_team_en": "Croatia",
       "away_team_en": "Ghana",
-      "home_goals": 1,
+      "home_goals": 2,
       "away_goals": 1,
-      "winner_es": null
+      "winner_es": "Croacia"
     },
     {
       "api_id": 537417,
