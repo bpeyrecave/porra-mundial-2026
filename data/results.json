@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-26T23:46:38.403844+00:00",
+  "last_updated": "2026-06-27T01:47:52.280939+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -699,13 +699,13 @@
       "matchday": 3,
       "group": "GROUP_H",
       "utc_date": "2026-06-27T00:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "Uruguay",
       "away_team_es": "España",
       "home_team_en": "Uruguay",
       "away_team_en": "Spain",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 0,
+      "away_goals": 1,
       "winner_es": null
     },
     {
@@ -714,13 +714,13 @@
       "matchday": 3,
       "group": "GROUP_H",
       "utc_date": "2026-06-27T00:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home_team_es": "Cabo Verde",
       "away_team_es": "Arabia Saudita",
       "home_team_en": "Cape Verde Islands",
       "away_team_en": "Saudi Arabia",
-      "home_goals": null,
-      "away_goals": null,
+      "home_goals": 0,
+      "away_goals": 0,
       "winner_es": null
     },
     {
