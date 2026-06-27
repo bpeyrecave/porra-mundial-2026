@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-27T01:47:52.280939+00:00",
+  "last_updated": "2026-06-27T05:41:50.998414+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -609,14 +609,14 @@
       "matchday": 3,
       "group": "GROUP_G",
       "utc_date": "2026-06-27T03:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home_team_es": "Nueva Zelanda",
       "away_team_es": "Bélgica",
       "home_team_en": "New Zealand",
       "away_team_en": "Belgium",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
+      "home_goals": 1,
+      "away_goals": 5,
+      "winner_es": "Bélgica"
     },
     {
       "api_id": 537368,
@@ -624,14 +624,14 @@
       "matchday": 3,
       "group": "GROUP_G",
       "utc_date": "2026-06-27T03:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home_team_es": "Egipto",
       "away_team_es": "Irán",
       "home_team_en": "Egypt",
       "away_team_en": "Iran",
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
+      "home_goals": 1,
+      "away_goals": 1,
+      "winner_es": "draw"
     },
     {
       "api_id": 537369,
@@ -699,14 +699,14 @@
       "matchday": 3,
       "group": "GROUP_H",
       "utc_date": "2026-06-27T00:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Uruguay",
       "away_team_es": "España",
       "home_team_en": "Uruguay",
       "away_team_en": "Spain",
       "home_goals": 0,
       "away_goals": 1,
-      "winner_es": null
+      "winner_es": "España"
     },
     {
       "api_id": 537374,
@@ -714,14 +714,14 @@
       "matchday": 3,
       "group": "GROUP_H",
       "utc_date": "2026-06-27T00:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Cabo Verde",
       "away_team_es": "Arabia Saudita",
       "home_team_en": "Cape Verde Islands",
       "away_team_en": "Saudi Arabia",
       "home_goals": 0,
       "away_goals": 0,
-      "winner_es": null
+      "winner_es": "draw"
     },
     {
       "api_id": 537391,
