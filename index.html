@@ -389,7 +389,7 @@ const SPECIAL_MATCH_IDS = new Set([
 let picksData  = {};
 let results    = { matches: [] };
 let schedule   = {};   // matchId → utc_date string
-let activeStage = "group";
+let activeStage = "Round of 32";
 
 // ── Load data ────────────────────────────────────────────────────────────────
 async function fetchJSON(url) {
@@ -674,7 +674,14 @@ function renderStage(stage) {
     } else if (isInferredLive(result)) {
       realCell = `<td class="real-score"><span class="live-dot"></span><span class="live-label">En vivo</span></td>`;
     } else {
-      realCell = `<td class="real-score pending">—</td>`;
+      // Show the actual teams playing even if the match hasn't started yet
+      const homeTeamReal = match.home_team;
+      const awayTeamReal = match.away_team;
+      if (homeTeamReal && awayTeamReal) {
+        realCell = `<td class="real-score" style="font-size:0.75rem;color:var(--muted)">${homeTeamReal}<br><span style="font-size:0.65rem">vs</span><br>${awayTeamReal}</td>`;
+      } else {
+        realCell = `<td class="real-score pending">—</td>`;
+      }
     }
 
     const koDateStr = fmtDate(matchDate(mid, result));
