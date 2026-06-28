@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-27T23:44:13.648732+00:00",
+  "last_updated": "2026-06-28T01:56:18.588344+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -969,14 +969,14 @@
       "matchday": 3,
       "group": "GROUP_K",
       "utc_date": "2026-06-27T23:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "Colombia",
       "away_team_es": "Portugal",
       "home_team_en": "Colombia",
       "away_team_en": "Portugal",
       "home_goals": 0,
       "away_goals": 0,
-      "winner_es": null
+      "winner_es": "draw"
     },
     {
       "api_id": 537408,
@@ -984,14 +984,14 @@
       "matchday": 3,
       "group": "GROUP_K",
       "utc_date": "2026-06-27T23:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home_team_es": "RD Congo",
       "away_team_es": "Uzbekistán",
       "home_team_en": "Congo DR",
       "away_team_en": "Uzbekistan",
-      "home_goals": 0,
+      "home_goals": 3,
       "away_goals": 1,
-      "winner_es": null
+      "winner_es": "RD Congo"
     },
     {
       "api_id": 537409,
