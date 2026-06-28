@@ -380,6 +380,26 @@ const BRACKET_LABELS = {
   "Final":  "Gran Final",
 };
 
+// Real R32 bracket (teams confirmed after group stage)
+const REAL_R32_TEAMS = {
+  "R32-1":  { home: "Sudáfrica",           away: "Canadá" },
+  "R32-2":  { home: "Países Bajos",        away: "Marruecos" },
+  "R32-3":  { home: "Alemania",            away: "Paraguay" },
+  "R32-4":  { home: "Brasil",              away: "Japón" },
+  "R32-5":  { home: "Francia",             away: "Suecia" },
+  "R32-6":  { home: "Costa de Marfil",     away: "Noruega" },
+  "R32-7":  { home: "México",              away: "Ecuador" },
+  "R32-8":  { home: "Inglaterra",          away: "RD Congo" },
+  "R32-9":  { home: "Estados Unidos",      away: "Bosnia y Herzegovina" },
+  "R32-10": { home: "Bélgica",             away: "Senegal" },
+  "R32-11": { home: "Portugal",            away: "Croacia" },
+  "R32-12": { home: "España",              away: "Austria" },
+  "R32-13": { home: "Suiza",               away: "Argelia" },
+  "R32-14": { home: "Australia",           away: "Egipto" },
+  "R32-15": { home: "Argentina",           away: "Cabo Verde" },
+  "R32-16": { home: "Colombia",            away: "Ghana" },
+};
+
 // Special 6-point matches
 const SPECIAL_MATCH_IDS = new Set([
   "GA4","GB1","GC1","GD3","GE2","GF5","GG1","GH6","GI5","GJ3","GK5","GL1"
@@ -674,11 +694,9 @@ function renderStage(stage) {
     } else if (isInferredLive(result)) {
       realCell = `<td class="real-score"><span class="live-dot"></span><span class="live-label">En vivo</span></td>`;
     } else {
-      // Show the actual teams playing even if the match hasn't started yet
-      const homeTeamReal = match.home_team;
-      const awayTeamReal = match.away_team;
-      if (homeTeamReal && awayTeamReal) {
-        realCell = `<td class="real-score" style="font-size:0.75rem;color:var(--muted)">${homeTeamReal}<br><span style="font-size:0.65rem">vs</span><br>${awayTeamReal}</td>`;
+      const realTeams = REAL_R32_TEAMS[mid];
+      if (realTeams) {
+        realCell = `<td class="real-score" style="font-size:0.75rem;color:var(--text)">${realTeams.home}<br><span style="font-size:0.65rem;color:var(--muted)">vs</span><br>${realTeams.away}</td>`;
       } else {
         realCell = `<td class="real-score pending">—</td>`;
       }
