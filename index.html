@@ -447,14 +447,22 @@ const MATCH_STAGE = {
 };
 
 // Which matches feed into each bracket slot
+// Verified against printwcbracket.com PDF structure:
+// Left side: M90=R16-2[R32-1,R32-2], M89=R16-1[R32-3,R32-5]
+//            M91=R16-3[R32-4,R32-6], M92=R16-4[R32-7,R32-8]
+// Right side: M93=R16-5[R32-11,R32-12], M94=R16-6[R32-9,R32-10]
+//             M96=R16-7[R32-13,R32-16], M95=R16-8[R32-14,R32-15]
+// QF: M97=QF-1[R16-1,R16-2], M98=QF-2[R16-5,R16-6]
+//     M99=QF-3[R16-3,R16-4], M100=QF-4[R16-7,R16-8]
+// SF: M101=SF-1[QF-1,QF-2] (cross!), M102=SF-2[QF-3,QF-4]
 const BRACKET_FEEDERS = {
-  "R16-2":["R32-1","R32-3"],  "R16-1":["R32-2","R32-5"],
+  "R16-2":["R32-1","R32-2"],  "R16-1":["R32-3","R32-5"],
   "R16-3":["R32-4","R32-6"],  "R16-4":["R32-7","R32-8"],
   "R16-5":["R32-11","R32-12"],"R16-6":["R32-9","R32-10"],
-  "R16-7":["R32-14","R32-16"],"R16-8":["R32-13","R32-15"],
+  "R16-7":["R32-13","R32-16"],"R16-8":["R32-14","R32-15"],
   "QF-1":["R16-1","R16-2"],   "QF-3":["R16-3","R16-4"],
   "QF-2":["R16-5","R16-6"],   "QF-4":["R16-7","R16-8"],
-  "SF-1":["QF-1","QF-3"],     "SF-2":["QF-2","QF-4"],
+  "SF-1":["QF-1","QF-2"],     "SF-2":["QF-3","QF-4"],
   "Final":["SF-1","SF-2"],
 };
 
@@ -755,16 +763,21 @@ function renderStage(stage) {
 // ── Bracket rendering ─────────────────────────────────────────────────────────
 
 // Layout: left columns (R32 → SF), center (Final), right columns (SF → R32)
+// Column order matches printwcbracket.com visual layout
+// Pairs: {R32-1,R32-2}→R16-2, {R32-3,R32-5}→R16-1, {R32-4,R32-6}→R16-3, {R32-7,R32-8}→R16-4
+// Right: {R32-11,R32-12}→R16-5, {R32-9,R32-10}→R16-6, {R32-13,R32-16}→R16-7, {R32-14,R32-15}→R16-8
+// SF-1 (M101) cross-bracket: W(QF-1/left-top) vs W(QF-2/right-top)
+// SF-2 (M102) cross-bracket: W(QF-3/left-bot) vs W(QF-4/right-bot)
 const BRACKET_LAYOUT = [
-  { label:"Dieciseisavos", ids:["R32-1","R32-3","R32-2","R32-5","R32-4","R32-6","R32-7","R32-8"], side:"left" },
+  { label:"Dieciseisavos", ids:["R32-1","R32-2","R32-3","R32-5","R32-4","R32-6","R32-7","R32-8"], side:"left" },
   { label:"Octavos",       ids:["R16-2","R16-1","R16-3","R16-4"],                                  side:"left" },
   { label:"Cuartos",       ids:["QF-1","QF-3"],                                                    side:"left" },
-  { label:"Semifinal",     ids:["SF-1"],                                                           side:"left" },
+  { label:"Semifinal",     ids:["SF-1","SF-2"],                                                    side:"left" },
   { label:"Gran Final",    ids:["Final"],                                                          side:"center" },
-  { label:"Semifinal",     ids:["SF-2"],                                                           side:"right" },
+  { label:"Semifinal",     ids:["SF-1","SF-2"],                                                    side:"right" },
   { label:"Cuartos",       ids:["QF-2","QF-4"],                                                    side:"right" },
   { label:"Octavos",       ids:["R16-5","R16-6","R16-7","R16-8"],                                  side:"right" },
-  { label:"Dieciseisavos", ids:["R32-11","R32-12","R32-9","R32-10","R32-14","R32-16","R32-13","R32-15"], side:"right" },
+  { label:"Dieciseisavos", ids:["R32-11","R32-12","R32-9","R32-10","R32-13","R32-16","R32-14","R32-15"], side:"right" },
 ];
 
 // Recursively resolve real teams for any bracket slot
