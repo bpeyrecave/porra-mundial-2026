@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-29T16:13:11.832420+00:00",
+  "last_updated": "2026-06-29T16:19:28.016821Z",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -39,14 +39,14 @@
       "matchday": 2,
       "group": "GROUP_A",
       "utc_date": "2026-06-18T16:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "República Checa",
       "away_team_es": "Sudáfrica",
       "home_team_en": "Czechia",
       "away_team_en": "South Africa",
-      "home_goals": 1,
-      "away_goals": 1,
-      "winner_es": "draw"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537330,
@@ -54,14 +54,14 @@
       "matchday": 2,
       "group": "GROUP_A",
       "utc_date": "2026-06-19T01:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "México",
       "away_team_es": "Corea del Sur",
       "home_team_en": "Mexico",
       "away_team_en": "South Korea",
-      "home_goals": 1,
-      "away_goals": 0,
-      "winner_es": "México"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537331,
@@ -69,14 +69,14 @@
       "matchday": 3,
       "group": "GROUP_A",
       "utc_date": "2026-06-25T01:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "República Checa",
       "away_team_es": "México",
       "home_team_en": "Czechia",
       "away_team_en": "Mexico",
-      "home_goals": 0,
-      "away_goals": 3,
-      "winner_es": "México"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537332,
@@ -84,14 +84,14 @@
       "matchday": 3,
       "group": "GROUP_A",
       "utc_date": "2026-06-25T01:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Sudáfrica",
       "away_team_es": "Corea del Sur",
       "home_team_en": "South Africa",
       "away_team_en": "South Korea",
-      "home_goals": 1,
-      "away_goals": 0,
-      "winner_es": "Sudáfrica"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537333,
@@ -129,14 +129,14 @@
       "matchday": 2,
       "group": "GROUP_B",
       "utc_date": "2026-06-18T19:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Suiza",
       "away_team_es": "Bosnia y Herzegovina",
       "home_team_en": "Switzerland",
       "away_team_en": "Bosnia y Herzegovina",
-      "home_goals": 4,
-      "away_goals": 1,
-      "winner_es": "Suiza"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537336,
@@ -144,14 +144,14 @@
       "matchday": 2,
       "group": "GROUP_B",
       "utc_date": "2026-06-18T22:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Canadá",
       "away_team_es": "Catar",
       "home_team_en": "Canada",
       "away_team_en": "Qatar",
-      "home_goals": 6,
-      "away_goals": 0,
-      "winner_es": "Canadá"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537337,
@@ -159,14 +159,14 @@
       "matchday": 3,
       "group": "GROUP_B",
       "utc_date": "2026-06-24T19:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Suiza",
       "away_team_es": "Canadá",
       "home_team_en": "Switzerland",
       "away_team_en": "Canada",
-      "home_goals": 2,
-      "away_goals": 1,
-      "winner_es": "Suiza"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537338,
@@ -174,14 +174,14 @@
       "matchday": 3,
       "group": "GROUP_B",
       "utc_date": "2026-06-24T19:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Bosnia y Herzegovina",
       "away_team_es": "Catar",
       "home_team_en": "Bosnia y Herzegovina",
       "away_team_en": "Qatar",
-      "home_goals": 3,
-      "away_goals": 1,
-      "winner_es": "Bosnia y Herzegovina"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537339,
@@ -219,14 +219,14 @@
       "matchday": 2,
       "group": "GROUP_C",
       "utc_date": "2026-06-20T00:30:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Brasil",
       "away_team_es": "Haití",
       "home_team_en": "Brazil",
       "away_team_en": "Haiti",
-      "home_goals": 3,
-      "away_goals": 0,
-      "winner_es": "Brasil"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537342,
@@ -234,14 +234,14 @@
       "matchday": 2,
       "group": "GROUP_C",
       "utc_date": "2026-06-19T22:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Escocia",
       "away_team_es": "Marruecos",
       "home_team_en": "Scotland",
       "away_team_en": "Morocco",
-      "home_goals": 0,
-      "away_goals": 1,
-      "winner_es": "Marruecos"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537343,
@@ -249,14 +249,14 @@
       "matchday": 3,
       "group": "GROUP_C",
       "utc_date": "2026-06-24T22:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Escocia",
       "away_team_es": "Brasil",
       "home_team_en": "Scotland",
       "away_team_en": "Brazil",
-      "home_goals": 0,
-      "away_goals": 3,
-      "winner_es": "Brasil"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537344,
@@ -264,14 +264,14 @@
       "matchday": 3,
       "group": "GROUP_C",
       "utc_date": "2026-06-24T22:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Marruecos",
       "away_team_es": "Haití",
       "home_team_en": "Morocco",
       "away_team_en": "Haiti",
-      "home_goals": 4,
-      "away_goals": 2,
-      "winner_es": "Marruecos"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537345,
@@ -309,14 +309,14 @@
       "matchday": 2,
       "group": "GROUP_D",
       "utc_date": "2026-06-20T03:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Turquía",
       "away_team_es": "Paraguay",
       "home_team_en": "Turkey",
       "away_team_en": "Paraguay",
-      "home_goals": 0,
-      "away_goals": 1,
-      "winner_es": "Paraguay"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537348,
@@ -324,14 +324,14 @@
       "matchday": 2,
       "group": "GROUP_D",
       "utc_date": "2026-06-19T19:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Estados Unidos",
       "away_team_es": "Australia",
       "home_team_en": "United States",
       "away_team_en": "Australia",
-      "home_goals": 2,
-      "away_goals": 0,
-      "winner_es": "Estados Unidos"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537349,
@@ -339,14 +339,14 @@
       "matchday": 3,
       "group": "GROUP_D",
       "utc_date": "2026-06-26T02:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Turquía",
       "away_team_es": "Estados Unidos",
       "home_team_en": "Turkey",
       "away_team_en": "United States",
-      "home_goals": 3,
-      "away_goals": 2,
-      "winner_es": "Turquía"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537350,
@@ -354,14 +354,14 @@
       "matchday": 3,
       "group": "GROUP_D",
       "utc_date": "2026-06-26T02:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Paraguay",
       "away_team_es": "Australia",
       "home_team_en": "Paraguay",
       "away_team_en": "Australia",
-      "home_goals": 0,
-      "away_goals": 0,
-      "winner_es": "draw"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537351,
@@ -399,14 +399,14 @@
       "matchday": 2,
       "group": "GROUP_E",
       "utc_date": "2026-06-20T20:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Alemania",
       "away_team_es": "Costa de Marfil",
       "home_team_en": "Germany",
       "away_team_en": "Ivory Coast",
-      "home_goals": 2,
-      "away_goals": 1,
-      "winner_es": "Alemania"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537354,
@@ -414,14 +414,14 @@
       "matchday": 2,
       "group": "GROUP_E",
       "utc_date": "2026-06-21T00:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Ecuador",
       "away_team_es": "Curazao",
       "home_team_en": "Ecuador",
       "away_team_en": "Curaçao",
-      "home_goals": 0,
-      "away_goals": 0,
-      "winner_es": "draw"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537355,
@@ -429,14 +429,14 @@
       "matchday": 3,
       "group": "GROUP_E",
       "utc_date": "2026-06-25T20:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Ecuador",
       "away_team_es": "Alemania",
       "home_team_en": "Ecuador",
       "away_team_en": "Germany",
-      "home_goals": 2,
-      "away_goals": 1,
-      "winner_es": "Ecuador"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537356,
@@ -444,14 +444,14 @@
       "matchday": 3,
       "group": "GROUP_E",
       "utc_date": "2026-06-25T20:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Curazao",
       "away_team_es": "Costa de Marfil",
       "home_team_en": "Curaçao",
       "away_team_en": "Ivory Coast",
-      "home_goals": 0,
-      "away_goals": 2,
-      "winner_es": "Costa de Marfil"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537357,
@@ -489,14 +489,14 @@
       "matchday": 2,
       "group": "GROUP_F",
       "utc_date": "2026-06-20T17:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Países Bajos",
       "away_team_es": "Suecia",
       "home_team_en": "Netherlands",
       "away_team_en": "Sweden",
-      "home_goals": 5,
-      "away_goals": 1,
-      "winner_es": "Países Bajos"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537360,
@@ -504,14 +504,14 @@
       "matchday": 2,
       "group": "GROUP_F",
       "utc_date": "2026-06-21T04:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Túnez",
       "away_team_es": "Japón",
       "home_team_en": "Tunisia",
       "away_team_en": "Japan",
-      "home_goals": 0,
-      "away_goals": 4,
-      "winner_es": "Japón"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537361,
@@ -519,14 +519,14 @@
       "matchday": 3,
       "group": "GROUP_F",
       "utc_date": "2026-06-25T23:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Túnez",
       "away_team_es": "Países Bajos",
       "home_team_en": "Tunisia",
       "away_team_en": "Netherlands",
-      "home_goals": 1,
-      "away_goals": 3,
-      "winner_es": "Países Bajos"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537362,
@@ -534,14 +534,14 @@
       "matchday": 3,
       "group": "GROUP_F",
       "utc_date": "2026-06-25T23:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Japón",
       "away_team_es": "Suecia",
       "home_team_en": "Japan",
       "away_team_en": "Sweden",
-      "home_goals": 1,
-      "away_goals": 1,
-      "winner_es": "draw"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537363,
@@ -564,14 +564,14 @@
       "matchday": 1,
       "group": "GROUP_G",
       "utc_date": "2026-06-16T01:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Irán",
       "away_team_es": "Nueva Zelanda",
       "home_team_en": "Iran",
       "away_team_en": "New Zealand",
-      "home_goals": 2,
-      "away_goals": 2,
-      "winner_es": "draw"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537365,
@@ -579,14 +579,14 @@
       "matchday": 2,
       "group": "GROUP_G",
       "utc_date": "2026-06-21T19:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Bélgica",
       "away_team_es": "Irán",
       "home_team_en": "Belgium",
       "away_team_en": "Iran",
-      "home_goals": 0,
-      "away_goals": 0,
-      "winner_es": "draw"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537366,
@@ -594,14 +594,14 @@
       "matchday": 2,
       "group": "GROUP_G",
       "utc_date": "2026-06-22T01:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Nueva Zelanda",
       "away_team_es": "Egipto",
       "home_team_en": "New Zealand",
       "away_team_en": "Egypt",
-      "home_goals": 1,
-      "away_goals": 3,
-      "winner_es": "Egipto"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537367,
@@ -609,14 +609,14 @@
       "matchday": 3,
       "group": "GROUP_G",
       "utc_date": "2026-06-27T03:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Nueva Zelanda",
       "away_team_es": "Bélgica",
       "home_team_en": "New Zealand",
       "away_team_en": "Belgium",
-      "home_goals": 1,
-      "away_goals": 5,
-      "winner_es": "Bélgica"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537368,
@@ -624,14 +624,14 @@
       "matchday": 3,
       "group": "GROUP_G",
       "utc_date": "2026-06-27T03:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Egipto",
       "away_team_es": "Irán",
       "home_team_en": "Egypt",
       "away_team_en": "Iran",
-      "home_goals": 1,
-      "away_goals": 1,
-      "winner_es": "draw"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537369,
@@ -639,14 +639,14 @@
       "matchday": 1,
       "group": "GROUP_H",
       "utc_date": "2026-06-15T16:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "España",
       "away_team_es": "Cabo Verde",
       "home_team_en": "Spain",
       "away_team_en": "Cape Verde Islands",
-      "home_goals": 0,
-      "away_goals": 0,
-      "winner_es": "draw"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537370,
@@ -654,14 +654,14 @@
       "matchday": 1,
       "group": "GROUP_H",
       "utc_date": "2026-06-15T22:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Arabia Saudita",
       "away_team_es": "Uruguay",
       "home_team_en": "Saudi Arabia",
       "away_team_en": "Uruguay",
-      "home_goals": 1,
-      "away_goals": 1,
-      "winner_es": "draw"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537371,
@@ -669,14 +669,14 @@
       "matchday": 2,
       "group": "GROUP_H",
       "utc_date": "2026-06-21T16:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "España",
       "away_team_es": "Arabia Saudita",
       "home_team_en": "Spain",
       "away_team_en": "Saudi Arabia",
-      "home_goals": 4,
-      "away_goals": 0,
-      "winner_es": "España"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537372,
@@ -684,14 +684,14 @@
       "matchday": 2,
       "group": "GROUP_H",
       "utc_date": "2026-06-21T22:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Uruguay",
       "away_team_es": "Cabo Verde",
       "home_team_en": "Uruguay",
       "away_team_en": "Cape Verde Islands",
-      "home_goals": 2,
-      "away_goals": 2,
-      "winner_es": "draw"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537373,
@@ -699,14 +699,14 @@
       "matchday": 3,
       "group": "GROUP_H",
       "utc_date": "2026-06-27T00:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Uruguay",
       "away_team_es": "España",
       "home_team_en": "Uruguay",
       "away_team_en": "Spain",
-      "home_goals": 0,
-      "away_goals": 1,
-      "winner_es": "España"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537374,
@@ -714,14 +714,14 @@
       "matchday": 3,
       "group": "GROUP_H",
       "utc_date": "2026-06-27T00:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Cabo Verde",
       "away_team_es": "Arabia Saudita",
       "home_team_en": "Cape Verde Islands",
       "away_team_en": "Saudi Arabia",
-      "home_goals": 0,
-      "away_goals": 0,
-      "winner_es": "draw"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537391,
@@ -729,14 +729,14 @@
       "matchday": 1,
       "group": "GROUP_I",
       "utc_date": "2026-06-16T19:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Francia",
       "away_team_es": "Senegal",
       "home_team_en": "France",
       "away_team_en": "Senegal",
-      "home_goals": 3,
-      "away_goals": 1,
-      "winner_es": "Francia"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537392,
@@ -744,14 +744,14 @@
       "matchday": 1,
       "group": "GROUP_I",
       "utc_date": "2026-06-16T22:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Irak",
       "away_team_es": "Noruega",
       "home_team_en": "Iraq",
       "away_team_en": "Norway",
-      "home_goals": 1,
-      "away_goals": 4,
-      "winner_es": "Noruega"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537393,
@@ -759,14 +759,14 @@
       "matchday": 2,
       "group": "GROUP_I",
       "utc_date": "2026-06-22T21:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Francia",
       "away_team_es": "Irak",
       "home_team_en": "France",
       "away_team_en": "Iraq",
-      "home_goals": 3,
-      "away_goals": 0,
-      "winner_es": "Francia"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537394,
@@ -774,14 +774,14 @@
       "matchday": 2,
       "group": "GROUP_I",
       "utc_date": "2026-06-23T00:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Noruega",
       "away_team_es": "Senegal",
       "home_team_en": "Norway",
       "away_team_en": "Senegal",
-      "home_goals": 3,
-      "away_goals": 2,
-      "winner_es": "Noruega"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537395,
@@ -789,14 +789,14 @@
       "matchday": 3,
       "group": "GROUP_I",
       "utc_date": "2026-06-26T19:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Noruega",
       "away_team_es": "Francia",
       "home_team_en": "Norway",
       "away_team_en": "France",
-      "home_goals": 1,
-      "away_goals": 4,
-      "winner_es": "Francia"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537396,
@@ -804,14 +804,14 @@
       "matchday": 3,
       "group": "GROUP_I",
       "utc_date": "2026-06-26T19:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Senegal",
       "away_team_es": "Irak",
       "home_team_en": "Senegal",
       "away_team_en": "Iraq",
-      "home_goals": 5,
-      "away_goals": 0,
-      "winner_es": "Senegal"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537397,
@@ -819,14 +819,14 @@
       "matchday": 1,
       "group": "GROUP_J",
       "utc_date": "2026-06-17T01:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Argentina",
       "away_team_es": "Argelia",
       "home_team_en": "Argentina",
       "away_team_en": "Algeria",
-      "home_goals": 3,
-      "away_goals": 0,
-      "winner_es": "Argentina"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537398,
@@ -834,14 +834,14 @@
       "matchday": 1,
       "group": "GROUP_J",
       "utc_date": "2026-06-17T04:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Austria",
       "away_team_es": "Jordania",
       "home_team_en": "Austria",
       "away_team_en": "Jordan",
-      "home_goals": 3,
-      "away_goals": 1,
-      "winner_es": "Austria"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537399,
@@ -849,14 +849,14 @@
       "matchday": 2,
       "group": "GROUP_J",
       "utc_date": "2026-06-22T17:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Argentina",
       "away_team_es": "Austria",
       "home_team_en": "Argentina",
       "away_team_en": "Austria",
-      "home_goals": 2,
-      "away_goals": 0,
-      "winner_es": "Argentina"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537400,
@@ -864,14 +864,14 @@
       "matchday": 2,
       "group": "GROUP_J",
       "utc_date": "2026-06-23T03:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Jordania",
       "away_team_es": "Argelia",
       "home_team_en": "Jordan",
       "away_team_en": "Algeria",
-      "home_goals": 1,
-      "away_goals": 2,
-      "winner_es": "Argelia"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537401,
@@ -879,14 +879,14 @@
       "matchday": 3,
       "group": "GROUP_J",
       "utc_date": "2026-06-28T02:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Jordania",
       "away_team_es": "Argentina",
       "home_team_en": "Jordan",
       "away_team_en": "Argentina",
-      "home_goals": 1,
-      "away_goals": 3,
-      "winner_es": "Argentina"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537402,
@@ -894,14 +894,14 @@
       "matchday": 3,
       "group": "GROUP_J",
       "utc_date": "2026-06-28T02:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Argelia",
       "away_team_es": "Austria",
       "home_team_en": "Algeria",
       "away_team_en": "Austria",
-      "home_goals": 3,
-      "away_goals": 3,
-      "winner_es": "draw"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537403,
@@ -909,14 +909,14 @@
       "matchday": 1,
       "group": "GROUP_K",
       "utc_date": "2026-06-17T17:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Portugal",
       "away_team_es": "RD Congo",
       "home_team_en": "Portugal",
       "away_team_en": "Congo DR",
-      "home_goals": 1,
-      "away_goals": 1,
-      "winner_es": "draw"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537404,
@@ -924,14 +924,14 @@
       "matchday": 1,
       "group": "GROUP_K",
       "utc_date": "2026-06-18T02:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Uzbekistán",
       "away_team_es": "Colombia",
       "home_team_en": "Uzbekistan",
       "away_team_en": "Colombia",
-      "home_goals": 1,
-      "away_goals": 3,
-      "winner_es": "Colombia"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537405,
@@ -939,14 +939,14 @@
       "matchday": 2,
       "group": "GROUP_K",
       "utc_date": "2026-06-23T17:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Portugal",
       "away_team_es": "Uzbekistán",
       "home_team_en": "Portugal",
       "away_team_en": "Uzbekistan",
-      "home_goals": 5,
-      "away_goals": 0,
-      "winner_es": "Portugal"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537406,
@@ -954,14 +954,14 @@
       "matchday": 2,
       "group": "GROUP_K",
       "utc_date": "2026-06-24T02:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Colombia",
       "away_team_es": "RD Congo",
       "home_team_en": "Colombia",
       "away_team_en": "Congo DR",
-      "home_goals": 1,
-      "away_goals": 0,
-      "winner_es": "Colombia"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537407,
@@ -969,14 +969,14 @@
       "matchday": 3,
       "group": "GROUP_K",
       "utc_date": "2026-06-27T23:30:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Colombia",
       "away_team_es": "Portugal",
       "home_team_en": "Colombia",
       "away_team_en": "Portugal",
-      "home_goals": 0,
-      "away_goals": 0,
-      "winner_es": "draw"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537408,
@@ -984,14 +984,14 @@
       "matchday": 3,
       "group": "GROUP_K",
       "utc_date": "2026-06-27T23:30:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "RD Congo",
       "away_team_es": "Uzbekistán",
       "home_team_en": "Congo DR",
       "away_team_en": "Uzbekistan",
-      "home_goals": 3,
-      "away_goals": 1,
-      "winner_es": "RD Congo"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537409,
@@ -999,14 +999,14 @@
       "matchday": 1,
       "group": "GROUP_L",
       "utc_date": "2026-06-17T20:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Inglaterra",
       "away_team_es": "Croacia",
       "home_team_en": "England",
       "away_team_en": "Croatia",
-      "home_goals": 4,
-      "away_goals": 2,
-      "winner_es": "Inglaterra"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537410,
@@ -1014,14 +1014,14 @@
       "matchday": 1,
       "group": "GROUP_L",
       "utc_date": "2026-06-17T23:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Ghana",
       "away_team_es": "Panamá",
       "home_team_en": "Ghana",
       "away_team_en": "Panama",
-      "home_goals": 1,
-      "away_goals": 0,
-      "winner_es": "Ghana"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537411,
@@ -1029,14 +1029,14 @@
       "matchday": 2,
       "group": "GROUP_L",
       "utc_date": "2026-06-23T20:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Inglaterra",
       "away_team_es": "Ghana",
       "home_team_en": "England",
       "away_team_en": "Ghana",
-      "home_goals": 0,
-      "away_goals": 0,
-      "winner_es": "draw"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537412,
@@ -1044,14 +1044,14 @@
       "matchday": 2,
       "group": "GROUP_L",
       "utc_date": "2026-06-23T23:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Panamá",
       "away_team_es": "Croacia",
       "home_team_en": "Panama",
       "away_team_en": "Croatia",
-      "home_goals": 0,
-      "away_goals": 1,
-      "winner_es": "Croacia"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537413,
@@ -1059,14 +1059,14 @@
       "matchday": 3,
       "group": "GROUP_L",
       "utc_date": "2026-06-27T21:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Panamá",
       "away_team_es": "Inglaterra",
       "home_team_en": "Panama",
       "away_team_en": "England",
-      "home_goals": 0,
-      "away_goals": 2,
-      "winner_es": "Inglaterra"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537414,
@@ -1074,14 +1074,14 @@
       "matchday": 3,
       "group": "GROUP_L",
       "utc_date": "2026-06-27T21:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "home_team_es": "Croacia",
       "away_team_es": "Ghana",
       "home_team_en": "Croatia",
       "away_team_en": "Ghana",
-      "home_goals": 2,
-      "away_goals": 1,
-      "winner_es": "Croacia"
+      "home_goals": null,
+      "away_goals": null,
+      "winner_es": null
     },
     {
       "api_id": 537417,
@@ -1562,6 +1562,19 @@
       "home_goals": null,
       "away_goals": null,
       "winner_es": null
+    },
+    {
+      "stage": "Round of 32",
+      "match_id": "R32-1",
+      "utc_date": "2026-06-28T21:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Sudáfrica",
+      "away_team_es": "Canadá",
+      "home_team_en": "South Africa",
+      "away_team_en": "Canada",
+      "home_goals": 0,
+      "away_goals": 1,
+      "winner_es": "Canadá"
     }
   ]
 }
