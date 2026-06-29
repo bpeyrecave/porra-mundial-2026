@@ -949,16 +949,10 @@ function renderHonorTable() {
     const koMatches = pData.knockout_matches || [];
     const extras    = pData.extras || {};
 
-    const finalPick = koMatches.find(m => m.match_id === "Final");
-    const p3Pick    = koMatches.find(m => m.match_id === "3rd");
-
-    // Predicted champion = predicted_winner of Final
-    const predChampion = finalPick?.predicted_winner ?? null;
-    // Predicted runner-up = the Final team that is NOT the predicted winner
-    const predRunnerUp = finalPick
-      ? ([finalPick.home_team, finalPick.away_team].find(t => t && t !== predChampion) ?? null)
-      : null;
-    const pred3rd = p3Pick?.predicted_winner ?? null;
+    // Honor table uses original Excel predictions, NOT the knockout bracket picks
+    const predChampion = pData.champion    ?? null;
+    const predRunnerUp = pData.runner_up   ?? null;
+    const pred3rd      = pData.third_place ?? null;
 
     // Points
     let pts = 0;
