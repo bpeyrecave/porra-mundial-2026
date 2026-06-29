@@ -1108,7 +1108,7 @@
       "max_points": 50
     }
   ],
-  "champion": "Francia",
+  "champion": "España",
   "extras": {
     "bota_oro": "Kilian Mbappé",
     "bota_plata": "Harry Kane",
@@ -1116,5 +1116,7 @@
     "balon_oro": "Lamine Yamal",
     "balon_plata": "Pedri",
     "balon_bronce": "Kilian Mbappé"
-  }
+  },
+  "runner_up": "Brasil",
+  "third_place": "Alemania"
 }
