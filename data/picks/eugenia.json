@@ -1108,7 +1108,7 @@
       "max_points": 50
     }
   ],
-  "champion": "Argentina",
+  "champion": "España",
   "extras": {
     "bota_oro": "Lamine Yamal",
     "bota_plata": "Kylian Mbappé",
@@ -1116,5 +1116,7 @@
     "balon_oro": "Kylian Mbappé",
     "balon_plata": "Lamine Yamal",
     "balon_bronce": "Vitinha"
-  }
+  },
+  "runner_up": "Argentina",
+  "third_place": "Francia"
 }
