@@ -378,6 +378,43 @@
     white-space: nowrap;
   }
 
+  /* ── Honor table ──────────────────────────────────────────────────────────── */
+  .honor-section {
+    margin-top: 32px; border-top: 2px solid var(--border); padding-top: 20px;
+  }
+  .honor-title {
+    font-size: 0.85rem; font-weight: 700; color: var(--gold); margin-bottom: 4px;
+  }
+  .honor-subtitle {
+    font-size: 0.72rem; color: var(--muted); margin-bottom: 12px;
+  }
+  .honor-rules {
+    display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 14px; font-size: 0.72rem;
+  }
+  .honor-rule { color: var(--muted); }
+  .honor-rule strong { color: var(--gold); }
+  .honor-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  .honor-table th {
+    text-align: left; padding: 7px 10px; font-size: 0.62rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);
+    border-bottom: 1px solid var(--border); white-space: nowrap; line-height: 1.3;
+  }
+  .honor-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; white-space: nowrap; }
+  .honor-table tbody tr:hover { background: var(--surface); }
+  .honor-participant { font-weight: 700; font-size: 0.85rem; }
+  .honor-chips { display: flex; flex-wrap: wrap; gap: 4px; }
+  .h-chip {
+    display: inline-flex; align-items: center; gap: 3px;
+    padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 500;
+    background: var(--surface2); color: var(--text);
+  }
+  .h-chip.ok  { background: rgba(44,198,83,0.15); color: var(--green); font-weight: 700; }
+  .h-chip.ko  { background: rgba(230,57,70,0.08); color: var(--muted); text-decoration: line-through; }
+  .h-chip.pending { background: var(--surface2); color: var(--muted); }
+  .h-pts { color: var(--gold); font-size: 0.62rem; font-weight: 700; }
+  .honor-total { font-weight: 800; color: var(--gold); font-size: 1rem; }
+  .honor-none { color: var(--muted); font-style: italic; font-size: 0.8rem; }
+
   @media (max-width: 600px) {
     header h1 { font-size: 1.1rem; }
     thead th, td { padding: 6px 8px; font-size: 0.78rem; }
@@ -859,6 +896,133 @@ function renderBracket() {
     </div>
     <div class="bracket-labels">${labelsHtml}</div>
     <div class="bracket-body">${colsHtml}</div>
+  </div>
+  ${renderHonorTable()}`;
+}
+
+// ── Honor table ───────────────────────────────────────────────────────────────
+function renderHonorTable() {
+  // ── Real results ────────────────────────────────────────────────────────────
+  const finTeams  = getMatchTeams("Final");
+  function validTeam(t) { return t && t !== "TBD"; }
+
+  // Real champion = winner of Final result; runner-up = the other team
+  const finalResult = validTeam(finTeams.home) ? findResult(finTeams.home, finTeams.away) : null;
+  const realChampion = finalResult?.winner_es ?? null;
+  const realRunnerUp = realChampion && finTeams.home && finTeams.away
+    ? (finTeams.home === realChampion ? finTeams.away : finTeams.home)
+    : null;
+
+  // Real 3rd-place winner
+  function getReal3rd() {
+    const matches = results?.matches;
+    if (!matches) return null;
+    const m3 = matches.find(r =>
+      r.stage === "3rd Place Final" || r.stage === "3rd" ||
+      (r.stage && r.stage.toLowerCase().includes("third"))
+    );
+    return m3?.winner_es ?? null;
+  }
+  const real3rd = getReal3rd();
+
+  // ── Extra awards (from results.extras, set manually after tournament) ───────
+  const EXTRAS = [
+    { key: "bota_oro",     label: "⚽ Bota de Oro",    pts: 10 },
+    { key: "bota_plata",   label: "⚽ Bota de Plata",  pts: 10 },
+    { key: "bota_bronce",  label: "⚽ Bota de Bronce", pts: 10 },
+    { key: "balon_oro",    label: "🌟 Balón de Oro",   pts: 10 },
+    { key: "balon_plata",  label: "🌟 Balón de Plata", pts: 10 },
+    { key: "balon_bronce", label: "🌟 Balón de Bronce",pts: 10 },
+  ];
+
+  // ── Chip renderer ────────────────────────────────────────────────────────────
+  function chip(value, isCorrect, known, ptsVal) {
+    if (!value) return `<span class="honor-none">—</span>`;
+    const cls = !known ? 'pending' : (isCorrect ? 'ok' : 'ko');
+    const ptsLabel = isCorrect && known ? `<span class="h-pts"> +${ptsVal}</span>` : '';
+    return `<span class="h-chip ${cls}">${value}${ptsLabel}</span>`;
+  }
+
+  // ── Rows ─────────────────────────────────────────────────────────────────────
+  const rows = PARTICIPANTS.map(name => {
+    const pData = picksData[name] || {};
+    const koMatches = pData.knockout_matches || [];
+    const extras    = pData.extras || {};
+
+    const finalPick = koMatches.find(m => m.match_id === "Final");
+    const p3Pick    = koMatches.find(m => m.match_id === "3rd");
+
+    // Predicted champion = predicted_winner of Final
+    const predChampion = finalPick?.predicted_winner ?? null;
+    // Predicted runner-up = the Final team that is NOT the predicted winner
+    const predRunnerUp = finalPick
+      ? ([finalPick.home_team, finalPick.away_team].find(t => t && t !== predChampion) ?? null)
+      : null;
+    const pred3rd = p3Pick?.predicted_winner ?? null;
+
+    // Points
+    let pts = 0;
+    const champKnown   = realChampion !== null;
+    const runnerKnown  = realRunnerUp !== null;
+    const p3rdKnown    = real3rd !== null;
+
+    const champOk  = champKnown  && predChampion === realChampion;
+    const runnerOk = runnerKnown && predRunnerUp === realRunnerUp;
+    const p3Ok     = p3rdKnown   && pred3rd === real3rd;
+
+    if (champOk)  pts += 20;
+    if (runnerOk) pts += 10;
+    if (p3Ok)     pts += 5;
+
+    // Extra cells + points
+    const extraCells = EXTRAS.map(ex => {
+      const realVal  = results.extras?.[ex.key] ?? null;
+      const predVal  = extras[ex.key] ?? null;
+      const known    = realVal !== null;
+      const isCorrect = known && predVal && predVal.trim().toLowerCase() === realVal.trim().toLowerCase();
+      if (isCorrect) pts += ex.pts;
+      return `<td>${chip(predVal, isCorrect, known, ex.pts)}</td>`;
+    }).join('');
+
+    const anyKnown = champKnown || runnerKnown || p3rdKnown || EXTRAS.some(ex => results.extras?.[ex.key]);
+
+    return `<tr>
+      <td><span class="honor-participant">${name}</span></td>
+      <td>${chip(predChampion, champOk, champKnown, 20)}</td>
+      <td>${chip(predRunnerUp, runnerOk, runnerKnown, 10)}</td>
+      <td>${chip(pred3rd, p3Ok, p3rdKnown, 5)}</td>
+      ${extraCells}
+      <td><span class="honor-total">${anyKnown ? pts : '—'}</span></td>
+    </tr>`;
+  });
+
+  // ── Header ───────────────────────────────────────────────────────────────────
+  const extraHeaders = EXTRAS.map(ex => `<th>${ex.label}<br><span style="font-weight:400;color:var(--gold)">+${ex.pts}pts</span></th>`).join('');
+
+  return `<div class="honor-section">
+    <div class="honor-title">🏅 Puntos honorarios por predicción al principio del campeonato</div>
+    <div class="honor-subtitle">Basado en las predicciones originales antes del torneo</div>
+    <div class="honor-rules">
+      <span class="honor-rule"><strong>+20 pts</strong> por campeón acertado</span>
+      <span class="honor-rule"><strong>+10 pts</strong> por segundo lugar acertado</span>
+      <span class="honor-rule"><strong>+5 pts</strong> por tercer lugar acertado</span>
+      <span class="honor-rule"><strong>+10 pts</strong> por cada premio individual acertado</span>
+    </div>
+    <div style="overflow-x:auto">
+    <table class="honor-table">
+      <thead>
+        <tr>
+          <th>Participante</th>
+          <th>🥇 Campeón<br><span style="font-weight:400;color:var(--gold)">+20pts</span></th>
+          <th>🥈 Segundo<br><span style="font-weight:400;color:var(--gold)">+10pts</span></th>
+          <th>🥉 Tercero<br><span style="font-weight:400;color:var(--gold)">+5pts</span></th>
+          ${extraHeaders}
+          <th>Total extra</th>
+        </tr>
+      </thead>
+      <tbody>${rows.join('')}</tbody>
+    </table>
+    </div>
   </div>`;
 }
 
