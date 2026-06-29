@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-29T19:42:26.766889+00:00",
+  "last_updated": "2026-06-29T19:57:00.987277Z",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1575,6 +1575,17 @@
       "home_goals": 0,
       "away_goals": 1,
       "winner_es": "Canadá"
+    },
+    {
+      "match_id": "R32-4",
+      "stage": "Round of 32",
+      "utc_date": "2026-06-29T19:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Brasil",
+      "away_team_es": "Japón",
+      "home_goals": 2,
+      "away_goals": 1,
+      "winner_es": "Brasil"
     }
   ]
 }
