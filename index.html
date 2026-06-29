@@ -283,6 +283,101 @@
   .loading { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 0.9rem; }
   .error-msg { background: #2a1010; border: 1px solid #5a2020; border-radius: 8px; color: #e05050; margin: 20px 0; padding: 14px 18px; font-size: 0.85rem; }
 
+  /* ── Bracket ──────────────────────────────────────────────────────────────── */
+  .bracket-wrap { overflow-x: auto; padding-bottom: 24px; }
+  .bracket-legend {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
+    margin-bottom: 10px; font-size: 0.72rem;
+  }
+  .bracket-labels {
+    display: flex; min-width: 1500px; margin-bottom: 4px;
+  }
+  .brl {
+    flex: 1; text-align: center; font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 4px 2px;
+  }
+  .b-col.b-center .brl { color: var(--gold); }
+
+  .bracket-body {
+    display: flex; min-width: 1500px; min-height: 1440px; gap: 6px;
+  }
+  .b-col {
+    flex: 1; display: flex; flex-direction: column; justify-content: space-around;
+  }
+  .b-col.b-center { flex: 1.1; }
+
+  .b-slot {
+    display: flex; justify-content: center; align-items: center; padding: 2px 0;
+  }
+
+  /* Connector lines for left columns (line extends right) */
+  .b-col.b-left .b-slot { position: relative; }
+  .b-col.b-left .b-slot::after {
+    content: ''; position: absolute; right: -3px; top: 50%;
+    width: 6px; height: 2px; background: var(--border);
+  }
+  /* Connector lines for right columns (line extends left) */
+  .b-col.b-right .b-slot { position: relative; }
+  .b-col.b-right .b-slot::after {
+    content: ''; position: absolute; left: -3px; top: 50%;
+    width: 6px; height: 2px; background: var(--border);
+  }
+
+  /* Match card */
+  .bc {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 8px 10px; width: 152px; font-size: 0.72rem;
+  }
+  .bc.bc-done { border-color: #2a3a2a; }
+  .bc.bc-live { border-color: var(--yellow); }
+
+  .bc-id {
+    font-size: 0.58rem; color: var(--muted); margin-bottom: 5px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .bc-round-pts { color: var(--gold); font-weight: 700; }
+
+  .bc-teams { display: flex; flex-direction: column; gap: 2px; margin-bottom: 5px; }
+  .bc-team {
+    font-weight: 600; color: var(--text); font-size: 0.72rem;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 130px;
+  }
+  .bc-team.tbd { color: var(--muted); font-style: italic; font-weight: 400; }
+  .bc-vs { font-size: 0.58rem; color: var(--muted); }
+
+  .bc-score {
+    font-size: 0.68rem; padding: 2px 5px; border-radius: 4px; margin-bottom: 5px;
+  }
+  .bc-score.done { background: rgba(44,198,83,0.08); color: var(--green); }
+  .bc-score.live-s {
+    color: var(--yellow); display: flex; align-items: center; gap: 4px;
+  }
+
+  .bc-picks {
+    border-top: 1px solid var(--border); padding-top: 5px;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .bc-pick {
+    display: flex; align-items: center; gap: 4px; font-size: 0.63rem; line-height: 1.35;
+  }
+  .bc-pn { color: var(--muted); font-weight: 600; min-width: 28px; font-size: 0.6rem; }
+  .bc-pw {
+    color: var(--text); flex: 1;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .bc-pw.tbd { color: var(--muted); font-style: italic; }
+
+  .bc-pick.ok .bc-pn  { color: var(--green); }
+  .bc-pick.ok .bc-pw  { color: var(--green); font-weight: 600; }
+  .bc-pick.ko .bc-pn  { color: var(--accent); }
+  .bc-pick.ko .bc-pw  { color: var(--muted); text-decoration: line-through; }
+
+  .bc-pts {
+    color: var(--gold); font-weight: 700; font-size: 0.58rem;
+    background: rgba(244,161,0,0.12); padding: 0 3px; border-radius: 3px;
+    white-space: nowrap;
+  }
+
   @media (max-width: 600px) {
     header h1 { font-size: 1.1rem; }
     thead th, td { padding: 6px 8px; font-size: 0.78rem; }
@@ -325,23 +420,42 @@ const RESULTS_FILE  = "data/results.json";
 const SCHEDULE_FILE = "data/schedule.json";
 
 const STAGES = [
-  { key: "group",        label: "Fase de Grupos" },
-  { key: "Round of 32",  label: "Dieciseisavos" },
-  { key: "Round of 16",  label: "Octavos" },
-  { key: "Quarter-final",label: "Cuartos" },
-  { key: "Semi-final",   label: "Semifinales" },
-  { key: "Final",        label: "Final" },
-  { key: "extras",       label: "Extras" },
+  { key: "group",    label: "Fase de grupos" },
+  { key: "knockout", label: "Fase eliminatoria" },
 ];
 
-// Knockout stage point info (shown below the stage chip)
-const KO_STAGE_INFO = {
-  "Round of 32":   { label: "5 puntos",  desc: "Acertar ganador: 3pts · Marcador exacto: 2pts extra", winnerPts: 3,  max: 5  },
-  "Round of 16":   { label: "10 puntos", desc: "Acertar ganador: 7pts · Marcador exacto: 3pts extra", winnerPts: 7,  max: 10 },
-  "Quarter-final": { label: "15 puntos", desc: "Acertar ganador: 11pts · Marcador exacto: 4pts extra", winnerPts: 11, max: 15 },
-  "Semi-final":    { label: "25 puntos", desc: "Acertar ganador: 20pts · Marcador exacto: 5pts extra", winnerPts: 20, max: 25 },
-  "Third place":   { label: "15 puntos", desc: "Acertar ganador: 11pts · Marcador exacto: 4pts extra", winnerPts: 11, max: 15 },
-  "Final":         { label: "50 puntos", desc: "Acertar ganador: 40pts · Marcador exacto: 10pts extra", winnerPts: 40, max: 50 },
+// Points per round – winner only
+const KO_WINNER_POINTS = {
+  "Round of 32":   5,
+  "Round of 16":   10,
+  "Quarter-final": 15,
+  "Semi-final":    25,
+  "Final":         50,
+};
+
+// Stage name for each bracket match ID
+const MATCH_STAGE = {
+  "R32-1":"Round of 32","R32-2":"Round of 32","R32-3":"Round of 32","R32-4":"Round of 32",
+  "R32-5":"Round of 32","R32-6":"Round of 32","R32-7":"Round of 32","R32-8":"Round of 32",
+  "R32-9":"Round of 32","R32-10":"Round of 32","R32-11":"Round of 32","R32-12":"Round of 32",
+  "R32-13":"Round of 32","R32-14":"Round of 32","R32-15":"Round of 32","R32-16":"Round of 32",
+  "R16-1":"Round of 16","R16-2":"Round of 16","R16-3":"Round of 16","R16-4":"Round of 16",
+  "R16-5":"Round of 16","R16-6":"Round of 16","R16-7":"Round of 16","R16-8":"Round of 16",
+  "QF-1":"Quarter-final","QF-2":"Quarter-final","QF-3":"Quarter-final","QF-4":"Quarter-final",
+  "SF-1":"Semi-final","SF-2":"Semi-final",
+  "Final":"Final",
+};
+
+// Which matches feed into each bracket slot
+const BRACKET_FEEDERS = {
+  "R16-2":["R32-1","R32-3"],  "R16-1":["R32-2","R32-5"],
+  "R16-3":["R32-4","R32-6"],  "R16-4":["R32-7","R32-8"],
+  "R16-5":["R32-11","R32-12"],"R16-6":["R32-9","R32-10"],
+  "R16-7":["R32-14","R32-16"],"R16-8":["R32-13","R32-15"],
+  "QF-1":["R16-1","R16-2"],   "QF-3":["R16-3","R16-4"],
+  "QF-2":["R16-5","R16-6"],   "QF-4":["R16-7","R16-8"],
+  "SF-1":["QF-1","QF-3"],     "SF-2":["QF-2","QF-4"],
+  "Final":["SF-1","SF-2"],
 };
 
 // Official WC 2026 bracket slot labels
@@ -409,7 +523,7 @@ const SPECIAL_MATCH_IDS = new Set([
 let picksData  = {};
 let results    = { matches: [] };
 let schedule   = {};   // matchId → utc_date string
-let activeStage = "Round of 32";
+let activeStage = "group";
 
 // ── Load data ────────────────────────────────────────────────────────────────
 async function fetchJSON(url) {
@@ -535,16 +649,7 @@ function scoreStandingsPosition(predictedTeam, realStandings, predictedPos) {
 function scoreKnockoutMatch(pick, result) {
   if (!result || result.status !== "FINISHED" || !result.winner_es) return null;
   if (result.winner_es !== pick.predicted_winner) return 0;
-
-  // Check exact score for bonus points
-  const [ph, pa] = [pick.predicted_home, pick.predicted_away];
-  let [rh, ra] = [result.home_goals, result.away_goals];
-  if (result.home_team_es === pick.away_team) [rh, ra] = [ra, rh];
-  const exactScore = ph !== null && pa !== null && ph === rh && pa === ra;
-
-  if (exactScore) return pick.max_points;
-  const info = KO_STAGE_INFO[pick.stage];
-  return info ? info.winnerPts : pick.max_points;
+  return KO_WINNER_POINTS[pick.stage] ?? 5;
 }
 
 function calcTotalPoints(participant) {
@@ -643,114 +748,105 @@ function setActive(key) {
 function renderStage(stage) {
   setActive(stage);
   const content = document.getElementById("content");
+  if (stage === "group")    { content.innerHTML = renderGroupStage(); return; }
+  if (stage === "knockout") { content.innerHTML = renderBracket();    return; }
+}
 
-  if (stage === "extras") { content.innerHTML = renderExtras(); return; }
-  if (stage === "group")  { content.innerHTML = renderGroupStage(); return; }
+// ── Bracket rendering ─────────────────────────────────────────────────────────
 
-  // Knockout stage
-  const allMatches = [];
-  for (const p of PARTICIPANTS) {
-    if (picksData[p]) {
-      picksData[p].knockout_matches
-        .filter(m => m.stage === stage)
-        .forEach(m => allMatches.push({ participant: p, match: m }));
-    }
+// Layout: left columns (R32 → SF), center (Final), right columns (SF → R32)
+const BRACKET_LAYOUT = [
+  { label:"Dieciseisavos", ids:["R32-1","R32-3","R32-2","R32-5","R32-4","R32-6","R32-7","R32-8"], side:"left" },
+  { label:"Octavos",       ids:["R16-2","R16-1","R16-3","R16-4"],                                  side:"left" },
+  { label:"Cuartos",       ids:["QF-1","QF-3"],                                                    side:"left" },
+  { label:"Semifinal",     ids:["SF-1"],                                                           side:"left" },
+  { label:"Gran Final",    ids:["Final"],                                                          side:"center" },
+  { label:"Semifinal",     ids:["SF-2"],                                                           side:"right" },
+  { label:"Cuartos",       ids:["QF-2","QF-4"],                                                    side:"right" },
+  { label:"Octavos",       ids:["R16-5","R16-6","R16-7","R16-8"],                                  side:"right" },
+  { label:"Dieciseisavos", ids:["R32-11","R32-12","R32-9","R32-10","R32-14","R32-16","R32-13","R32-15"], side:"right" },
+];
+
+// Recursively resolve real teams for any bracket slot
+function getMatchTeams(matchId) {
+  if (REAL_R32_TEAMS[matchId]) return { ...REAL_R32_TEAMS[matchId] };
+  const feeders = BRACKET_FEEDERS[matchId];
+  if (!feeders) return { home: "TBD", away: "TBD" };
+  const win = (fId) => {
+    const t = getMatchTeams(fId);
+    if (t.home === "TBD" || t.away === "TBD") return "TBD";
+    return findResult(t.home, t.away)?.winner_es || "TBD";
+  };
+  return { home: win(feeders[0]), away: win(feeders[1]) };
+}
+
+function renderBracketCard(matchId) {
+  const stage  = MATCH_STAGE[matchId];
+  const pts    = KO_WINNER_POINTS[stage] || 5;
+  const teams  = getMatchTeams(matchId);
+  const { home, away } = teams;
+  const isTBD  = home === "TBD" || away === "TBD";
+  const result = !isTBD ? findResult(home, away) : null;
+  const isLive     = result?.status === "IN_PLAY" || result?.status === "PAUSED" || isInferredLive(result);
+  const isFinished = result?.status === "FINISHED";
+
+  // Score line
+  let scoreHtml = "";
+  if (isFinished) {
+    scoreHtml = `<div class="bc-score done">${result.home_goals}–${result.away_goals} &middot; <strong>${result.winner_es}</strong></div>`;
+  } else if (isLive) {
+    scoreHtml = `<div class="bc-score live-s"><span class="live-dot"></span>${result?.home_goals ?? 0}–${result?.away_goals ?? 0}</div>`;
   }
 
-  // Group by match_id, keep insertion order
-  const byId = {};
-  const idOrder = [];
-  for (const { participant, match } of allMatches) {
-    if (!byId[match.match_id]) { byId[match.match_id] = { match, picks: {} }; idOrder.push(match.match_id); }
-    byId[match.match_id].picks[participant] = match;
-  }
-
-  const stageLabel = STAGES.find(s => s.key === stage)?.label || stage;
-  const stageInfo  = KO_STAGE_INFO[stage] ?? null;
-  let html = `<div class="group-section">
-    <div class="group-header"><span class="group-tag">${stageLabel}</span></div>
-    ${stageInfo ? `<div class="pts-legend" style="margin-bottom:10px">
-      <span style="color:var(--gold);font-weight:600">${stageInfo.label}</span>
-      <span style="color:var(--muted)">·</span>
-      <span>${stageInfo.desc}</span>
-    </div>` : ""}`;
-  html += `<table class="ko-table"><thead><tr>
-    <th>Partido</th>
-    <th>Real</th>
-    ${PARTICIPANTS.map(p => `<th>${p}</th>`).join("")}
-  </tr></thead><tbody>`;
-
-  for (const mid of idOrder) {
-    const { match, picks } = byId[mid];
-    const result = findResult(match.home_team, match.away_team);
-    const bracketLabel = BRACKET_LABELS[mid] || mid;
-
-    // Real result cell
-    let realCell;
-    if (result?.status === "FINISHED") {
-      realCell = `<td class="real-score finished">${result.home_goals}-${result.away_goals}<br><small>${result.winner_es}</small></td>`;
-    } else if (result?.status === "IN_PLAY" || result?.status === "PAUSED") {
-      realCell = `<td class="real-score"><span class="live-dot"></span><span class="live-score">${result.home_goals ?? 0}-${result.away_goals ?? 0}</span></td>`;
-    } else if (isInferredLive(result)) {
-      realCell = `<td class="real-score"><span class="live-dot"></span><span class="live-label">En vivo</span></td>`;
-    } else {
-      const realTeams = REAL_R32_TEAMS[mid];
-      if (realTeams) {
-        realCell = `<td class="real-score" style="font-size:0.75rem;color:var(--text)">${realTeams.home}<br><span style="font-size:0.65rem;color:var(--muted)">vs</span><br>${realTeams.away}</td>`;
-      } else {
-        realCell = `<td class="real-score pending">—</td>`;
-      }
+  // Per-participant picks
+  const picksHtml = PARTICIPANTS.map(p => {
+    const km = picksData[p]?.knockout_matches?.find(m => m.match_id === matchId);
+    if (!km) return `<div class="bc-pick"><span class="bc-pn">${p}</span><span class="bc-pw tbd">—</span></div>`;
+    const winner = km.predicted_winner || "?";
+    let cls = "", pLabel = "";
+    if (isFinished && result.winner_es) {
+      if (result.winner_es === winner) { cls = "ok";  pLabel = `<span class="bc-pts">+${pts}p</span>`; }
+      else                              { cls = "ko"; }
     }
+    return `<div class="bc-pick ${cls}"><span class="bc-pn">${p}</span><span class="bc-pw">${winner}</span>${pLabel}</div>`;
+  }).join("");
 
-    const koDateStr = fmtDate(matchDate(mid, result));
-    html += `<tr class="ko-match-row"><td>
-      <div class="bracket-label">${bracketLabel}${koDateStr ? ` <span class="date-chip">${koDateStr}</span>` : ""}</div>
-    </td>${realCell}`;
+  const cardCls = isFinished ? "bc bc-done" : isLive ? "bc bc-live" : "bc";
+  const matchLabel = matchId.startsWith("Final") ? "Final" : matchId;
 
-    for (const p of PARTICIPANTS) {
-      const pm = picks[p];
-      if (!pm) { html += `<td class="no-picks-cell">—</td>`; continue; }
-      const pts = scoreKnockoutMatch(pm, result);
-      const finished = result?.status === "FINISHED";
+  return `<div class="${cardCls}">
+    <div class="bc-id">${matchLabel} <span class="bc-round-pts">${pts}pts</span></div>
+    <div class="bc-teams">
+      <span class="bc-team${isTBD&&home==='TBD'?' tbd':''}">${home}</span>
+      <span class="bc-vs">vs</span>
+      <span class="bc-team${isTBD&&away==='TBD'?' tbd':''}">${away}</span>
+    </div>
+    ${scoreHtml}
+    <div class="bc-picks">${picksHtml}</div>
+  </div>`;
+}
 
-      // Determine CSS class for each team
-      // predicted_winner may be set even on tied scores (penalties pick)
-      const isTiedPrediction = pm.predicted_home !== null && pm.predicted_away !== null
-                               && pm.predicted_home === pm.predicted_away;
-      function koTeamClass(team) {
-        const isPick = pm.predicted_winner
-          ? team === pm.predicted_winner
-          : isTiedPrediction && team === pm.home_team; // fallback: highlight home if no explicit winner
-        if (!finished) return isPick ? "pick-winner" : "pick-loser";
-        if (isPick) return pts > 0 ? "correct" : "wrong-pick";
-        return "wrong-team";
-      }
+function renderBracket() {
+  const labelsHtml = BRACKET_LAYOUT.map(col =>
+    `<div class="brl">${col.label}</div>`
+  ).join("");
 
-      const homeTeam = pm.home_team || "?";
-      const awayTeam = pm.away_team || "?";
+  const colsHtml = BRACKET_LAYOUT.map(col => {
+    const slots = col.ids.map(id =>
+      `<div class="b-slot">${renderBracketCard(id)}</div>`
+    ).join("");
+    return `<div class="b-col b-${col.side}">${slots}</div>`;
+  }).join("");
 
-      const isTied = pm.predicted_home !== null && pm.predicted_home === pm.predicted_away;
-      const hp = pm.predicted_home_pens, ap = pm.predicted_away_pens;
-      const scoreDisplay = isTied && hp != null && ap != null
-        ? `<span style="color:var(--yellow);font-size:0.75rem">${hp}</span> <span class="score">${pm.predicted_home}-${pm.predicted_away}</span> <span style="color:var(--yellow);font-size:0.75rem">${ap}</span>`
-        : `<span class="score">${pm.predicted_home ?? "?"}-${pm.predicted_away ?? "?"}</span>`;
-
-      html += `<td class="result-cell"><div class="score-box">
-        <div style="display:flex;align-items:center;gap:4px;justify-content:center">${scoreDisplay}</div>
-        <div class="ko-fixture">
-          <span class="ko-team ${koTeamClass(homeTeam)}">${homeTeam}</span>
-          <span style="color:var(--muted);font-size:0.7rem">vs</span>
-          <span class="ko-team ${koTeamClass(awayTeam)}">${awayTeam}</span>
-        </div>
-        ${pts !== null ? `<span class="pts-earned">${pts > 0 ? "+" : ""}${pts}pts</span>` : ""}
-      </div></td>`;
-    }
-
-    html += `</tr>`;
-  }
-
-  html += `</tbody></table></div>`;
-  content.innerHTML = html;
+  return `<div class="bracket-wrap">
+    <div class="bracket-legend">
+      <span class="legend-item"><span class="legend-dot exact" style="background:var(--green)"></span> Acertaste el ganador</span>
+      <span class="legend-item"><span class="legend-dot result" style="background:var(--accent)"></span> Fallaste</span>
+      <span class="legend-item" style="margin-left:auto;color:var(--muted);font-size:0.72rem">Desplaza → para ver todo el cuadro</span>
+    </div>
+    <div class="bracket-labels">${labelsHtml}</div>
+    <div class="bracket-body">${colsHtml}</div>
+  </div>`;
 }
 
 // ── Group standings ───────────────────────────────────────────────────────────
