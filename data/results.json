@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-30T04:07:42.608706Z",
+  "last_updated": "2026-06-30T04:39:15.343112+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1598,7 +1598,7 @@
       "away_goals": 1,
       "home_goals_pens": 2,
       "away_goals_pens": 3,
-      "winner_es": "Marruecos"
+      "winner_es": "draw"
     },
     {
       "match_id": "R32-3",
@@ -1611,7 +1611,7 @@
       "away_goals": 1,
       "home_goals_pens": 3,
       "away_goals_pens": 4,
-      "winner_es": "Paraguay"
+      "winner_es": "draw"
     }
   ]
 }
