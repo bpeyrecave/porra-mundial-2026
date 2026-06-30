@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-30T18:15:52.985399+00:00",
+  "last_updated": "2026-06-30T19:30:57.620126Z",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1598,7 +1598,7 @@
       "away_goals": 1,
       "home_goals_pens": 2,
       "away_goals_pens": 3,
-      "winner_es": "draw"
+      "winner_es": "Marruecos"
     },
     {
       "match_id": "R32-3",
@@ -1611,7 +1611,29 @@
       "away_goals": 1,
       "home_goals_pens": 3,
       "away_goals_pens": 4,
-      "winner_es": "draw"
+      "winner_es": "Paraguay"
+    },
+    {
+      "match_id": "R32-6",
+      "stage": "Round of 32",
+      "utc_date": "2026-06-30T17:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Costa de Marfil",
+      "away_team_es": "Noruega",
+      "home_goals": 1,
+      "away_goals": 2,
+      "winner_es": "Noruega"
+    },
+    {
+      "match_id": "R32-6",
+      "stage": "Round of 32",
+      "utc_date": "2026-06-30T17:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Costa de Marfil",
+      "away_team_es": "Noruega",
+      "home_goals": 1,
+      "away_goals": 2,
+      "winner_es": "Noruega"
     }
   ]
 }
