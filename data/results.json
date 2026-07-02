@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-02T01:27:35.296726+00:00",
+  "last_updated": "2026-07-02T04:28:19.898760Z",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1656,6 +1656,39 @@
       "home_goals": 3,
       "away_goals": 0,
       "winner_es": "Francia"
+    },
+    {
+      "match_id": "R32-10",
+      "stage": "Round of 32",
+      "utc_date": "2026-07-01T17:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Bélgica",
+      "away_team_es": "Senegal",
+      "home_goals": 3,
+      "away_goals": 2,
+      "winner_es": "Bélgica"
+    },
+    {
+      "match_id": "R32-8",
+      "stage": "Round of 32",
+      "utc_date": "2026-07-01T20:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Inglaterra",
+      "away_team_es": "RD Congo",
+      "home_goals": 2,
+      "away_goals": 1,
+      "winner_es": "Inglaterra"
+    },
+    {
+      "match_id": "R32-9",
+      "stage": "Round of 32",
+      "utc_date": "2026-07-01T00:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Estados Unidos",
+      "away_team_es": "Bosnia y Herzegovina",
+      "home_goals": 2,
+      "away_goals": 0,
+      "winner_es": "Estados Unidos"
     }
   ]
 }
