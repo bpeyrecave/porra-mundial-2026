@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-04T16:56:15.782671+00:00",
+  "last_updated": "2026-07-04T17:44:22.413067Z",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1722,6 +1722,41 @@
       "home_goals": 3,
       "away_goals": 0,
       "winner_es": "España"
+    },
+    {
+      "match_id": "R32-16",
+      "stage": "Round of 32",
+      "utc_date": "2026-07-03T22:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Colombia",
+      "away_team_es": "Ghana",
+      "home_goals": 1,
+      "away_goals": 0,
+      "winner_es": "Colombia"
+    },
+    {
+      "match_id": "R32-15",
+      "stage": "Round of 32",
+      "utc_date": "2026-07-03T18:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Argentina",
+      "away_team_es": "Cabo Verde",
+      "home_goals": 3,
+      "away_goals": 2,
+      "winner_es": "Argentina"
+    },
+    {
+      "match_id": "R32-14",
+      "stage": "Round of 32",
+      "utc_date": "2026-07-04T01:30:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Australia",
+      "away_team_es": "Egipto",
+      "home_goals": 1,
+      "away_goals": 1,
+      "home_goals_pens": 2,
+      "away_goals_pens": 4,
+      "winner_es": "Egipto"
     }
   ]
 }
