@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-04T18:09:02.385660+00:00",
+  "last_updated": "2026-07-04T19:08:57.040766Z",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1756,7 +1756,18 @@
       "away_goals": 1,
       "home_goals_pens": 2,
       "away_goals_pens": 4,
-      "winner_es": "draw"
+      "winner_es": "Egipto"
+    },
+    {
+      "match_id": "R16-2",
+      "stage": "Round of 16",
+      "utc_date": "2026-07-04T21:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Marruecos",
+      "away_team_es": "Canadá",
+      "home_goals": 3,
+      "away_goals": 0,
+      "winner_es": "Marruecos"
     }
   ]
 }
