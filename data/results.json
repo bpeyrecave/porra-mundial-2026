@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-07T01:28:08.439095+00:00",
+  "last_updated": "2026-07-07T03:22:08.682995Z",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1801,6 +1801,28 @@
       "home_goals": 2,
       "away_goals": 3,
       "winner_es": "Inglaterra"
+    },
+    {
+      "match_id": "R16-5",
+      "stage": "Round of 16",
+      "utc_date": "2026-07-06T19:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Portugal",
+      "away_team_es": "España",
+      "home_goals": 0,
+      "away_goals": 1,
+      "winner_es": "España"
+    },
+    {
+      "match_id": "R16-6",
+      "stage": "Round of 16",
+      "utc_date": "2026-07-07T00:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Estados Unidos",
+      "away_team_es": "Bélgica",
+      "home_goals": 1,
+      "away_goals": 4,
+      "winner_es": "Bélgica"
     }
   ]
 }
