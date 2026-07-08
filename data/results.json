@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-08T04:08:59.284571Z",
+  "last_updated": "2026-07-08T04:29:59.033856+00:00",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1846,7 +1846,7 @@
       "away_goals": 0,
       "home_goals_pens": 4,
       "away_goals_pens": 3,
-      "winner_es": "Suiza"
+      "winner_es": "draw"
     }
   ]
 }
