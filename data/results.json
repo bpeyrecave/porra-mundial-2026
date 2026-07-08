@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-08T01:04:53.217595+00:00",
+  "last_updated": "2026-07-08T04:08:59.284571Z",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1823,6 +1823,30 @@
       "home_goals": 1,
       "away_goals": 4,
       "winner_es": "Bélgica"
+    },
+    {
+      "match_id": "R16-8",
+      "stage": "Round of 16",
+      "utc_date": "2026-07-07T16:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Argentina",
+      "away_team_es": "Egipto",
+      "home_goals": 3,
+      "away_goals": 2,
+      "winner_es": "Argentina"
+    },
+    {
+      "match_id": "R16-7",
+      "stage": "Round of 16",
+      "utc_date": "2026-07-07T20:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Suiza",
+      "away_team_es": "Colombia",
+      "home_goals": 0,
+      "away_goals": 0,
+      "home_goals_pens": 4,
+      "away_goals_pens": 3,
+      "winner_es": "Suiza"
     }
   ]
 }
