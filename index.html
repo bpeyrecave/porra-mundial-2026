@@ -809,9 +809,8 @@ const BRACKET_LAYOUT = [
   { label:"Dieciseisavos", ids:["R32-1","R32-2","R32-3","R32-5","R32-4","R32-6","R32-7","R32-8"], side:"left" },
   { label:"Octavos",       ids:["R16-2","R16-1","R16-3","R16-4"],                                  side:"left" },
   { label:"Cuartos",       ids:["QF-1","QF-3"],                                                    side:"left" },
-  { label:"Semifinal",     ids:["SF-1","SF-2"],                                                    side:"left" },
+  { label:"Semifinal",     ids:["SF-1","SF-2"],                                                    side:"center" },
   { label:"Gran Final",    ids:["Final"],                                                          side:"center" },
-  { label:"Semifinal",     ids:["SF-1","SF-2"],                                                    side:"right" },
   { label:"Cuartos",       ids:["QF-2","QF-4"],                                                    side:"right" },
   { label:"Octavos",       ids:["R16-5","R16-6","R16-7","R16-8"],                                  side:"right" },
   { label:"Dieciseisavos", ids:["R32-11","R32-12","R32-9","R32-10","R32-13","R32-16","R32-14","R32-15"], side:"right" },
@@ -843,7 +842,12 @@ function renderBracketCard(matchId) {
   // Score line
   let scoreHtml = "";
   if (isFinished) {
-    scoreHtml = `<div class="bc-score done">${result.home_goals}–${result.away_goals} &middot; <strong>${result.winner_es}</strong></div>`;
+    const isPenWin = result.home_goals === result.away_goals && result.winner_es && result.winner_es !== "draw";
+    const pensStr = isPenWin && result.home_goals_pens != null
+      ? ` (p. ${result.home_goals_pens}–${result.away_goals_pens})`
+      : isPenWin ? " (pen.)" : "";
+    const winnerLabel = result.winner_es === "draw" ? "Empate" : (result.winner_es || "—");
+    scoreHtml = `<div class="bc-score done">${result.home_goals}–${result.away_goals}${pensStr} &middot; <strong>${winnerLabel}</strong></div>`;
   } else if (isLive) {
     scoreHtml = `<div class="bc-score live-s"><span class="live-dot"></span>${result?.home_goals ?? 0}–${result?.away_goals ?? 0}</div>`;
   }
