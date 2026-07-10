@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-09T23:51:28.553402+00:00",
+  "last_updated": "2026-07-10T01:28:51.017804Z",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1846,7 +1846,18 @@
       "away_goals": 0,
       "home_goals_pens": 4,
       "away_goals_pens": 3,
-      "winner_es": "draw"
+      "winner_es": "Suiza"
+    },
+    {
+      "match_id": "QF-1",
+      "stage": "Quarter-final",
+      "utc_date": "2026-07-09T20:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Francia",
+      "away_team_es": "Marruecos",
+      "home_goals": 2,
+      "away_goals": 0,
+      "winner_es": "Francia"
     }
   ]
 }
