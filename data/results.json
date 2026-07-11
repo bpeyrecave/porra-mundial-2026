@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-10T01:28:51.017804Z",
+  "last_updated": "2026-07-11T03:25:56.142601Z",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1858,6 +1858,17 @@
       "home_goals": 2,
       "away_goals": 0,
       "winner_es": "Francia"
+    },
+    {
+      "match_id": "QF-2",
+      "stage": "Quarter-final",
+      "utc_date": "2026-07-10T19:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "España",
+      "away_team_es": "Bélgica",
+      "home_goals": 2,
+      "away_goals": 1,
+      "winner_es": "España"
     }
   ]
 }
