@@ -655,6 +655,10 @@ function findResult(homeEs, awayEs) {
   ) || null;
 }
 
+function findResultById(matchId) {
+  return results.matches.find(m => m.match_id === matchId && m.status === "FINISHED") || null;
+}
+
 // ── Scoring ──────────────────────────────────────────────────────────────────
 function scoreGroupMatch(pick, result, matchId) {
   const live = result?.status === "IN_PLAY" || result?.status === "PAUSED";
@@ -709,8 +713,8 @@ function calcTotalPoints(participant) {
     if (pts !== null) total += pts;
   }
   for (const m of picks.knockout_matches) {
-    const r = findResult(m.home_team, m.away_team);
-    if (r?.status !== "FINISHED") continue; // only count confirmed results
+    const r = findResultById(m.match_id) || findResult(m.home_team, m.away_team);
+    if (r?.status !== "FINISHED") continue;
     const pts = scoreKnockoutMatch(m, r);
     if (pts !== null) total += pts;
   }
@@ -809,7 +813,8 @@ const BRACKET_LAYOUT = [
   { label:"Dieciseisavos", ids:["R32-1","R32-2","R32-3","R32-5","R32-4","R32-6","R32-7","R32-8"], side:"left" },
   { label:"Octavos",       ids:["R16-2","R16-1","R16-3","R16-4"],                                  side:"left" },
   { label:"Cuartos",       ids:["QF-1","QF-3"],                                                    side:"left" },
-  { label:"Semi · Final",  ids:["SF-1","Final","SF-2"],                                            side:"center" },
+  { label:"Semifinal",     ids:["SF-1","SF-2"],                                                    side:"center" },
+  { label:"Gran Final",    ids:["Final"],                                                          side:"center" },
   { label:"Cuartos",       ids:["QF-2","QF-4"],                                                    side:"right" },
   { label:"Octavos",       ids:["R16-5","R16-6","R16-7","R16-8"],                                  side:"right" },
   { label:"Dieciseisavos", ids:["R32-11","R32-12","R32-9","R32-10","R32-13","R32-16","R32-14","R32-15"], side:"right" },
