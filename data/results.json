@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-13T19:52:27.302199+00:00",
+  "last_updated": "2026-07-12T14:01:01.738812Z",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1869,6 +1869,28 @@
       "home_goals": 2,
       "away_goals": 1,
       "winner_es": "España"
+    },
+    {
+      "match_id": "QF-3",
+      "stage": "Quarter-final",
+      "utc_date": "2026-07-11T21:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Noruega",
+      "away_team_es": "Inglaterra",
+      "home_goals": 1,
+      "away_goals": 2,
+      "winner_es": "Inglaterra"
+    },
+    {
+      "match_id": "QF-4",
+      "stage": "Quarter-final",
+      "utc_date": "2026-07-12T01:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Suiza",
+      "away_team_es": "Argentina",
+      "home_goals": 1,
+      "away_goals": 3,
+      "winner_es": "Argentina"
     }
   ]
 }
