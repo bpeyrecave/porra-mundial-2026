@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-15T02:44:58.311875Z",
+  "last_updated": "2026-07-15T02:57:09.987512Z",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1899,9 +1899,9 @@
       "status": "FINISHED",
       "home_team_es": "Francia",
       "away_team_es": "España",
-      "home_goals": 2,
-      "away_goals": 0,
-      "winner_es": "Francia"
+      "home_goals": 0,
+      "away_goals": 2,
+      "winner_es": "España"
     }
   ]
 }
