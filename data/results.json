@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-17T01:07:46.312825+00:00",
+  "last_updated": "2026-07-17T03:05:36.133495Z",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1902,6 +1902,17 @@
       "home_goals": 0,
       "away_goals": 2,
       "winner_es": "España"
+    },
+    {
+      "match_id": "SF-2",
+      "stage": "Semi-final",
+      "utc_date": "2026-07-15T19:00:00Z",
+      "status": "FINISHED",
+      "home_team_es": "Inglaterra",
+      "away_team_es": "Argentina",
+      "home_goals": 1,
+      "away_goals": 2,
+      "winner_es": "Argentina"
     }
   ]
 }
