@@ -636,6 +636,33 @@ function matchDate(matchId, result) {
   return result?.utc_date || schedule[matchId] || null;
 }
 
+// ── Name matching (for individual-award picks) ──────────────────────────────
+// Tolerant compare: ignores accents/case and forgives small typos (e.g. "Kilian"
+// vs "Kylian" Mbappé) so a near-miss spelling of the right person still counts.
+function normalizeName(s) {
+  return s.normalize("NFD").replace(/[̀-ͯ]/g, "").trim().toLowerCase();
+}
+function levenshtein(a, b) {
+  const dp = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 0; j <= b.length; j++) dp[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      dp[i][j] = a[i - 1] === b[j - 1]
+        ? dp[i - 1][j - 1]
+        : 1 + Math.min(dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1]);
+    }
+  }
+  return dp[a.length][b.length];
+}
+function namesMatch(pick, real) {
+  if (!pick || !real) return false;
+  const a = normalizeName(pick), b = normalizeName(real);
+  if (a === b) return true;
+  const maxLen = Math.max(a.length, b.length);
+  const tolerance = Math.min(2, Math.floor(maxLen * 0.2));
+  return levenshtein(a, b) <= tolerance;
+}
+
 // ── Results lookup ───────────────────────────────────────────────────────────
 // Returns true if a match is currently in progress based purely on schedule time.
 // Used to show "En vivo" when status is still TIMED (score not yet updated manually).
@@ -981,7 +1008,7 @@ function renderHonorTable() {
       const realVal  = results.extras?.[ex.key] ?? null;
       const predVal  = extras[ex.key] ?? null;
       const known    = realVal !== null;
-      const isCorrect = known && predVal && predVal.trim().toLowerCase() === realVal.trim().toLowerCase();
+      const isCorrect = known && namesMatch(predVal, realVal);
       if (isCorrect) pts += ex.pts;
       return `<td>${chip(predVal, isCorrect, known, ex.pts)}</td>`;
     }).join('');
@@ -1238,7 +1265,7 @@ function renderExtras() {
         html += `<div class="extra-row"><span class="p-name">${p}</span><span class="no-pick">Sin pick</span></div>`;
         continue;
       }
-      const correct = realWinner && pick.trim().toLowerCase() === realWinner.trim().toLowerCase();
+      const correct = realWinner && namesMatch(pick, realWinner);
       const decided = realWinner !== null;
       html += `<div class="extra-row">
         <span class="p-name">${p}</span>
