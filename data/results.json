@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-22T16:41:00.863540+00:00",
+  "last_updated": "2026-07-17T03:05:36.133495Z",
   "competition": "FIFA World Cup 2026",
   "total_matches": 104,
   "matches": [
@@ -1535,33 +1535,35 @@
     },
     {
       "api_id": 537389,
+      "match_id": "3rd",
       "stage": "Third place",
       "matchday": null,
       "group": null,
       "utc_date": "2026-07-18T21:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
+      "status": "FINISHED",
+      "home_team_es": "Francia",
+      "away_team_es": "Inglaterra",
+      "home_team_en": "France",
+      "away_team_en": "England",
       "home_goals": null,
       "away_goals": null,
-      "winner_es": null
+      "winner_es": "Inglaterra"
     },
     {
       "api_id": 537390,
+      "match_id": "Final",
       "stage": "Final",
       "matchday": null,
       "group": null,
       "utc_date": "2026-07-19T19:00:00Z",
-      "status": "TIMED",
-      "home_team_es": null,
-      "away_team_es": null,
-      "home_team_en": null,
-      "away_team_en": null,
-      "home_goals": null,
-      "away_goals": null,
-      "winner_es": null
+      "status": "FINISHED",
+      "home_team_es": "España",
+      "away_team_es": "Argentina",
+      "home_team_en": "Spain",
+      "away_team_en": "Argentina",
+      "home_goals": 1,
+      "away_goals": 0,
+      "winner_es": "España"
     },
     {
       "stage": "Round of 32",
@@ -1914,5 +1916,13 @@
       "away_goals": 2,
       "winner_es": "Argentina"
     }
-  ]
+  ],
+  "extras": {
+    "bota_oro": "Kylian Mbappe",
+    "bota_plata": "Lionel Messi",
+    "bota_bronce": "Jude Bellingham",
+    "balon_oro": "Rodri",
+    "balon_plata": null,
+    "balon_bronce": null
+  }
 }
