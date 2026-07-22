@@ -728,6 +728,41 @@ function scoreKnockoutMatch(pick, result) {
   return KO_WINNER_POINTS[pick.stage] ?? 5;
 }
 
+// Honor points (preseason champion/runner-up/third/awards predictions).
+// Shared by the main leaderboard total and the honor table breakdown below,
+// so both numbers always agree.
+function calcHonorPoints(name) {
+  const finTeams = getMatchTeams("Final");
+  const validTeam = t => t && t !== "TBD";
+  const finalResult = validTeam(finTeams.home) ? findResult(finTeams.home, finTeams.away) : null;
+  const realChampion = finalResult?.winner_es ?? null;
+  const realRunnerUp = realChampion && finTeams.home && finTeams.away
+    ? (finTeams.home === realChampion ? finTeams.away : finTeams.home)
+    : null;
+
+  const matches = results?.matches;
+  const m3 = matches?.find(r =>
+    r.stage === "3rd Place Final" || r.stage === "3rd" ||
+    (r.stage && r.stage.toLowerCase().includes("third"))
+  );
+  const real3rd = m3?.winner_es ?? null;
+
+  const EXTRAS_PTS = { bota_oro: 10, bota_plata: 10, bota_bronce: 10, balon_oro: 10, balon_plata: 10, balon_bronce: 10 };
+
+  const pData  = picksData[name] || {};
+  const extras = pData.extras || {};
+  let pts = 0;
+  if (realChampion !== null && pData.champion === realChampion) pts += 20;
+  if (realRunnerUp !== null && pData.runner_up === realRunnerUp) pts += 10;
+  if (real3rd !== null && pData.third_place === real3rd) pts += 5;
+  for (const key of Object.keys(EXTRAS_PTS)) {
+    const realVal = results.extras?.[key] ?? null;
+    const predVal = extras[key] ?? null;
+    if (realVal !== null && namesMatch(predVal, realVal)) pts += EXTRAS_PTS[key];
+  }
+  return pts;
+}
+
 function calcTotalPoints(participant) {
   const picks = picksData[participant];
   if (!picks) return null;
@@ -777,6 +812,8 @@ function calcTotalPoints(participant) {
       }
     }
   }
+
+  total += calcHonorPoints(participant);
 
   return total;
 }
@@ -1030,7 +1067,7 @@ function renderHonorTable() {
 
   return `<div class="honor-section">
     <div class="honor-title">🏅 Puntos honorarios por predicción al principio del campeonato</div>
-    <div class="honor-subtitle">Basado en las predicciones originales antes del torneo</div>
+    <div class="honor-subtitle">Basado en las predicciones originales antes del torneo · ya incluidos en el total del ranking</div>
     <div class="honor-rules">
       <span class="honor-rule"><strong>+20 pts</strong> por campeón acertado</span>
       <span class="honor-rule"><strong>+10 pts</strong> por segundo lugar acertado</span>
