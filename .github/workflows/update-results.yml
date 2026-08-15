@@ -1,8 +1,8 @@
 name: Update WC 2026 Results
 
 on:
-  schedule:
-    - cron: '*/5 * * * *'
+# schedule:
+  #   - cron: '*/5 * * * *'  # every 5 minutes
   workflow_dispatch:
 
 jobs:
